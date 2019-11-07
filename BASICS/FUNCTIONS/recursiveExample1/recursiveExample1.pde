@@ -7,16 +7,16 @@ void setup(){
 
 void draw(){
   background(255);
-  drawRect(width/2, height/2, 200);
+  drawRing(width/2, height/2, 200);
 }
 
 
-void drawRect(float x, float y, float s) {
+void drawRing(float x, float y, float s) {
       strokeWeight(s/50.0);
       ellipse(x, y, s, s);
       s -= 50;
       if(s>10){
-          drawRect(x-s/2, y, s);
-          drawRect(x+s/2, y, s);
+          drawRing(x-s/2, y, s);
+          drawRing(x+s/2, y, s);
       }
  }
