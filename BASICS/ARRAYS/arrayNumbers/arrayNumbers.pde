@@ -1,5 +1,5 @@
 
-int numNumbers = 8;
+int numNumbers = 13;
 int [] numbers;
 
 void setup(){
