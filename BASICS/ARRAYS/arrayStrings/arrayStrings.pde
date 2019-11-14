@@ -1,15 +1,16 @@
 
-int numChars = 500;
-char [] chars;
+int numWords = 5;
+String [] words = {"bird", "dog", "horse", "shark", "frog", "Peter", "Mary",
+                   "barks", "sings", "talks", "swims", "jumps", "eats", 
+                   "loud", "clear", "nice", "kind", "slow", "fast",
+                   "today", "yesterday", "tomorrow", "now", "later",
+                   "daddy", "mummy", "granny", "sister", "son",
+                   "rainbow", "ball", "knife", "laptop", "phone",
+                   "in", "out", "over", "next",
+                   "the", "a", "this", "that"};
 
 void setup(){
-  
   size(800,800);
-  chars = new char[numChars];
-  
-  for(int i=0; i<chars.length; i++){
-    chars[i] = (char) int(random(97, 123));
-  }
 }
 
 void draw(){
@@ -18,23 +19,21 @@ void draw(){
   
   String message ="";
   
-  for(int i=0; i<chars.length; i++){
-    char c = chars[i];
-    message += c;
-    if(i%30==29) {
-      message+="\n";
-    }
+  for(int i=0; i<numWords; i++){
+    int n = (int)random(words.length);
+    String w = words[n];
+    message += w + " ";
   }
+  message+=".";
   
   fill(0);
   textSize(30);
   text(message,10,40);
   
+  noLoop();
 }
 
 
 void mousePressed(){
-  for(int i=0; i<chars.length; i++){
-    chars[i] = (char) int(random(97, 123));
-  }
+  loop();
 }
