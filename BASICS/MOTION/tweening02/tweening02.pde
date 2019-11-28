@@ -16,7 +16,6 @@ float p = 0.0;
 void setup(){
   size(800,800);
   frameRate(30);
-
   
   startX = xPoints[currentPoint]; 
   startY = yPoints[currentPoint];
@@ -45,7 +44,7 @@ void draw(){
     p+=step;
   }
   else {
-    p=0.0;
+    p=step;
     currentPoint++;
     currentPoint = currentPoint % numPoints;
     startX = xPoints[currentPoint]; startY = yPoints[currentPoint];
