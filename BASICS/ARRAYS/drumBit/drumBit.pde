@@ -118,11 +118,18 @@ void displayTracks(){
 
 // Display a track
 void displayTrack(int n, float x, float y, float w, float h, float s){
+  
+  // Calculates width of every bit circle
   float ww = (w - (numBits-1)*s) / (float)numBits; 
-  fill(0); textSize(38);
-  text(n, x - 38, y + h/2);
+  
+  // Displays track number
+  fill(0); textSize(38); textAlign(CENTER);
+  text(n, x - 25, y + h/2);
+  
+  // Display every bit of the track 
   for(int i=0; i<numBits; i++){
-    stroke(0); strokeWeight(2);
+    
+    stroke(50); strokeWeight(2);
     if(track[n][i]==false){
       fill(255);
     }
@@ -136,6 +143,8 @@ void displayTrack(int n, float x, float y, float w, float h, float s){
       fill(100, 100, 100);
     }
     ellipse(x + i*(ww+s) + ww/2, y + ww/2, ww, ww);
+    
+    // Displays bit number
     fill(0); textSize(18);
     text(i, x + i*(ww+s) + ww/2 , y-s);
   }
@@ -146,7 +155,7 @@ void displayTrack(int n, float x, float y, float w, float h, float s){
 void displayCursor(float w, float s){
   float ww = (w - (numBits-1)*s) / (float)numBits; 
   float x = 50 + cursor*(ww+s);
-  stroke(255,0,255); strokeWeight(10);
+  stroke(255,0,255); strokeWeight(15);
   line(x + ww/2, 0, x+ww/2, height);
 }
 
