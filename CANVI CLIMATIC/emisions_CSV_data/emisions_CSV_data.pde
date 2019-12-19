@@ -32,33 +32,42 @@ void setup(){
   }
   
   baseMap = loadShape("WorldMap.svg");
+  shape(baseMap, 0, 0, width, height);
+  drawEmissionsInfo();
+  noLoop();
   
-  for(int i=1;i<capitalsData.length; i++){
-    for(int j=0; j<emissionsData.length;j++){
-      String country1 = capitalsData[i][0];
-      String country2 = emissionsData[j][0];
-      if(country1 == country2){
-        println(country1);
-      }
-    }
-  }
   
 }
 
 
 void draw(){
-  
-  shape(baseMap, 0, 0, width, height);
-  
-  
+   
 }
 
-void drawCountryInfo(int n){
+void drawEmissionsInfo(){
+  for(int i=1;i<capitalsData.length; i++){
+    for(int j=0; j<emissionsData.length;j++){
+      String country1 = capitalsData[i][0];
+      String country2 = emissionsData[j][0];
+      if(country1.equals(country2)){
+        println(country1);
+        drawCountryInfo(i, j);
+      }
+    }
+  }
+}
   
-  float mapLong = map(float(capitalsData[n][3]), -180,180,0, width);
-  float mapLat  = map(float(capitalsData[n][2]), 90,-90,0, height);
+
+void drawCountryInfo(int k, int n){
   
-  ellipse(mapLong, mapLat, 5, 5);
+  float mapLong = map(float(capitalsData[k][3]), -180,180,0, width);
+  float mapLat  = map(float(capitalsData[k][2]), 90,-90,0, height);
+  
+  float emissions = Float.valueOf(emissionsData[n][3]);
+  float r = 0.025*sqrt(emissions)/PI;
+  
+  fill(255,0,0,50); noStroke();
+  ellipse(mapLong, mapLat, r, r);
   fill(0); textAlign(CENTER);
-  text(capitalsData[n][1], mapLong, mapLat + 10);
+  text(capitalsData[k][1], mapLong, mapLat);
 }
