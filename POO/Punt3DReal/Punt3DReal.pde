@@ -5,8 +5,8 @@ void setup(){
   
   size(800,800, P3D);
   
-  p1 = new Punt("A", 200, 200, 0);
-  p2 = new Punt("B", 400, 300, 0);
+  p1 = new Punt("A", 200, 200, 50);
+  p2 = new Punt("B", 400, 300, -500);
 }
 
 void draw(){

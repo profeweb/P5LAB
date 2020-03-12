@@ -72,10 +72,14 @@ class Punt {
   
   void display(){
     
-    fill(255);
-    ellipse(this.x, this.y, 10, 10);
-    fill(0); textSize(24);
-    text(this.nom, this.x+20, this.y);
+    pushMatrix();
+      translate(this.x, this.y, this.z);
+      fill(0);
+      ellipse(0, 0, 10, 10);
+      textSize(24);
+      translate(20, 0, 0);
+      text(this.nom, 0, 0,0);
+    popMatrix();
   }
 
 }
