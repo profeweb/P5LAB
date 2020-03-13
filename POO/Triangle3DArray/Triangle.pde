@@ -1,41 +1,26 @@
 class Triangle {
 
   // Atributs
-  Punt a , b, c;
+  Punt[] punts;
 
   //Constructor
   Triangle(Punt a, Punt b, Punt c){
-    this.a = a;
-    this.b = b;
-    this.c = c;
+    punts = new Punt[3];
+    this.punts[0] = a;
+    this.punts[1] = b;
+    this.punts[2] = c;
   }
 
   // Getters
 
-  Punt getPuntA(){
-    return this.a;
-  }
-
-  Punt getPuntB(){
-    return this.b;
-  }
-
-  Punt getPuntC(){
-    return this.c;
+  Punt getPunt(int n){
+    return this.punts[n];
   }
 
   // Setters
 
-  void setPuntA(Punt p){
-    this.a = p;
-  }
-
-  void setPuntB(Punt p){
-    this.b = p;
-  }
-
-  void setPuntC(Punt p){
-    this.c = p;
+  void setPunt(int n, Punt p){
+    this.punts[n] = p;
   }
 
 
@@ -43,32 +28,25 @@ class Triangle {
 
   void print(){
     System.out.println("Triangle: ");
-    this.a.print();
-    this.b.print();
-    this.c.print();
+    for(int i=0; i<3; i++){
+      this.punts[i].print();
+    }
   }
   
   void display(){
     
-    // Dibuixa la línia entre els punts a, b i c
-    /*
-    stroke(255,0,0); strokeWeight(3);
-    line(this.a.x, this.a.y, this.a.z, this.b.x, this.b.y, this.b.z);
-    line(this.c.x, this.c.y, this.c.z, this.b.x, this.b.y, this.b.z);
-    line(this.a.x, this.a.y, this.a.z, this.c.x, this.c.y, this.c.z);
-    */
-    
+   
     // Dibuixa la línia entre els punts i l'interior
     stroke(255,0,0); strokeWeight(3); fill(255,0,0,50);
     beginShape();
-      vertex(this.a.x, this.a.y, this.a.z);
-      vertex(this.b.x, this.b.y, this.b.z);
-      vertex(this.c.x, this.c.y, this.c.z);
+    for(int i=0; i<3; i++){
+      vertex(this.punts[i].x, this.punts[i].y, this.punts[i].z);
+    }
     endShape(CLOSE);
     
     // Dibuixa els punts a, b i c
-    this.a.display();
-    this.b.display();
-    this.c.display();
+    for(int i=0; i<3; i++){
+      this.punts[i].display();
+    }
   }
 }
