@@ -35,7 +35,6 @@ class Triangle {
   
   void display(){
     
-   
     // Dibuixa la línia entre els punts i l'interior
     stroke(255,0,0); strokeWeight(3); fill(255,0,0,50);
     beginShape();
@@ -44,7 +43,7 @@ class Triangle {
     }
     endShape(CLOSE);
     
-    // Dibuixa els punts a, b i c
+    // Dibuixa els punts (0, 1 i 2)
     for(int i=0; i<3; i++){
       this.punts[i].display();
     }

@@ -1,4 +1,3 @@
-
 // Declaració de variable Triangle
 Triangle t1;
 
@@ -18,7 +17,6 @@ void setup(){
 }
 
 void draw(){
-  
   background(255);
   
   // Visualitzar el triangle
