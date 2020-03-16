@@ -3,7 +3,7 @@
 Poligon star;
 
 // Número de vertexos del Poligon
-int num = 12;
+int num = 32;
 
 void setup(){
   
@@ -32,7 +32,7 @@ void setup(){
     
     // Alternar el radi entre interior i exterior
     float radi;
-    if(i%2==0){
+    if(i%3>=1){
       radi = radiInterior;
     }
     else {
@@ -47,7 +47,7 @@ void setup(){
     angle += angleStep;
     
     // Instanciar l'objecte Punt.
-    Punt p = new Punt(String.valueOf(i), x, y, 0);
+    Punt p = new Punt("", x, y, 0);
     
     // Afegir el punt (i) al Poligon
     star.setPunt(i, p);
