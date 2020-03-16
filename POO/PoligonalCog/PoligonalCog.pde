@@ -1,9 +1,9 @@
 
 // Declaració de variable de tipus Poligon
-Poligon star;
+Poligon cog;
 
 // Número de vertexos del Poligon
-int num = 12;
+int num = 32;
 
 void setup(){
   
@@ -12,7 +12,7 @@ void setup(){
   smooth(10);
   
   // Instanciant l'objecte Poligon (de n vertexos)
-  star = new Poligon(num);
+  cog = new Poligon(num);
   
   // Angle inicial per calcular la posició dels vertexs del poligon
   float angle = 0.0;
@@ -32,7 +32,7 @@ void setup(){
     
     // Alternar el radi entre interior i exterior
     float radi;
-    if(i%2==0){
+    if(i%4>=2){
       radi = radiInterior;
     }
     else {
@@ -43,14 +43,14 @@ void setup(){
     float x = width/2 + radi*cos(angle);
     float y = height/2 + radi*sin(angle);
     
-    // Actualitzar l'angle per al proper vertex
-    angle += angleStep;
-    
     // Instanciar l'objecte Punt.
     Punt p = new Punt(String.valueOf(i), x, y, 0);
     
     // Afegir el punt (i) al Poligon
-    star.setPunt(i, p);
+    cog.setPunt(i, p);
+    
+    // Actualitzar l'angle per al següent punt
+    angle += angleStep;
     
   }
 }
@@ -60,5 +60,5 @@ void draw(){
   background(255);
   
   // Visualitzar el poligon
-  star.display();
+  cog.display();
 }
