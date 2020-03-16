@@ -21,7 +21,6 @@ void setup(){
 }
 
 void draw(){
-  
   background(255);
   
   // Visualitzar el poligon
