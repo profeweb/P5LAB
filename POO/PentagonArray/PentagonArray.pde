@@ -4,8 +4,8 @@ Poligon pentagon;
 
 int numPunts = 5;
 
-// 6 Lletres per a anomenar els vertexs de l'hexagon
-String[] lletra = {"A", "B", "C", "D", "E", "F"};
+// Lletres per a anomenar els vertexs del polígon
+String[] lletra = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"};
 
 void setup(){
   
