@@ -1,6 +1,6 @@
 
 // Declaració de variable de tipus Poligon
-Poligon cog;
+Poligon flower;
 
 // Número de vertexos del Poligon
 int num = 32;
@@ -12,7 +12,7 @@ void setup(){
   smooth(10);
   
   // Instanciant l'objecte Poligon (de n vertexos)
-  cog = new Poligon(num);
+  flower = new Poligon(num);
   
   // Angle inicial per calcular la posició dels vertexs del poligon
   float angle = 0.0;
@@ -47,7 +47,7 @@ void setup(){
     Punt p = new Punt(String.valueOf(i), x, y, 0);
     
     // Afegir el punt (i) al Poligon
-    cog.setPunt(i, p);
+    flower.setPunt(i, p);
     
     // Actualitzar l'angle per al següent punt
     angle += angleStep;
@@ -60,5 +60,5 @@ void draw(){
   background(255);
   
   // Visualitzar el poligon
-  cog.display();
+  flower.display();
 }
