@@ -17,10 +17,11 @@ void setup(){
   smooth(10);
   
   // Instanciant els objectes Punt
-  Punt p1 = new Punt("A", -s*sqrt(2), 0,  s*sqrt(2));
-  Punt p2 = new Punt("B",  s*sqrt(2), 0,  s*sqrt(2));
-  Punt p3 = new Punt("C",  0,         0, -s*sqrt(2));
-  Punt p4 = new Punt("D",  0,      -s*2,          0);
+  float sqr2 = sqrt(2);
+  Punt p1 = new Punt("A", -s*sqr2, 0,  s*sqr2);
+  Punt p2 = new Punt("B",  s*sqr2, 0,  s*sqr2);
+  Punt p3 = new Punt("C",  0,      0, -s*sqr2);
+  Punt p4 = new Punt("D",  0,   -s*2,       0);
  
   // Instanciant l'objecte Poligon (triangle base ABC)
   triangle1 = new Poligon(3);
