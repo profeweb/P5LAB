@@ -27,6 +27,8 @@ void setup(){
   sol = new Estrella("Sol", "2609", 'G', -26.8f );
   sol.setImage("sun.svg");
   sol.setPosicio(width/2, height/2, -10);
+  sol.setPropsFisiques(1, 2, 3, 4, 5);
+  sol.setPropsOrbitals(6, 7, 8, 9);
   
   // Instanciació d'un Planeta
   terra = new Planeta("Terra", "2641", TipusPlaneta.ROCOS, sol);
@@ -39,6 +41,8 @@ void setup(){
   lluna = new Satelit("Lluna", "2600", TipusSatelit.NATURAL, terra);
   lluna.setImage("moon.svg");
   lluna.setPosicio(2*width/3, 1*height/3, -1000);
+  lluna.setPropsFisiques(1, 2, 3, 4, 5);
+  lluna.setPropsOrbitals(6, 7, 8, 9);
   
 
   // Carrega la imatge SVG del panell informatiu
