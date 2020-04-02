@@ -59,7 +59,7 @@ class Boto {
   
   // Altres
   
-  boolean isMouseOnButton(){
+  boolean mouseDinsBoto(){
     return dist(mouseX, mouseY, x, y)<radi;
   }
   
@@ -68,7 +68,8 @@ class Boto {
     pushMatrix();
       translate(this.x, this.y, 0);
       shapeMode(CENTER);
-      if(isMouseOnButton()){
+      if(mouseDinsBoto()){
+        cursor(HAND);
         shape(this.imgOn, 0, 0, this.radi*2, this.radi*2);
       }
       else {

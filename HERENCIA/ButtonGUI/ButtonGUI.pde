@@ -1,6 +1,6 @@
 
 // Botó de la Interfície Gràfica
-Boto bNext;
+Boto b;
 
 // Color de fons
 color bgColor = color(50);
@@ -11,7 +11,7 @@ void setup(){
   smooth(10);
   
   // Instanciant els botó de la interfície gràfica
-  bNext  = new Boto("bNextOn.svg", "bNextOut.svg", width/2, height/2, 120);
+  b  = new Boto("bNextOn.svg", "bNextOut.svg", width/2, height/2, 120);
     
 }
 
@@ -21,14 +21,16 @@ void draw(){
   // Fons 
   background(bgColor);
   
+  cursor(ARROW);
+  
   // Dibuixant el botó
-  bNext.display();
+  b.display();
 }
 
 void mousePressed(){
   
   // Si pitjam dins el botó
-  if(bNext.isMouseOnButton()){
+  if(b.mouseDinsBoto()){
     
     bgColor = color(random(255), random(255), random(255));
     
