@@ -61,7 +61,7 @@ void draw(){
   displayInfo(50, 50, terra);
 }
 
-
+// Dibuixa el panell de dades del Cos Astronòmic c a la posició (x, y) 
 void displayInfo(float x, float y, CosAstronomic c){
   
   // Dibuixa el fons del panell informatiu
@@ -81,11 +81,17 @@ void displayInfo(float x, float y, CosAstronomic c){
   // Dibuixa el NOM del cos astronòmic
   text(c.nom, x + 140, y + 80);
   
+  // Font per al TIPUS de cos astronòmic
+  fill(50); textSize(24); textAlign(LEFT); textFont(font2);
+  
+  // Dibuixa el TIPUS del cos astronòmic
+  text(c.tipus.toString(), x + 140, y + 120);
+  
   // Font per la resta de textos
   fill(255,20,20); textSize(24); textAlign(LEFT); textFont(font2);
   
   // Dibuixa les dades del cos astronòmic (bloc 1)
-  text(c.tipus.toString(), x + marginLeft, y + 210 +  lineHeight*0);
+  text("dada 1", x + marginLeft, y + 210 +  lineHeight*0);
   text("dada 2", x + marginLeft, y + 210 +  lineHeight*1);
   text("dada 3", x + marginLeft, y + 210 +  lineHeight*2);
   text("dada 4", x + marginLeft, y + 210 +  lineHeight*3);
