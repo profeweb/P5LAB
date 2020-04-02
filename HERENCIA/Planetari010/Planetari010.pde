@@ -32,6 +32,8 @@ void setup(){
   terra = new Planeta("Terra", "2641", TipusPlaneta.ROCOS, sol);
   terra.setImage("earth.svg");
   terra.setPosicio(2*width/3, height/2, -500);
+  terra.setPropsFisiques(1, 2, 3, 4, 5);
+  terra.setPropsOrbitals(6, 7, 8, 9);
   
   // Instanciació d'un Satèl·lit
   lluna = new Satelit("Lluna", "2600", TipusSatelit.NATURAL, terra);
