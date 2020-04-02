@@ -154,6 +154,10 @@ class CosAstronomic {
   double getExcentricitat(){
     return this.excentricitat;
   }
+  
+  PShape getImage(){
+    return this.img;
+  }
 
 
   // Altres
