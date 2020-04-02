@@ -64,7 +64,7 @@ void draw(){
   lluna.display();
   
   // Mostra el panell informatiu del cos astronòmic
-  displayInfo(50, 50, terra);
+  displayInfo(50, 50, lluna);
 }
 
 // Dibuixa el panell de dades del Cos Astronòmic c a la posició (x, y) 
