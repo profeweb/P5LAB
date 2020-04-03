@@ -102,13 +102,13 @@ void setup(){
   Planeta saturn = new Planeta("Saturn", "2644", TipusPlaneta.GASOS, sol);
   saturn.setImage("saturn.svg");
   saturn.setPosicio(2*width/3, 1*height/3, 0);
-  saturn.setPropsFisiques(1, 2, 3, 4, 5);
-  saturn.setPropsOrbitals(6, 7, 8, 9);
+  saturn.setPropsFisiques(5.688e26, 8.27e23, 690, 10.44, 58.232);
+  saturn.setPropsOrbitals(9.537, 378.1, 0.4400231, 0.05648);
   // Guardar Saturn a l'array d'astres
   astres[7] = saturn;
   
   // Instanciació de Urà (Planeta)
-  Planeta ura = new Planeta("Urà", "2641", TipusPlaneta.GASOS, sol);
+  Planeta ura = new Planeta("Urà", "2645", TipusPlaneta.GASOS, sol);
   ura.setImage("uranus.svg");
   ura.setPosicio(2*width/3, 1*height/2, 0);
   ura.setPropsFisiques(1, 2, 3, 4, 5);
@@ -117,7 +117,7 @@ void setup(){
   astres[8] = ura;
   
   // Instanciació de Neptú (Planeta)
-  Planeta neptu = new Planeta("Neptú", "2641", TipusPlaneta.GASOS, sol);
+  Planeta neptu = new Planeta("Neptú", "2646", TipusPlaneta.GASOS, sol);
   neptu.setImage("neptun.svg");
   neptu.setPosicio(2*width/3, 2*height/3, 0);
   neptu.setPropsFisiques(1, 2, 3, 4, 5);
@@ -126,15 +126,15 @@ void setup(){
   astres[9] = neptu;
   
   // Instanciació de Plutó (Planeta)
-  Planeta pluto = new Planeta("Plutó", "2641", TipusPlaneta.NAN, sol);
+  Planeta pluto = new Planeta("Plutó", "2647", TipusPlaneta.NAN, sol);
   pluto.setImage("pluto.svg");
   pluto.setPosicio(2*width/3 + 200, 1*height/2, 0);
-  pluto.setPropsFisiques(1, 2, 3, 4, 5);
-  pluto.setPropsOrbitals(6, 7, 8, 9);
+  pluto.setPropsFisiques(1.25e22, 8.27e23, 1750, 0.6, 1195);
+  pluto.setPropsOrbitals(29.67, 90580.065, 6.375, 0.244);
   // Guardar Plutó a l'array d'astres
   astres[10] = pluto;
   
-  // Carrega fitxers multimèdia (Imatges, fonts, audios, ...)
+  // Carrega fitxers multimèdia de la Interfície (Imatges, fonts, ...)
   loadMedia();
     
 }
@@ -154,6 +154,7 @@ void draw(){
   displayInfo(50, 50, astres[numAstre]);
 }
 
+// Dibuixa la imatge de fons
 void dibuixaFons(){
   pushMatrix();
     translate(width/2, height/2, -1000);
@@ -162,6 +163,8 @@ void dibuixaFons(){
   popMatrix();
 }
 
+
+// Carrega els fitxers multimèdia (imatges, fonts, ...)
 void loadMedia(){
   
   // Imatges SVG de la interfície gràfica
@@ -224,6 +227,7 @@ void displayInfo(float x, float y, CosAstronomic c){
   text(String.format("%.5f", c.excentricitat), x + marginLeft, y + 655 + lineHeight*3);
 }
 
+// Utilitza el teclat per moure's en l'astre seleccionat de l'array
 void keyPressed(){
   if((keyCode==RIGHT || keyCode==UP) && (numAstre<numTotalAstres-1)){
     numAstre++;
