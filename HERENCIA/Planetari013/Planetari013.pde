@@ -246,24 +246,25 @@ void displayInfo(float x, float y, CosAstronomic c){
   // Dibuixa les dades del cos astronòmic (bloc 1)
   if( c instanceof Estrella){
     Estrella e = (Estrella) c;
-    text(e.brillo, x + marginLeft, y + 210 +  lineHeight*0);
-    text("dada 2", x + marginLeft, y + 210 +  lineHeight*1);
-    text("dada 3", x + marginLeft, y + 210 +  lineHeight*2);
-    text("dada 4", x + marginLeft, y + 210 +  lineHeight*3);
+    text(e.tipusEspectral, x + marginLeft, y + 210 +  lineHeight*0);
+    text(e.brillo, x + marginLeft, y + 210 +  lineHeight*1);
+    text(e.temperatura+" ºK", x + marginLeft, y + 210 +  lineHeight*2);
+    text(e.indexColorUB, x + marginLeft, y + 210 +  lineHeight*3);
   }
   else if( c instanceof Planeta){
     Planeta p = (Planeta) c;
-    text(p.numSatelits, x + marginLeft, y + 210 +  lineHeight*0);
-    text("dada 2", x + marginLeft, y + 210 +  lineHeight*1);
-    text("dada 3", x + marginLeft, y + 210 +  lineHeight*2);
-    text("dada 4", x + marginLeft, y + 210 +  lineHeight*3);
+    text(p.tipusPlaneta.toString(), x + marginLeft, y + 210 +  lineHeight*0);
+    text(p.estrella.nom, x + marginLeft, y + 210 +  lineHeight*1);
+    String txtAnells = p.anells ? "Amb anells" : "Sense anells";
+    text(txtAnells, x + marginLeft, y + 210 +  lineHeight*2);
+    text(p.numSatelits+" llunes", x + marginLeft, y + 210 +  lineHeight*3);
   }
   else if( c instanceof Satelit){
     Satelit s = (Satelit) c;
-    text(s.planeta.nom, x + marginLeft, y + 210 +  lineHeight*0);
-    text("dada 2", x + marginLeft, y + 210 +  lineHeight*1);
-    text("dada 3", x + marginLeft, y + 210 +  lineHeight*2);
-    text("dada 4", x + marginLeft, y + 210 +  lineHeight*3);
+    text(s.tipusSatelit.toString(), x + marginLeft, y + 210 +  lineHeight*0);
+    text(s.planeta.nom, x + marginLeft, y + 210 +  lineHeight*1);
+    text(String.format("%.3e", s.pressio)+" Pa", x + marginLeft, y + 210 +  lineHeight*2);
+    text(String.format("%.2f", s.temperatura)+" ºK", x + marginLeft, y + 210 +  lineHeight*3);
   }
   
   // Dibuixa les dades del cos astronòmic (bloc 2 - propietats físiques)
