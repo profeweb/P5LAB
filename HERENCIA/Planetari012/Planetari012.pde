@@ -147,8 +147,8 @@ void setup(){
   bPrev    = new Boto("bPrevOn.svg", "bPrevOut.svg", 220, height - 100, 30);
   bNext    = new Boto("bNextOn.svg", "bNextOut.svg", 280, height - 100, 30);
   bInfo    = new Boto("bInfoOn.svg", "bInfoOut.svg", 340, height - 100, 30);
-  //bZoomIn  = new Boto("bZomInOn.svg", "bZoomInOut.svg", width-200, height - 100, 30);
-  //bZoomOut = new Boto("bZoomOutOn.svg", "bZoomOutOut.svg", width-140, height - 100, 30);
+  bZoomIn  = new Boto("bZoomInOn.svg", "bZoomInOut.svg", width-200, height - 100, 30);
+  bZoomOut = new Boto("bZoomOutOn.svg", "bZoomOutOut.svg", width-120, height - 100, 30);
     
 }
 
@@ -171,6 +171,7 @@ void draw(){
   // Dibuixa els botons
   bPlay.display(); bPause.display();
   bPrev.display(); bNext.display(); bInfo.display();
+  bZoomIn.display(); bZoomOut.display();
 }
 
 // Dibuixa la imatge de fons
