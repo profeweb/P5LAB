@@ -54,6 +54,8 @@ void setup(){
   sol.setPosicio(width/2, height/2, -10);
   sol.setPropsFisiques(1.9891e30, 1.4123e18, 1.41, 274, 696340);
   sol.setPropsOrbitals(0.1628, 2.25e18, 27, 0);
+  sol.setTemperatura(5778);
+  sol.setIndexColorUB(274);
   // Guardar el Sol a l'array d'astres
   astres[0] = sol;
   
@@ -79,6 +81,7 @@ void setup(){
   Planeta terra = new Planeta("Terra", "2641", TipusPlaneta.ROCOS, sol);
   terra.setImage("earth.svg");
   terra.setPosicio(1*width/3, 2*height/3, 0);
+  terra.setNumSatelits(1);
   terra.setPropsFisiques(5.973e24, 1.0832e12, 5.515, 9.780327, 6378.1);
   terra.setPropsOrbitals(0.9998555, 365.25, 0.99726, 0.016711233);
   // Guardar la Terra a l'array d'astres
@@ -87,6 +90,8 @@ void setup(){
   // Instanciació d'un Satèl·lit
   Satelit lluna = new Satelit("Lluna", "263E", TipusSatelit.NATURAL, terra);
   lluna.setImage("moon.svg");
+  lluna.setPressio(3e-10);
+  lluna.setTemperatura(380);
   lluna.setPosicio(1*width/3 -200, 2*height/3, 0);
   lluna.setPropsFisiques(7.349e22, 2.1958e10, 3.34, 1.62, 1737.1);
   lluna.setPropsOrbitals(0.002573566, 27.321527, 0.99726, 0.044);
@@ -96,6 +101,7 @@ void setup(){
   // Instanciació de Mart (Planeta)
   Planeta mart = new Planeta("Mart", "2642", TipusPlaneta.ROCOS, sol);
   mart.setImage("mars.svg");
+  mart.setNumSatelits(2);
   mart.setPosicio(width/2, 1*height/3, 0);
   mart.setPropsFisiques(6.4185e23, 1.6318e11, 3.9335, 3.711, 3389.5);
   mart.setPropsOrbitals(1.523662, 686.971, 0.093315, 0.093315);
@@ -105,6 +111,8 @@ void setup(){
   // Instanciació de Júpiter (Planeta)
   Planeta jupiter = new Planeta("Júpiter", "2643", TipusPlaneta.GASOS, sol);
   jupiter.setImage("jupiter.svg");
+  jupiter.setAnells(true);
+  jupiter.setNumSatelits(49);
   jupiter.setPosicio(width/2, 2*height/3, 0);
   jupiter.setPropsFisiques(1, 2, 3, 4, 5);
   jupiter.setPropsOrbitals(6, 7, 8, 9);
@@ -115,6 +123,8 @@ void setup(){
   Planeta saturn = new Planeta("Saturn", "2644", TipusPlaneta.GASOS, sol);
   saturn.setImage("saturn.svg");
   saturn.setPosicio(2*width/3, 1*height/3, 0);
+  saturn.setAnells(true);
+  saturn.setNumSatelits(52);
   saturn.setPropsFisiques(5.688e26, 8.27e23, 690, 10.44, 58.232);
   saturn.setPropsOrbitals(9.537, 378.1, 0.4400231, 0.05648);
   // Guardar Saturn a l'array d'astres
@@ -123,6 +133,8 @@ void setup(){
   // Instanciació de Urà (Planeta)
   Planeta ura = new Planeta("Urà", "2645", TipusPlaneta.GASOS, sol);
   ura.setImage("uranus.svg");
+  ura.setAnells(true);
+  ura.setNumSatelits(27);
   ura.setPosicio(2*width/3, 1*height/2, 0);
   ura.setPropsFisiques(1, 2, 3, 4, 5);
   ura.setPropsOrbitals(6, 7, 8, 9);
@@ -132,6 +144,8 @@ void setup(){
   // Instanciació de Neptú (Planeta)
   Planeta neptu = new Planeta("Neptú", "2646", TipusPlaneta.GASOS, sol);
   neptu.setImage("neptun.svg");
+  neptu.setAnells(true);
+  neptu.setNumSatelits(13);
   neptu.setPosicio(2*width/3, 2*height/3, 0);
   neptu.setPropsFisiques(1, 2, 3, 4, 5);
   neptu.setPropsOrbitals(6, 7, 8, 9);
@@ -141,6 +155,7 @@ void setup(){
   // Instanciació de Plutó (Planeta)
   Planeta pluto = new Planeta("Plutó", "2647", TipusPlaneta.NAN, sol);
   pluto.setImage("pluto.svg");
+  pluto.setNumSatelits(3);
   pluto.setPosicio(2*width/3 + 200, 1*height/2, 0);
   pluto.setPropsFisiques(1.25e22, 8.27e23, 1750, 0.6, 1195);
   pluto.setPropsOrbitals(29.67, 90580.065, 6.375, 0.244);
