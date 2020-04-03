@@ -150,7 +150,7 @@ void draw(){
     c.display();
   }
   
-  // Dibuixa el panell informatiu del cos astronòmic
+  // Dibuixa el panell informatiu del cos astronòmic seleccionat (numAstre)
   displayInfo(50, 50, astres[numAstre]);
 }
 
