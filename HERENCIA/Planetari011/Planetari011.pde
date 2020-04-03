@@ -229,10 +229,13 @@ void displayInfo(float x, float y, CosAstronomic c){
 
 // Utilitza el teclat per moure's en l'astre seleccionat de l'array
 void keyPressed(){
+  
   if((keyCode==RIGHT || keyCode==UP) && (numAstre<numTotalAstres-1)){
+    // Següent astre a l'array
     numAstre++;
   }
   else if((keyCode==LEFT || keyCode==DOWN) && (numAstre>0)){
+    // Anterior astre a l'array
     numAstre--;
   }
 }
