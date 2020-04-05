@@ -167,19 +167,28 @@ class CosAstronomic {
     this.x = astrePivot.x + r*cos(angleOrbita);
     this.y = astrePivot.y + r*sin(angleOrbita);
     
-    float angStep = map((float) this.periodeOrbita, 0, 4000, 0.0001, 0.01);
+    float angStep = map((float) this.periodeOrbita, 0, 90000, 0.001, 0.0001);
     this.angleOrbita+= angStep;
   }
   
-  void orbita(CosAstronomic astrePivot, int pos){
+  void orbita(CosAstronomic astrePivot, float pos, boolean viewOrbits){
     
-    float r = 100*pos;
+    float r = 150*pos;
   
     this.x = astrePivot.x + r*cos(angleOrbita);
     this.y = astrePivot.y + r*sin(angleOrbita);
     
-    float angStep = map((float) this.periodeOrbita, 0, 4000, 0.0001, 0.001);
+    float angStep = map((float) this.periodeOrbita, 0, 90000, 0.001, 0.0001);
     this.angleOrbita+= angStep;
+    
+    if(viewOrbits){
+      pushMatrix();
+        translate(astrePivot.x, astrePivot.y, -5.0);
+        noFill();
+        stroke(255);
+        ellipse(0, 0, 2*r, 2*r);
+      popMatrix();
+    }
   }
   
   void rota(){
@@ -211,8 +220,14 @@ class CosAstronomic {
   void display(){
     
     // Mida en funció del radi
-    float s = map((float)this.radi, 1000, 72000, 50, 100);
-    if(this.radi>72000){
+    float s;
+    if(this.radi<50000){
+      s = map((float)this.radi, 1000, 26000, 50, 100);
+    }
+    else if(this.radi<72000){
+      s = map((float)this.radi, 50000, 72000, 150, 200);
+    }
+    else {
       s = 100;
     }
     
@@ -220,7 +235,7 @@ class CosAstronomic {
       translate(this.x, this.y, this.z);
       rotate(this.angleRotacio);
       shapeMode(CENTER);
-      shape(this.img, 0,0,s,s);
+      shape(this.img, 0, 0, s, s);
     popMatrix();
   }
 

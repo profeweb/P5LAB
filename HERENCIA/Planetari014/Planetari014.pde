@@ -27,7 +27,8 @@ Boto bPlay, bPause, bPrev, bNext, bInfo, bZoomIn, bZoomOut;
 
 // Booleans
 boolean showPanel = true;
-boolean enableMotion = false;
+boolean enableMotion = true;
+boolean viewOrbits = true;
 
 // Imatge JPG fons espai
 PImage fons;
@@ -41,6 +42,8 @@ void setup(){
   
   //size(1800, 600, P3D);
   fullScreen(P3D);
+  shapeMode(CENTER);
+  ellipseMode(CENTER);
   smooth(10);
   
   jcam = new PeasyCam(this,2000);
@@ -51,7 +54,7 @@ void setup(){
     // Instanciació del Sol (Estrella)
   Estrella sol = new Estrella("Sol", "2609", 'G', -26.8f );
   sol.setImage("sun.svg");
-  sol.setPosicio(width/2, height/2, -10);
+  sol.setPosicio(width/2, height/2, 0);
   sol.setPropsFisiques(1.9891e30, 1.4123e18, 1.41, 274, 696340);
   sol.setPropsOrbitals(0.1628, 2.25e18, 27, 0);
   sol.setTemperatura(5778);
@@ -62,7 +65,6 @@ void setup(){
   // Instanciació de Mercuri (Planeta)
   Planeta mercuri = new Planeta("Mercuri", "2641", TipusPlaneta.ROCOS, sol);
   mercuri.setImage("mercury.svg");
-  mercuri.setPosicio(1*width/3, height/3, 0);
   mercuri.setPropsFisiques(3.285e23, 6.083e10, 5430, 3.7, 2439.7);
   mercuri.setPropsOrbitals(0.387, 88, 58.645833, 0.2056306);
   // Guardar Mercuri a l'array d'astres
@@ -71,7 +73,6 @@ void setup(){
   // Instanciació de Venus (Planeta)
   Planeta venus = new Planeta("Venus", "2640", TipusPlaneta.ROCOS, sol);
   venus.setImage("venus.svg");
-  venus.setPosicio(1*width/3, 1*height/2, 0);
   venus.setPropsFisiques(4.867e24, 9.38e11, 5240, 8.87, 6051.8);
   venus.setPropsOrbitals(0.723, 225, 116.75, 0.007);
   // Guardar Venus a l'array d'astres
@@ -80,7 +81,6 @@ void setup(){
   // Instanciació de la Terra (Planeta)
   Planeta terra = new Planeta("Terra", "2641", TipusPlaneta.ROCOS, sol);
   terra.setImage("earth.svg");
-  terra.setPosicio(1*width/3, 2*height/3, 0);
   terra.setNumSatelits(1);
   terra.setPropsFisiques(5.973e24, 1.0832e12, 5.515, 9.780327, 6378.1);
   terra.setPropsOrbitals(0.9998555, 365.25, 0.99726, 0.016711233);
@@ -92,9 +92,8 @@ void setup(){
   lluna.setImage("moon.svg");
   lluna.setPressio(3e-10);
   lluna.setTemperatura(380);
-  lluna.setPosicio(1*width/3 -200, 2*height/3, 0);
   lluna.setPropsFisiques(7.349e22, 2.1958e10, 3.34, 1.62, 1737.1);
-  lluna.setPropsOrbitals(0.002573566, 27.321527, 0.99726, 0.044);
+  lluna.setPropsOrbitals(2.5695552e-6, 27.321527, 0.99726, 0.044);
   // Guardar la Lluna a l'array d'astres
   astres[4] = lluna;
   
@@ -102,7 +101,6 @@ void setup(){
   Planeta mart = new Planeta("Mart", "2642", TipusPlaneta.ROCOS, sol);
   mart.setImage("mars.svg");
   mart.setNumSatelits(2);
-  mart.setPosicio(width/2, 1*height/3, 0);
   mart.setPropsFisiques(6.4185e23, 1.6318e11, 3.9335, 3.711, 3389.5);
   mart.setPropsOrbitals(1.523662, 686.971, 0.093315, 0.093315);
   // Guardar Mart a l'array d'astres
@@ -113,7 +111,6 @@ void setup(){
   jupiter.setImage("jupiter.svg");
   jupiter.setAnells(true);
   jupiter.setNumSatelits(49);
-  jupiter.setPosicio(width/2, 2*height/3, 0);
   jupiter.setPropsFisiques(1.899e27, 1.4313e15, 1336, 24.79, 71492);
   jupiter.setPropsOrbitals(5.204267, 4332.71, 4332.71, 0.04839266);
   // Guardar Júpiter a l'array d'astres
@@ -122,10 +119,9 @@ void setup(){
   // Instanciació de Saturn (Planeta)
   Planeta saturn = new Planeta("Saturn", "2644", TipusPlaneta.GASOS, sol);
   saturn.setImage("saturn.svg");
-  saturn.setPosicio(2*width/3, 1*height/3, 0);
   saturn.setAnells(true);
   saturn.setNumSatelits(52);
-  saturn.setPropsFisiques(5.688e26, 8.27e23, 690, 10.44, 58.232);
+  saturn.setPropsFisiques(5.688e26, 8.27e23, 690, 10.44, 58232);
   saturn.setPropsOrbitals(9.537, 378.1, 0.4400231, 0.05648);
   // Guardar Saturn a l'array d'astres
   astres[7] = saturn;
@@ -135,7 +131,6 @@ void setup(){
   ura.setImage("uranus.svg");
   ura.setAnells(true);
   ura.setNumSatelits(27);
-  ura.setPosicio(2*width/3, 1*height/2, 0);
   ura.setPropsFisiques(8.681e25, 6.833e13, 1274, 8.87, 25362);
   ura.setPropsOrbitals(19.18, 369.66, 0.714, 0.04405586);
   // Guardar Urà a l'array d'astres
@@ -146,7 +141,6 @@ void setup(){
   neptu.setImage("neptun.svg");
   neptu.setAnells(true);
   neptu.setNumSatelits(13);
-  neptu.setPosicio(2*width/3, 2*height/3, 0);
   neptu.setPropsFisiques(1.024e26, 6.254e23, 1.64, 11.15, 24624);
   neptu.setPropsOrbitals(30.1, 60190, 0.67152777, 0.011214269);
   // Guardar Neptú a l'array d'astres
@@ -156,7 +150,6 @@ void setup(){
   Planeta pluto = new Planeta("Plutó", "2647", TipusPlaneta.NAN, sol);
   pluto.setImage("pluto.svg");
   pluto.setNumSatelits(3);
-  pluto.setPosicio(2*width/3 + 200, 1*height/2, 0);
   pluto.setPropsFisiques(1.25e22, 8.27e23, 1750, 0.6, 1195);
   pluto.setPropsOrbitals(29.67, 90580.065, 6.375, 0.244);
   // Guardar Plutó a l'array d'astres
@@ -184,24 +177,30 @@ void draw(){
   // Fons 
   dibuixaFons();
   
+  
+  if(enableMotion){
+  
+    // Orbitar els planetes al voltant del sol
+    CosAstronomic sol = astres[0];
+    int pos = 1;
+    for(int i=1; i<astres.length; i++){
+      if(astres[i] instanceof Planeta){
+        //astres[i].orbita(sol);
+        astres[i].orbita(sol, pos, viewOrbits);
+        pos++;
+      }
+      // Rotació del cos astronòmic
+      astres[i].rota();
+    }
+    
+    // Orbitar la Lluna al volant de la terra
+    astres[4].orbita(astres[3], 0.5, viewOrbits);
+  }
+  
   // Dibuixar els cossos astronòmics
   for(CosAstronomic c : astres){
     c.display();
   }
-  
-  // Orbitar els planetes al voltant del sol
-  CosAstronomic sol = astres[0];
-  int pos = 1;
-  for(int i=1; i<astres.length; i++){
-    if(astres[i] instanceof Planeta){
-      astres[i].orbita(sol, pos);
-      pos++;
-    }
-    astres[i].rota();
-  }
-  
-  // Orbitar la Lluna al volant de la terra
-  astres[4].orbita(astres[3]);
   
   
   jcam.beginHUD();
@@ -327,6 +326,10 @@ void keyPressed(){
   else if(keyCode==DOWN){
     // Oculta el panell de dades
     showPanel = false;
+  }
+  else if(key=='o' || key=='O'){
+    // Oculta el panell de dades
+    viewOrbits = !viewOrbits;
   }
 }
 
