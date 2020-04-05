@@ -48,7 +48,7 @@ void setup(){
   // Creació de l'Array de Cossos Astronòmics
   astres = new CosAstronomic[numTotalAstres];
   
-  // Instanciació del Sol (Estrella)
+    // Instanciació del Sol (Estrella)
   Estrella sol = new Estrella("Sol", "2609", 'G', -26.8f );
   sol.setImage("sun.svg");
   sol.setPosicio(width/2, height/2, -10);
@@ -63,17 +63,17 @@ void setup(){
   Planeta mercuri = new Planeta("Mercuri", "2641", TipusPlaneta.ROCOS, sol);
   mercuri.setImage("mercury.svg");
   mercuri.setPosicio(1*width/3, height/3, 0);
-  mercuri.setPropsFisiques(1, 2, 3, 4, 5);
-  mercuri.setPropsOrbitals(6, 7, 8, 9);
+  mercuri.setPropsFisiques(3.285e23, 6.083e10, 5430, 3.7, 2439.7);
+  mercuri.setPropsOrbitals(0.387, 88, 58.645833, 0.2056306);
   // Guardar Mercuri a l'array d'astres
   astres[1] = mercuri;
   
   // Instanciació de Venus (Planeta)
-  Planeta venus = new Planeta("Venus", "2641", TipusPlaneta.ROCOS, sol);
+  Planeta venus = new Planeta("Venus", "2640", TipusPlaneta.ROCOS, sol);
   venus.setImage("venus.svg");
   venus.setPosicio(1*width/3, 1*height/2, 0);
-  venus.setPropsFisiques(1, 2, 3, 4, 5);
-  venus.setPropsOrbitals(6, 7, 8, 9);
+  venus.setPropsFisiques(4.867e24, 9.38e11, 5240, 8.87, 6051.8);
+  venus.setPropsOrbitals(0.723, 225, 116.75, 0.007);
   // Guardar Venus a l'array d'astres
   astres[2] = venus;
   
@@ -114,8 +114,8 @@ void setup(){
   jupiter.setAnells(true);
   jupiter.setNumSatelits(49);
   jupiter.setPosicio(width/2, 2*height/3, 0);
-  jupiter.setPropsFisiques(1, 2, 3, 4, 5);
-  jupiter.setPropsOrbitals(6, 7, 8, 9);
+  jupiter.setPropsFisiques(1.899e27, 1.4313e15, 1336, 24.79, 71492);
+  jupiter.setPropsOrbitals(5.204267, 4332.71, 4332.71, 0.04839266);
   // Guardar Júpiter a l'array d'astres
   astres[6] = jupiter;
   
@@ -136,8 +136,8 @@ void setup(){
   ura.setAnells(true);
   ura.setNumSatelits(27);
   ura.setPosicio(2*width/3, 1*height/2, 0);
-  ura.setPropsFisiques(1, 2, 3, 4, 5);
-  ura.setPropsOrbitals(6, 7, 8, 9);
+  ura.setPropsFisiques(8.681e25, 6.833e13, 1274, 8.87, 25362);
+  ura.setPropsOrbitals(19.18, 369.66, 0.714, 0.04405586);
   // Guardar Urà a l'array d'astres
   astres[8] = ura;
   
@@ -147,8 +147,8 @@ void setup(){
   neptu.setAnells(true);
   neptu.setNumSatelits(13);
   neptu.setPosicio(2*width/3, 2*height/3, 0);
-  neptu.setPropsFisiques(1, 2, 3, 4, 5);
-  neptu.setPropsOrbitals(6, 7, 8, 9);
+  neptu.setPropsFisiques(1.024e26, 6.254e23, 1.64, 11.15, 24624);
+  neptu.setPropsOrbitals(30.1, 60190, 0.67152777, 0.011214269);
   // Guardar Neptú a l'array d'astres
   astres[9] = neptu;
   
@@ -191,14 +191,18 @@ void draw(){
   
   // Orbitar els planetes al voltant del sol
   CosAstronomic sol = astres[0];
+  int pos = 1;
   for(int i=1; i<astres.length; i++){
     if(astres[i] instanceof Planeta){
-      astres[i].orbita(sol);
+      astres[i].orbita(sol, pos);
+      pos++;
     }
+    astres[i].rota();
   }
   
   // Orbitar la Lluna al volant de la terra
   astres[4].orbita(astres[3]);
+  
   
   jcam.beginHUD();
   // Dibuixa el panell informatiu del cos astronòmic seleccionat (numAstre)

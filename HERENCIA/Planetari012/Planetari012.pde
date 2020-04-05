@@ -58,11 +58,11 @@ void setup(){
   astres[1] = mercuri;
   
   // Instanciació de Venus (Planeta)
-  Planeta venus = new Planeta("Venus", "2641", TipusPlaneta.ROCOS, sol);
+  Planeta venus = new Planeta("Venus", "2640", TipusPlaneta.ROCOS, sol);
   venus.setImage("venus.svg");
   venus.setPosicio(1*width/3, 1*height/2, 0);
-  venus.setPropsFisiques(1, 2, 3, 4, 5);
-  venus.setPropsOrbitals(6, 7, 8, 9);
+  venus.setPropsFisiques(4.867e24, 9.38e11, 5240, 8.87, 6051.8);
+  venus.setPropsOrbitals(0.723, 225, 116.75, 0.007);
   // Guardar Venus a l'array d'astres
   astres[2] = venus;
   
@@ -124,8 +124,8 @@ void setup(){
   Planeta neptu = new Planeta("Neptú", "2646", TipusPlaneta.GASOS, sol);
   neptu.setImage("neptun.svg");
   neptu.setPosicio(2*width/3, 2*height/3, 0);
-  neptu.setPropsFisiques(1, 2, 3, 4, 5);
-  neptu.setPropsOrbitals(6, 7, 8, 9);
+  neptu.setPropsFisiques(1.024e26, 6.254e23, 1.64, 11.15, 24624);
+  neptu.setPropsOrbitals(30.1, 60190, 0.67152777, 0.011214269);
   // Guardar Neptú a l'array d'astres
   astres[9] = neptu;
   

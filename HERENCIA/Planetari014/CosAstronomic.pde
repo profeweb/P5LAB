@@ -10,7 +10,8 @@ class CosAstronomic {
 
   //Posició
   float x, y, z;
-  float angle= random(TWO_PI);
+  float angleOrbita= random(TWO_PI);
+  float angleRotacio = 0.0;
 
   // Propietats físiques
   double masa;
@@ -161,13 +162,29 @@ class CosAstronomic {
   
   void orbita(CosAstronomic astrePivot){
     
-    float r = map((float)this.radiOrbita, 0, 2, 0, 400);
+    float r = map((float)this.radiOrbita, 0, 2, 100, 500);
   
-    this.x = astrePivot.x + r*cos(angle);
-    this.y = astrePivot.y + r*sin(angle);
+    this.x = astrePivot.x + r*cos(angleOrbita);
+    this.y = astrePivot.y + r*sin(angleOrbita);
     
     float angStep = map((float) this.periodeOrbita, 0, 4000, 0.0001, 0.01);
-    this.angle+= 0.001; //angStep;
+    this.angleOrbita+= angStep;
+  }
+  
+  void orbita(CosAstronomic astrePivot, int pos){
+    
+    float r = 100*pos;
+  
+    this.x = astrePivot.x + r*cos(angleOrbita);
+    this.y = astrePivot.y + r*sin(angleOrbita);
+    
+    float angStep = map((float) this.periodeOrbita, 0, 4000, 0.0001, 0.001);
+    this.angleOrbita+= angStep;
+  }
+  
+  void rota(){
+    float rotStep = map((float) this.periodeRotacio, 0, 4000, 0.001, 0.01);
+    this.angleRotacio+= rotStep;
   }
 
   void print(){
@@ -192,10 +209,18 @@ class CosAstronomic {
   }
   
   void display(){
+    
+    // Mida en funció del radi
+    float s = map((float)this.radi, 1000, 72000, 50, 100);
+    if(this.radi>72000){
+      s = 100;
+    }
+    
     pushMatrix();
       translate(this.x, this.y, this.z);
+      rotate(this.angleRotacio);
       shapeMode(CENTER);
-      shape(this.img, 0,0, 100, 100);
+      shape(this.img, 0,0,s,s);
     popMatrix();
   }
 
