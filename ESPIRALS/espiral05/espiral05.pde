@@ -1,5 +1,9 @@
 
-// Amb POO
+// Espiral Bernoulli
+// https://en.wikipedia.org/wiki/Logarithmic_spiral
+
+float a = 0.6;
+float b = 0.2;
 
 void setup(){
   size(800, 800, P2D);
@@ -10,13 +14,10 @@ void setup(){
 void draw(){
   
   background(255);
-  
+    
   // Salts de l'angle i el radi
-  float angleStep = 0.1;
-  float radiusStep = 1.0;
+  float angleStep = 0.001;
   
-  // Radi de l'espiral
-  float radius = 0.0;
   // Número de voltes de l'espiral
   int numLaps = 5;
   
@@ -26,19 +27,18 @@ void draw(){
   for(float angle = 0.0; angle< numLaps*TWO_PI; angle+=angleStep){
     
     // Càlcul de les coordenades polars de l'espiral
-    Punt actual = new Punt( width/2 + radius*cos(angle), height/2 + radius*sin(angle));
+    float r = a * exp( b*angle );
+    
+    Punt actual = new Punt( width/2 + r*cos(angle), height/2 + r*sin(angle));
     
     // Dibuixar lel punt actual
-    actual.display();
+    //actual.display();
     
     // Dibuixar la línia entre el punt actual i l'anterior
     actual.displayLine(anterior);
     
     // Actualitzar coordenada anterior
     anterior = actual;
-    
-    // Actualitzar el radi
-    radius += radiusStep;
     
   }
 }
