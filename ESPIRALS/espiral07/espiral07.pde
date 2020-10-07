@@ -3,7 +3,7 @@
 // https://en.wikipedia.org/wiki/Fermat's_spiral
 
 
-float a = 50;
+float a = 60;
 
 void setup(){
   size(800, 800, P2D);
