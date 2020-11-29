@@ -1,5 +1,5 @@
 // Components de la GUI
-// Botons forma de Cercle
+// Botons forma de Quadrat amb Icona i sense text
 
 // Botons de la GUI
 SquareButton rb1, rb2;
@@ -8,7 +8,7 @@ SquareButton rb1, rb2;
 PImage icona1, icona2;
 
 // Dimensions dels botons
-float buttonR = 100;
+float buttonR = 200;
 
 // Color de fons de l'App
 color bgColor = color(255);
@@ -44,7 +44,7 @@ void draw(){
 void mousePressed(){
   
   if(rb1.mouseOverButton() && rb1.enabled){
-    bgColor = color(0);
+    bgColor = color(50);
     rb1.setEnabled(false);
     rb2.setEnabled(true);
   }
