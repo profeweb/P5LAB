@@ -1,4 +1,3 @@
-
 Pila p;
 
 int lastPopped = -1;

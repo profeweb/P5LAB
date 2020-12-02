@@ -44,7 +44,7 @@ class Pila {
     }
     
     fill(0); textSize(32); textAlign(LEFT);
-    text("<--- TOP", x + r*1.2, y + (array.length - top -1)*r + r/2);
+    text("<-- Top("+top+")", x + r*1.2, y + (array.length - top -1)*r + r/2);
   }
   
 }
