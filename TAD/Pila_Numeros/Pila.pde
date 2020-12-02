@@ -27,6 +27,10 @@ class Pila {
     return top==array.length-1;
   }
   
+  int numElements(){
+    return top+1;
+  }
+  
   void display(int x, int y){
     float r = 70; strokeWeight(3);
     for(int i=array.length-1; i>=0; i--){

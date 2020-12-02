@@ -16,10 +16,11 @@ void draw(){
   text("PILA (STACK)", 400, 100);
   
   textSize(34);
-  text("Empty: "+p.isEmpty(), 400, 200);
-  text("Full: "+p.isFull(), 400, 250);
-  text("Last Popped: "+lastPopped, 400, 300);
-  text("Last Pushed: "+lastPushed, 400, 350);
+  text("Núm. Elements: "+p.numElements(), 400, 200);
+  text("Empty: "+p.isEmpty(), 400, 250);
+  text("Full: "+p.isFull(), 400, 300);
+  text("Last Popped: "+lastPopped, 400, 350);
+  text("Last Pushed: "+lastPushed, 400, 400);
 }
 
 void keyPressed(){
