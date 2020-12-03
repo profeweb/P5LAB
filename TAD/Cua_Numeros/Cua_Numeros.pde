@@ -1,46 +1,46 @@
-Pila p;
+Cua c;
 
-int lastPopped = -1;
-int lastPushed = -1;
+int lastOut = -1;
+int lastIn = -1;
                                   
 void setup(){
   size(800,800);
-  p = new Pila();
+  c = new Cua();
 }
 
 void draw(){
-  background(255, 100,100);
-  p.display(100,50); 
+  background(100, 255,100);
+  c.display(50,100); 
   
-  textSize(54);
-  text("PILA (STACK)", 400, 100);
+  textSize(54); textAlign(LEFT);
+  text("CUA (QUEUE)", 100, 400);
   
   textSize(34);
-  text("Núm. Elements: "+p.numElements(), 400, 200);
-  text("Empty: "+p.isEmpty(), 400, 250);
-  text("Full: "+p.isFull(), 400, 300);
-  text("Last Popped: "+lastPopped, 400, 350);
-  text("Last Pushed: "+lastPushed, 400, 400);
+  text("Núm. Elements: "+c.numElements(), 100, 500);
+  text("Empty: "+c.isEmpty(), 100, 550);
+  text("Full: "+c.isFull(), 100, 600);
+  text("Last Dequeued: "+lastOut, 100, 650);
+  text("Last Enqueued: "+lastIn, 100, 700);
 }
 
 void keyPressed(){
   if(key=='a'){
-    if(!p.isFull()){
-      lastPushed = (int)random(0, 100);
-      p.push(lastPushed);
-      println("PUSH: "+lastPushed);
+    if(!c.isFull()){
+      lastIn = (int)random(0, 100);
+      c.encola(lastIn);
+      println("ENQUEUE: "+lastIn);
     }
     else {
-      println("NO PUSH, Stack is full!!");
+      println("NO ENQUEUE, Queue is full!!");
     }
   }
   else if(key=='r'){
-    if(!p.isEmpty()){
-      lastPopped = p.pop();
-      println ("POP: "+lastPopped);
+    if(!c.isEmpty()){
+      lastOut = c.desencola();
+      println ("DEQUEUE: "+lastOut);
     }
     else {
-      println("NO POP, Stack is empty!!");
+      println("NO DEQUEUE, Queue is empty!!");
     }
   }
 }

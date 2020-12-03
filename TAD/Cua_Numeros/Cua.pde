@@ -1,54 +1,59 @@
 
-class Pila {
+class Cua {
  
   int[] array;
-  int top = -1;
+  int last = -1;
   
-  Pila(){
+  Cua(){
     array = new int [10];
   }
   
-  void push(int n){
-    top++;
-    array[top] = n;
+  void encola(int n){
+    last++;
+    array[last] = n;
   }
   
-  int pop(){
-    int temp = top;
-    top--;
-    return array[temp];
+  int desencola(){
+    int temp = array[0];
+    for(int i=0; i<last; i++){
+      array[i] = array[i+1];
+    }
+    last--;
+    return temp;
   }
   
   boolean isEmpty(){
-    return top==-1;
+    return last==-1;
   }
   
   boolean isFull(){
-    return top==array.length-1;
+    return last==array.length-1;
   }
   
   int numElements(){
-    return top+1;
+    return last+1;
   }
   
   void display(int x, int y){
     float r = 70; strokeWeight(3);
     for(int i=array.length-1; i>=0; i--){
       fill(0); textSize(24);
-      text(i, x - r/1.5, y + (array.length - i - 1)*r + r/2);
+      text(i, x + (array.length - i - 1)*r + r/2 , y - r/2);
       fill(255);
-      rect(x, y + i*r, r,r);
+      rect(x + i*r, y , r,r);
     }
     
     for(int i=array.length-1; i>=0; i--){
-      if(i<=top){
+      if(i<=last){
         fill(255,0,0); textSize(24); textAlign(CENTER);
-        text(array[i],  x + r/2.2, y + (array.length - i - 1)*r + r/2);
+        text(array[i],  x + (array.length - i - 1)*r + r/2 , y + r/1.5 );
       }
     }
     
-    fill(0); textSize(32); textAlign(LEFT);
-    text("<-- Top("+top+")", x + r*1.2, y + (array.length - top -1)*r + r/2);
+    fill(0); textSize(32);
+    text("^", x + (array.length - last -1)*r + r/2, y  + r*1.5);
+    text("|", x + (array.length - last -1)*r + r/2, y  + r*1.75);
+    text("Last("+last+")", x + (array.length - last -1)*r + r/2, y  + r*2.2);
   }
   
 }
