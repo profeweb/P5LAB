@@ -42,6 +42,12 @@ class Select {
       rect(x, y+h, w, (h + lineSpace)*texts.length);
       
       for(int i=0; i<texts.length; i++){
+        
+        if(i== clickedOption()){
+          fill(200); noStroke();
+          rect(x+4, y+4 + h + (h + lineSpace)*i - 2, w -8, h + lineSpace - 8);
+        }
+        
         fill(0);
         text(texts[i], x + 10, y + h + 25 + (h + lineSpace)*i);
       }
