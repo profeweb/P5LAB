@@ -20,8 +20,9 @@ class Calendari {
     this.numWeeksMonth = cal.getActualMaximum(Calendar.WEEK_OF_MONTH);
     this.numDaysMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
     
-    //cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek());
-    this.firstDay = 1; //cal.get(Calendar.DATE);
+    cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek());
+    this.firstDay = cal.get(Calendar.DATE);
+    println(firstDay);
     
     //cPrev = Calendar.getInstance();
     //cPrev.set(Calendar.MONTH, -2);
@@ -33,13 +34,16 @@ class Calendari {
     
     cal.roll(Calendar.MONTH, true);
     
+    int currentMonth = cal.get(Calendar.MONTH);
+    
+    if(currentMonth==0){
+      cal.set(Calendar.YEAR, this.any+1);
+      this.any++;
+    }
+    
     this.any = cal.get(Calendar.YEAR);
     this.mes = cal.get(Calendar.MONTH) + 1;
     this.dia = cal.get(Calendar.DATE);
-    
-    if(this.mes==0){
-      cal.set(Calendar.YEAR, this.any+1);
-    }
    
     
     this.numWeeksMonth = cal.getActualMaximum(Calendar.WEEK_OF_MONTH);
@@ -52,6 +56,12 @@ class Calendari {
   void prevMonth(){
     
     cal.roll(Calendar.MONTH, false);
+    
+    int currentMonth = cal.get(Calendar.MONTH);
+    
+    if(currentMonth==11){
+      cal.set(Calendar.YEAR, this.any-1);
+    }
     
     this.any = cal.get(Calendar.YEAR);
     this.mes = cal.get(Calendar.MONTH) + 1;
