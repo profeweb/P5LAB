@@ -40,7 +40,7 @@ class LlistaLink {
   }
   
   boolean isEmpty(){
-    return tail==null;
+    return counter==0;
   }
   
   int numElements(){
@@ -77,24 +77,65 @@ class LlistaLink {
     }
   }
   
-  /*
-  int removeAt(int p){
-    int temp = array[p];
-    for(int i=p; i<tail; i++){
-      array[i] = array[i+1];
-    }
-    tail--;
-    return temp;
+  int removeFirst(){
+    Node n = head;
+    int value = n.value;
+    head = n.seguent;
+    counter --;
+    return value;
   }
   
-  void insertAt(int p, int v){
-    for(int i=tail+1; i>p; i--){
-      array[i] = array[i-1];
+  int removeLast(){
+    
+    Node nLast = tail;
+    int value = nLast.value;
+    
+    Node n = head;
+    Node prev = head;
+
+    while(n!=nLast){
+      prev = n;
+      n = n.seguent;
     }
-    array[p] = v;
-    tail++;
+    
+    prev.seguent = null;
+    tail = prev;
+    counter--;
+    
+    return value;
   }
-  */
+    
+  
+  
+  int removeAt(int p){
+    
+    if(p==0){
+      return removeFirst();
+    }
+    else if(p==numElements()-1){
+      return removeLast();
+    }
+    else {
+    
+      int i = 0;
+      int value = -1;
+      Node n = head;
+      Node prev = head;
+  
+      while(i!=p && n!=null){
+        prev = n;
+        n = n.seguent;
+        value = n.value;
+        i++;
+      }
+      
+      prev.seguent = n.seguent;
+      counter--;
+      
+      return value;
+    }
+  }
+  
   
   void display(int x, int y){
     float r = 70; strokeWeight(3);
@@ -112,9 +153,14 @@ class LlistaLink {
     }
     
     fill(0); textSize(32);
-    //text("^", x + tail*r + r/2, y  + r*1.5);
-    //text("|", x + tail*r + r/2, y  + r*1.75);
-    //text("Tail("+tail+")", x + tail*r + r/2, y  + r*2.2);
+    text("^", x + r/2, y  + r*1.5);
+    text("|", x + r/2, y  + r*1.75);
+    text("Head", x  + r/2, y  + r*2.2);
+    
+    text("^", x + r*(l.numElements()-1) + r/2, y  + r*1.5);
+    text("|", x + r*(l.numElements()-1) + r/2, y  + r*1.75);
+    text("|", x + r*(l.numElements()-1) + r/2, y  + r*2.5);
+    text("Tail", x + r*(l.numElements()-1) + r/2, y + r*3);
   }
   
 }

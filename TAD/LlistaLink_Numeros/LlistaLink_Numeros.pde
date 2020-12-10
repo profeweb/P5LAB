@@ -4,7 +4,7 @@ int lastOut = -1;
 int lastIn = -1;
                                   
 void setup(){
-  size(800,800);
+  size(1400,800);
   l = new LlistaLink();
 }
 
@@ -42,8 +42,8 @@ void keyPressed(){
   else if(key=='r'){
     if(!l.isEmpty()){
       int nr = (int)random(0, l.numElements());
-      lastOut = 0; //l.removeAt(nr);
-      println ("REMOVED: "+lastOut);
+      lastOut = l.removeAt(nr);
+      println ("REMOVED AT "+nr+": "+lastOut);
     }
     else {
       println("NO REMOVED, List is empty!!");
