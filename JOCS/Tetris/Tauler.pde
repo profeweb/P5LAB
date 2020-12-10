@@ -56,13 +56,16 @@ class Tauler {
   void dibuixa(Figura fig){
     for(int f=0; f<fig.quadres.length; f++){
       for(int c=0; c<fig.quadres[0].length; c++){
+        int ct = c + fig.col;
+        int ft = f + fig.fila;
         if(fig.quadres[f][c]==1){
-          int ct = c + fig.col;
-          int ft = f + fig.fila;
           fill(fig.c);
           stroke(0);
-          rect(ct*cellWidth, ft*cellHeight, cellWidth, cellHeight);
         }
+        else{
+          fill(100, 50);
+        }
+        rect(ct*cellWidth, ft*cellHeight, cellWidth, cellHeight);
       } 
     }
   }

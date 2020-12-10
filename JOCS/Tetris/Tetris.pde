@@ -16,13 +16,9 @@ void setup(){
                  
   f1 = new Figura(qf1, c1);
   f1.setPosicio(3,3);
-  
-  c2 = color(255,255,0);
-  int[][] qf2 = {{1,1,0},
-                 {0,1,0},
-                 {0,1,1}};
+
                  
-  f2 = new Figura(qf2, c2);
+  f2 = new FiguraZ();
   f2.setPosicio(6,2);
   
   c3 = color(0,255,0);
