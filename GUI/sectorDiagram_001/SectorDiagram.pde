@@ -13,9 +13,13 @@ class SectorDiagram {
   // Suma total dels valors
   float total;
   
+  // Constructor
+  
   SectorDiagram(float x, float y, float r){
     this.x = x; this.y = y; this.r = r;
   }
+  
+  // Setters
   
   void setTexts(String[] t){
     this.texts = t;
@@ -38,8 +42,11 @@ class SectorDiagram {
     this.colors = c;
   }
   
+  // Dibuixa el Diagrama de Sectors
+  
   void display(){
     pushStyle();
+    
     float angStart = 0;
     for(int i=0; i<this.values.length; i++){
       
@@ -53,7 +60,6 @@ class SectorDiagram {
       float textY = this.x + (this.r + 50)*sin((angStart+angEnd)/2f);
       fill(0); textAlign(CENTER); textSize(24);
       text(this.texts[i], textX, textY);
-      
       
       float percX = this.x + (this.r/2)*cos((angStart+angEnd)/2f);
       float percY = this.x + (this.r/2)*sin((angStart+angEnd)/2f);
