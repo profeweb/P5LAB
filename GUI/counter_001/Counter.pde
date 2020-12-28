@@ -34,6 +34,11 @@ class Counter {
    this.value = n;
  }
  
+ void setValues(int minValue, int maxValue){ 
+   this.minValue = minValue; 
+   this.maxValue = maxValue;
+ }
+ 
  // Dibuixa el botó
  void display(){
    
