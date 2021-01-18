@@ -18,16 +18,8 @@ void setup(){
     
     // Si la connexió s'ha establert
     if (msql.connect()){
-      
-        // Sol·lictam una query
-        msql.query( "SELECT * FROM unitat" );
-        
-        // Recorrem les files de la resposta a la query
-        while (msql.next()){
-            String s = msql.getString("nom");   // Agafam la columna nom
-            int n = msql.getInt("numero");      // Agafam la columna numero
-            println(n + "   " + s);
-        }
+        // La connexió ha funcionat!!!
+        println("Connected to database!!");
     }
     else {
       // La connexió ha fallat!!!
