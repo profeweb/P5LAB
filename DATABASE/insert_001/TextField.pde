@@ -15,7 +15,7 @@ class TextField {
   // Text del camp
   String text = "";
   int textLength = 0;
-  int textSize = 24;
+  int textSize = 34;
 
   boolean selected = false;
    
@@ -23,10 +23,16 @@ class TextField {
   TextField(int x, int y, int w, int h) {
       this.x = x; this.y = y; this.w = w; this.h = h;
    }
+   
+   // Getters
+   
+   String getValue(){
+     return this.text;
+   }
   
   // Dibuixa el Camp de Text
   void display() {
-
+    pushStyle();
       if (selected) {
          fill(selectedColor);
       } else {
@@ -39,7 +45,8 @@ class TextField {
       
       fill(fgColor);
       textSize(textSize);
-      text(text, x + 5, y + textSize);
+      text(text, x + 15, y + this.h - textSize + 5);
+     popStyle();
    }
    
    // Afegeix, lleva el text que es tecleja
@@ -76,6 +83,11 @@ class TextField {
          text = text.substring(0, textLength - 1);
          textLength--;
       }
+   }
+   
+   // Lleva tot el text
+   void removeAllText(){
+     this.text = "";
    }
 
    // Indica si el ratolí està sobre el camp de text

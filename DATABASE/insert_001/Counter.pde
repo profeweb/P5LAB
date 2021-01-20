@@ -5,7 +5,7 @@ class Counter {
   // Valor del comptador
   int value = 255;
   int minValue = 0, maxValue = 255;
-  int stepValue = 10;
+  int stepValue = 1;
   
  // Propietats d'un counter:
  float x, y, w, h;  // Posició i dimensions
@@ -37,6 +37,18 @@ class Counter {
  void setValues(int minValue, int maxValue){ 
    this.minValue = minValue; 
    this.maxValue = maxValue;
+ }
+ 
+ void setStepValue(int v){
+   this.stepValue = v;
+ }
+ 
+ void resetValue(){
+   this.value = this.minValue;
+ }
+ 
+ int getValue(){
+   return this.value;
  }
  
  // Dibuixa el botó

@@ -24,6 +24,14 @@ void connexioBBDD(){
     }
 }
 
+// Inserta les dades a la taula Unitat
+
+void insertInfoTaulaUnitat(String num, String nom){
+  String q = "INSERT INTO unitat (numero, nom) VALUES ('"+num+"','"+nom+"')";
+  println(q);
+  msql.query(q);
+}
+
 // Obté el número de files de la taula
 int getNumRowsTaula(String nomTaula){
   msql.query( "SELECT COUNT(*) AS n FROM %s", nomTaula );
