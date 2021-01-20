@@ -20,21 +20,29 @@ int numCardsPage = 2;
 String[][] info = {
                      {"Títol 1", "Lloc 1", "Data 1", "Secció 1", "Descripció 1"},
                      {"Títol 2", "Lloc 2", "Data 2", "Secció 2", "Descripció 2"},
-                     {"Títol 3", "Lloc 3", "Data 3", "Secció 3", "Descripció 3"},
-                     {"Títol 4", "Lloc 4", "Data 4", "Secció 4", "Descripció 4"},
-                     {"Títol 5", "Lloc 5", "Data 5", "Secció 5", "Descripció 5"},
-                     {"Títol 6", "Lloc 6", "Data 6", "Secció 6", "Descripció 6"},
-                     {"Títol 7", "Lloc 7", "Data 7", "Secció 7", "Descripció 7"},
+                     {"Títol 3", "Lloc 3", "Data 3", "Secció 1", "Descripció 3"},
+                     {"Títol 4", "Lloc 4", "Data 4", "Secció 1", "Descripció 4"},
+                     {"Títol 5", "Lloc 5", "Data 5", "Secció 2", "Descripció 5"},
+                     {"Títol 6", "Lloc 6", "Data 6", "Secció 2", "Descripció 6"},
+                     {"Títol 7", "Lloc 7", "Data 7", "Secció 1", "Descripció 7"},
                   };
+
+// Imatges de les cards
+PImage img1, img2;
 
 void setup(){
   
   size(1200, 800);      // Dimensions de la Pantalla
   
+  // Imatges de les Categories
+  img1 = loadImage("categoria1.png");
+  img2 = loadImage("categoria2.png");
+  
   // Creació de la taula
   pc = new PagedCard(numCardsPage);
   pc.setData(info);
   pc.setCards();
+  pc.setImages(img1, img2);
   
   // Creació dels botons
   b1 = new Button("NEXT", 100 + cardsW, 80, buttonW, buttonH);

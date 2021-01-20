@@ -30,6 +30,19 @@ class PagedCard {
     }
   }
   
+  void setImages(PImage img1, PImage img2){
+    PImage img;
+    for(int i=0; i<cards.length; i++){
+      if(cards[i].section=="Secció 1"){
+        img = img1;
+      }
+      else {
+        img = img2;
+      }
+      cards[i].setImage(img);
+    }
+  }
+  
   void nextPage(){
     if(this.numPage<this.numTotalPages){
       this.numPage++;
