@@ -11,7 +11,6 @@ class BarsDiagram {
   color[] colors;
   
   // Suma total dels valors
-  
   float total;
   
   // Constructor
