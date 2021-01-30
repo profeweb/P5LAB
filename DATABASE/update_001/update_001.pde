@@ -109,7 +109,7 @@ void mousePressed() {
      String valorNom    = n.getValue();
      String id = s.getSelectedId();
      
-    // Actualitzam a la BBDD
+    // Actualitzam la BBDD
     updateInfoTaulaUnitat(id, valorNumero, valorNom);
     
     // Resetear camps del formulari
