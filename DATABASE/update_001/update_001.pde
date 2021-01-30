@@ -109,21 +109,26 @@ void mousePressed() {
      String valorNom    = n.getValue();
      String id = s.getSelectedId();
      
-    // Actualitzam la BBDD
+    // Actualitza la BBDD
     updateInfoTaulaUnitat(id, valorNumero, valorNom);
     
-    // Resetear camps del formulari
+    // Resetea camps del formulari
     resetFormulari();
+    
+    // Recarregar informació al select
+    String[][] selectValues = getInfoTaulaUnitat();
+    s.setData(selectValues);
+    s.reset();
     
      // Desactiva els botons del formulari
     b1.setEnabled(false);
     b2.setEnabled(false);
     
-    // Mostram el Popup
+    // Mostra el Popup
     p.setVisible(true);
   }
   else if(b2.mouseOverButton() && b2.enabled){
-    // Resetear camps del formulari
+    // Resetea camps del formulari
     resetFormulari();
   }
   else if(b3.mouseOverButton() && b3.enabled){

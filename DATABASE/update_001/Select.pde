@@ -24,6 +24,14 @@ class Select {
     this.collapsed = true;
   }
   
+  void reset(){
+    this.selectedValue = "";
+  }
+  
+  void setData(String[][] info){
+    this.texts = info;
+  }
+  
   String getSelectedId(){
     return this.texts[selectedIndex-1][0];
   }
