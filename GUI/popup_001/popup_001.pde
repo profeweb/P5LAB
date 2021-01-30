@@ -11,16 +11,9 @@ float popH = 340;
 String title = "Error!";
 String message = "Error en la connexió a la BBDD.";
 
-// Imatge de la card
-PImage img1, img2;
-
 void setup(){
   
   size(800, 800);      // Dimensions de la Pantalla
-  
-  // Imatges de les Categories
-  img1 = loadImage("categoria1.png");
-  img2 = loadImage("categoria2.png");
   
   // Creació del PopUp
   p = new PopUp(title, message, 100, 100, popW, popH);
