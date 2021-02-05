@@ -27,9 +27,9 @@ void connexioBBDD(){
 // Elimina les dades a la taula Unitat
 
 void deleteInfoTaulaUnitat(String id){
-  String q = "DELETE FORM unitat WHERE numero='"+id+"'";
+  String q = "DELETE FROM unitat WHERE numero='"+id+"'";
   println(q);
-  //msql.query(q);
+  msql.query(q);
 }
 
 // Actualitza les dades a la taula Unitat

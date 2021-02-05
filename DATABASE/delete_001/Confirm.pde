@@ -81,5 +81,11 @@ class Confirm {
    }
  }
  
+ // Comprova si estam sobre algun dels botons del Confirm
+ boolean mouseOverButtons(){
+   return (( bAceptar.mouseOverButton()  && bAceptar.enabled ) || 
+           ( bCancelar.mouseOverButton() && bCancelar.enabled) );
+ }
+ 
   
 }

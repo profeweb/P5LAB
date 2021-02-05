@@ -76,5 +76,10 @@ class PopUp {
    }
  }
  
+ // Comprova si estam sobre el botó del PopUp
+ boolean mouseOverButton(){
+   return bAceptar.mouseOverButton() && bAceptar.enabled;
+ }
+ 
   
 }

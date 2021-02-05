@@ -52,11 +52,11 @@ class DataTable {
     
     pushStyle();
     
-    fill(200, 50); stroke(0);strokeWeight(3);
+    fill(255); stroke(0);strokeWeight(3);
     rect(x, y, w, h);
     
     float rowHeight = h / numRows;
-    fill(200, 100, 100); stroke(0);strokeWeight(3);
+    fill(155, 55, 155); stroke(0);strokeWeight(3);
     rect(x, y, w, rowHeight);
     
     // Dibuixa files
@@ -75,17 +75,17 @@ class DataTable {
     }
     
     // Dibuixa textos
-    fill(0); textSize(24);
+    fill(0); textSize(34);
     for(int r = 0; r < numRows; r++){
       xCol = x;
       for(int c = 0; c< numCols; c++){
         if(r==0){
-          text(tableHeaders[c], xCol + 10, y + (r+1)*rowHeight - 10);
+          text(tableHeaders[c], xCol + 10, y + (r+1)*rowHeight - 15);
         }
         else{
           int k = (numRows-1)*numPage + (r-1);
           if(k<tableData.length){
-            text(tableData[k][c], xCol + 10, y + (r+1)*rowHeight - 10);
+            text(tableData[k][c], xCol + 10, y + (r+1)*rowHeight - 15);
           }
         }
         xCol += w*columnWidths[c]/100.0;

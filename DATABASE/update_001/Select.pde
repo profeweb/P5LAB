@@ -5,6 +5,7 @@ class Select {
   String[][] texts;            // Valors possibles
   
   int selectedIndex;         // Fila seleccionada
+  String selectedId;         // Id Seleccionat
   String selectedValue;      // Valor Seleccionat
   
   boolean collapsed = true;  // Plegat / Desplegat
@@ -15,6 +16,7 @@ class Select {
   Select(String[][] texts, float x, float y, float w, float h){
     
     this.texts = texts;
+    this.selectedId = "";
     this.selectedValue = "";
     this.x = x;
     this.y = y;
@@ -32,12 +34,16 @@ class Select {
     this.texts = info;
   }
   
+  int getSelectedIndex(){
+    return this.selectedIndex;
+  }
+  
   String getSelectedId(){
-    return this.texts[selectedIndex-1][0];
+    return this.texts[selectedIndex][0];
   }
   
   String getSelectedText(){
-    return this.texts[selectedIndex-1][1];
+    return this.texts[selectedIndex][1];
   }
   
   void display(){
@@ -83,9 +89,9 @@ class Select {
   
   
   void update(){
-    int option = clickedOption();
-    selectedIndex = Integer.valueOf(texts[option][0]);
-    selectedValue = texts[option][1];
+    selectedIndex = clickedOption();
+    selectedId    = texts[selectedIndex][0];
+    selectedValue = texts[selectedIndex][1];
   }
   
  // Indica si el cursor està sobre el select

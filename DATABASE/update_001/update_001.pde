@@ -135,7 +135,7 @@ void mousePressed() {
     
     // Agafa les dades del Select i les copia als camps del formulari
     n.setValue(s.selectedValue);
-    c.setValue(s.selectedIndex);
+    c.setValue(Integer.valueOf(s.selectedId));
     
     // Activa els botons del formulari
     b1.setEnabled(true);
