@@ -1,5 +1,5 @@
 
-
+// Retorna un array amb el nom del fitxers dins el directori
 String[] listFileNames(String dir) {
   File file = new File(dir);
   if (file.isDirectory()) {
