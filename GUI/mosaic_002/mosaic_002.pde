@@ -1,6 +1,6 @@
 
-// Variable de Mosaic
-Mosaic m;
+// Mostrador
+ShowCase m;
 
 // Botó
 Button bShuffle;
@@ -12,15 +12,15 @@ void setup(){
   
   size(800,800);
   
-  // Inicialitza el mosaic
-  m = new Mosaic(50,50,700,600, 3, 3);
+  // Inicialitza el mostrador
+  m = new ShowCase(50,50,700,600, 3, 3);
   
   // Llegeix els noms de les imatges
   String[] noms = listFileNames(carpetaImatges);
   println("Imatges de la carpeta:");
   printArray(noms);
   
-  // Assigna les imatges al mosaic
+  // Assigna les imatges al mostrador
   m.setImages(noms);
   
   // Creació del Botó
@@ -32,7 +32,7 @@ void draw(){
   
   background(200);
   
-  // Dibuixa el mosaic
+  // Dibuixa el mostrador
   m.display();
   
   // Indica quantes imatges es mostren del total
@@ -47,8 +47,9 @@ void draw(){
 }
 
 void mousePressed(){
-  
+  // Si pitjam sobre el botó
   if(bShuffle.mouseOverButton()){
+    // Canvia d'ordre les imatges
     m.mesclaImatges();
   }
 }

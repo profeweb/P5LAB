@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-class Mosaic {
+class ShowCase {
    
   // Dimensions del mosaic
   int x, y, w, h;
@@ -15,13 +15,13 @@ class Mosaic {
   String[] imgs;
   
   // Imatges del mosaic
-  MosaicImage[] selImgs;
+  ShowCaseImage[] selImgs;
   
   // Ordre en que es mostren les imatges
   Integer[] ordreImgs;
   
   // Constructor
-  Mosaic(int x, int y, int w, int h, int nf, int nc){
+  ShowCase(int x, int y, int w, int h, int nf, int nc){
     this.x = x; this.y = y; this.w = w; this.h = h;
     this.numFiles = nf; this.numColumnes = nc; 
     this.imgWidth  = w / numColumnes;
@@ -33,7 +33,7 @@ class Mosaic {
   void setImages(String[] imgs){
     this.imgs = imgs;
     
-    selImgs = new MosaicImage[this.imgs.length];
+    selImgs = new ShowCaseImage[this.imgs.length];
     ordreImgs = new Integer[this.imgs.length];
     for(int i=0; i<ordreImgs.length; i++){
       ordreImgs[i] = i;
@@ -44,7 +44,7 @@ class Mosaic {
   void createMosaicImages(){
     for(int i=0; i<imgs.length; i++){
       String title = imgs[i];     
-      selImgs[i]= new MosaicImage(title); 
+      selImgs[i]= new ShowCaseImage(title); 
     }
   }
   
@@ -74,7 +74,7 @@ class Mosaic {
         else {
           float xImg = x + imgWidth*nc;
           float yImg = y + imgHeight*nf;
-          MosaicImage s = selImgs[ordreImgs[numImg]];
+          ShowCaseImage s = selImgs[ordreImgs[numImg]];
           if(s!=null){
             s.display(xImg, yImg, imgWidth, imgHeight);
           }

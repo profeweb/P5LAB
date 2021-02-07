@@ -1,4 +1,4 @@
-class MosaicImage {
+class ShowCaseImage {
     
   // Imatge
   PImage img;
@@ -10,7 +10,7 @@ class MosaicImage {
   boolean selected;
   
   // Constructor
-  MosaicImage(String title){
+  ShowCaseImage(String title){
     this.title = title;
     this.img = loadImage(title);
     this.selected = false;
