@@ -15,15 +15,16 @@ void setup() {
  img1 = loadImage("leaf01.png");
  img2 = loadImage("leaf02.png");
  img3 = loadImage("leaf03.png");
+ 
 // Set text variables
  txt1 = "Hello";
  txt2 = "Bye";
  txt3 = "Autumn";
  
  //Set fonts
- font1 = loadFont("Haziness.ttf");
- font2 = loadFont("Chalk.ttf");
- font3 = loadFont("Bombing.ttf");
+ font1 = createFont("Haziness.ttf", 100);
+ font2 = createFont("Chalk.otf", 100);
+ font3 = createFont("Bombing.ttf", 100);
  
  font = font1;
  img = img1;

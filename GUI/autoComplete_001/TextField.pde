@@ -15,7 +15,7 @@ class TextField {
   // Text del camp
   String text = "";
   int textLength = 0;
-  int textSize = 24;
+  int textSize = 34;
 
   boolean selected = false;
    
@@ -26,7 +26,7 @@ class TextField {
   
   // Dibuixa el Camp de Text
   void display() {
-
+      pushStyle();
       if (selected) {
          fill(selectedColor);
       } else {
@@ -39,7 +39,8 @@ class TextField {
       
       fill(fgColor);
       textSize(textSize);
-      text(text, x + 5, y + textSize);
+      text(text, x + 15, y + textSize + 10);
+      popStyle();
    }
    
    // Afegeix, lleva el text que es tecleja

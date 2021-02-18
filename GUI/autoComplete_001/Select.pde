@@ -47,7 +47,7 @@ class Select {
   }
   
   void display(){
-    
+    pushStyle();
     stroke(0); strokeWeight(10); fill(255);
     rect(x, y, w, h, 5);
     
@@ -76,7 +76,7 @@ class Select {
         text(texts[i][1], x + 10, y + h + 50 + (h + lineSpace)*i);
       }
     }
-    
+    popStyle();
   }
   
   void setCollapsed(boolean b){

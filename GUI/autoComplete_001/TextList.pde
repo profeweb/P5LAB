@@ -30,12 +30,13 @@ class TextList {
   }
 
   void display() {
-
+    pushStyle();
     textField.display();
 
     for(Button b : buttons){
       b.display();
     }
+    popStyle();
   }
 
   void update() {
@@ -74,6 +75,7 @@ class TextList {
      for(Button b : buttons){
        if(b.mouseOverButton()){
          textField.text = b.textBoto;
+         this.selectedValue = b.textBoto;
          pressed = true;
        }
      }

@@ -5,6 +5,8 @@ TextList tList;   // Llista de textos
 
 String[][] listValues = {{"0", "Alemania"},{"1", "Angola"},{"2", "Canada"},
                          {"3", "Brasil"}};
+                         
+String selectedText; 
 
 // Dimensions del TextList i Botons
 float tListW = 600, tListH = 60;
@@ -36,14 +38,22 @@ void draw(){
   // Actualitza el cursor
   updateCursor();
   
+  // Mostra la informació seleccionada
+  if(selectedText!=null){
+    pushStyle();
+    textAlign(CENTER); fill(0);
+    text(selectedText, width/2, height/2);
+    popStyle();
+  }
+  
 }
 
 // Mira si pitjam sobre els botons
 void mousePressed() {
    
-  // Pitjam sobre el botó de SELECT
+  // Pitjam sobre el botó de TRIA
    if(b.mouseOverButton() && b.enabled){
-     
+     selectedText = tList.selectedValue;
    }
    
    // Pitjam damunt el textList
