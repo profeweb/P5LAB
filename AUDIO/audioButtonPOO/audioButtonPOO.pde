@@ -2,60 +2,33 @@ import processing.sound.*;
 
 SoundFile so1, so2;
 
+SoundButton sb1, sb2;
+
+color c1 = color(255, 0, 0);
+color c2 = color(100);
+
 void setup(){
   size(800, 800);
   so1 = new SoundFile(this, "clap.wav");
   so2 = new SoundFile(this, "saxo.wav");
+  
+  sb1 = new SoundButton(width/3, height/2, 200, so1, c1, c2); 
+  sb2 = new SoundButton(2*width/3, height/2, 200, so2, c1, c2);
 }
-
 void draw(){
-  if(so1.isPlaying() || so2.isPlaying()){
+  if(sb1.estaSonant() || sb2.estaSonant()){
     background(255, 255, 0);
   }
   else {
     background(255);
   }
-  float d1 = dist(width/3, height/2, mouseX, mouseY);
-  if(d1<125) {
-    fill(255, 0, 0); cursor(HAND);
-  }
-  else {
-    fill(100); cursor(ARROW);
-  }
-  stroke(0); strokeWeight(10);
-  ellipse(width/3, height/2, 250, 250);
-  
-  
-  float d2 = dist(2*width/3, height/2, mouseX, mouseY);
-  if(d2<125) {
-    fill(255, 0, 0); cursor(HAND);
-  }
-  else {
-    fill(100); cursor(ARROW);
-  }
-  ellipse(2*width/3, height/2, 250, 250);
+  sb1.dibuixa();
+  sb2.dibuixa();
 }
 
 void mousePressed(){
-  float d1 = dist(width/3, height/2, mouseX, mouseY);
-  if(d1<125){
-    if(so1.isPlaying()){
-      so1.stop();
-    }
-    else{
-      so1.play();
-    }
-  }
-  
-  float d2 = dist(2*width/3, height/2, mouseX, mouseY);
-  if(d2<125){
-    if(so2.isPlaying()){
-      so2.stop();
-    }
-    else{
-      so2.play();
-    }
-  }
+  sb1.play();
+  sb2.play();
 }
 
 void keyPressed(){
