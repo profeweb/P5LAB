@@ -3,12 +3,11 @@ Figura creaFiguraRandom(){
   
   int f = 0;
   int rc = (int)random(0, t.numCols-4);
-  
-  int n = (int) random(0, 5);
+  int n  = (int) random(0, 7);
   
   Figura fig;
   switch(n){
-    case 0: fig = new FiguraZ();
+    case 0: fig = new FiguraL();
             break;
             
     case 1: fig = new FiguraT();
@@ -21,6 +20,12 @@ Figura creaFiguraRandom(){
             break;
             
     case 4: fig = new FiguraI();
+            break;
+            
+    case 5: fig = new FiguraLI();
+            break;
+            
+    case 6: fig = new FiguraSI();
             break;
             
     default: fig = new FiguraO();
