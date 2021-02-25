@@ -68,6 +68,32 @@ class Figura {
     return n;
   }
   
+  void borrarFila(int nf){
+    
+    int df = nf - this.fila;
+    int minf = this.getMinFil();
+    int maxf = this.getMaxFil();
+    
+    // Si és la fila superior
+    if(nf==df){
+      for(int c=0; c<quadres[0].length; c++){
+        quadres[0][c] = 0;
+      }
+    }
+    else if(df>0 && df<quadres.length) {
+      // Baixam totes les files superiors
+      for(int f=df; f>0; f--){
+        for(int c=0; c<quadres[f].length; c++){
+          quadres[df][c] = quadres[df-1][c];
+        }
+      }
+      // Buidam la 1era fila
+      for(int c=0; c<quadres[0].length; c++){
+        quadres[0][c] = 0;
+      }
+    }
+  }
+  
   boolean posicioLliure(Tauler t, int ff, int cf){
     for(int f=0; f<quadres.length; f++){
       for(int c=0; c<quadres[0].length; c++){

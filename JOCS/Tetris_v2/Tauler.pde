@@ -26,6 +26,10 @@ class Tauler {
     return this.figures.get(0);
   }
   
+  int getNumFigures(){
+    return this.figures.size();
+  }
+  
   
   void reset(){
     cells = new int[numFils][numCols];
@@ -101,6 +105,31 @@ class Tauler {
         rect(ct*cellWidth, ft*cellHeight, cellWidth, cellHeight);
       } 
     }
+  }
+  
+  boolean[] comprovaFilesPlenes(){
+    boolean[] plenes = new boolean[cells.length];
+    for(int nf = cells.length -1; nf>=0; nf--){
+      plenes[nf] = filaPlena(nf);
+    }
+    return plenes;
+  }
+  
+  boolean filaPlena(int nf){
+    for(int c=0; c<cells[nf].length; c++){
+      if(cells[nf][c]==0){
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  void borraFila(int nf){
+    for(Figura fig : figures){
+      fig.borrarFila(nf);
+    }
+    reset();
+    aplicaFigures();
   }
   
 }

@@ -9,7 +9,7 @@ boolean gameOver = false;
 void setup(){
   
   size(800, 800);
-  frameRate(30);
+  frameRate(5);
   
   t = new Tauler(30,30);
   
@@ -69,30 +69,52 @@ void setup(){
 
 
 void draw(){
+  background(255);
   
+  // Dibuixa el tauler
+  t.dibuixa();
+    
+  // Dibuixa la figura actual
+  t.dibuixa(figActual);
+    
+  // DIbuixa la resta de figures
+  t.dibuixaFigures();
+    
+  if(mousePressed){
+    t.dibuixaCelles();
+  }
+    
   if(!gameOver){
     if(!figActual.mouBaix(t)){
       println("Figura bloquejada!!");
       if(figActual.fila==0){
         println("Partida acabada!!");
+        gameOver = true;
       }
       else{
+        // Afegir figura al tauler
         t.afegirFigura(figActual);
         t.aplica(figActual);
+        
+        // Comprovar linies
+        boolean[] plenes = t.comprovaFilesPlenes();
+        for(int f=0; f<plenes.length; f++){
+          if(plenes[f]==true){
+            t.borraFila(f);
+          }
+        }
+        
+        // Crear nova figura aleatòria
         figActual = creaFiguraRandom();
       }
     }
-    
-    t.dibuixa();
-    t.dibuixa(figActual);
-    t.dibuixaFigures();
-    if(mousePressed){
-      t.dibuixaCelles();
-    }
   }
   else {
-    
     // SI la partida ha acabat!!!
+    fill(0); textAlign(CENTER); textSize(50);
+    text("GAME OVER", width/2, height/2);
+    
+    text(t.getNumFigures(), width/2, height/2 + 100);
   }
 }
 
