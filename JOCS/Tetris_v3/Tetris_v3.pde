@@ -1,3 +1,4 @@
+
 Tauler t;
 Figura figActual;
 boolean gameOver = false;
@@ -21,13 +22,15 @@ void draw(){
   // Dibuixa la figura actual
   t.dibuixa(figActual);
     
-  // DIbuixa la resta de figures
+  // Dibuixa la resta de figures
   t.dibuixaFigures();
     
+  // Per debuggear
   if(mousePressed){
     t.dibuixaCelles();
   }
     
+  // Bucle del joc
   if(!gameOver){
     if(!figActual.mouBaix(t)){
       println("Figura bloquejada!!");
@@ -54,10 +57,10 @@ void draw(){
     }
   }
   else {
-    // SI la partida ha acabat!!!
+    // Si la partida ha acabat!!!
     fill(0); textAlign(CENTER); textSize(50);
     text("GAME OVER", width/2, height/2);
-    
+    // Número de figures col·locades
     text(t.getNumFigures(), width/2, height/2 + 100);
   }
 }
