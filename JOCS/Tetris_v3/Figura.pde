@@ -1,18 +1,15 @@
-static int numFigura = 0;
+
 class Figura {
   
   color c;
+  
   int[][] quadres;
   
   int fila, col;
-
-  int id;
   
   Figura(int[][] quadres, color c){
-    this.quadres = quadres;
+    this.quadres = copiaMatriu(quadres);
     this.c = c;
-    this.id = numFigura;
-    numFigura++;
   }
   
   void setPosicio(int f, int c){
@@ -71,8 +68,6 @@ class Figura {
   void borrarFila(int nf){
     
     int df = nf - this.fila;
-    int minf = this.getMinFil();
-    int maxf = this.getMaxFil();
     
     // Si és la fila superior
     if(nf==df){
@@ -139,7 +134,7 @@ class Figura {
     return false;
   }
   
-  void rota(Tauler t){
+  void rota(){
     
     int[][] q = this.copia();
     
