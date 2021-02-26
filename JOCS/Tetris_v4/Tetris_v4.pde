@@ -2,6 +2,7 @@
 Tauler t;
 Figura figActual;
 boolean gameOver = false;
+int numLinies = 0;
 
 void setup(){
   
@@ -22,14 +23,6 @@ void draw(){
   // Dibuixa la figura actual
   t.dibuixa(figActual);
     
-  // Dibuixa la resta de figures
-  t.dibuixaFigures();
-    
-  // Per debuggear
-  if(mousePressed){
-    t.dibuixaCelles();
-  }
-    
   // Bucle del joc
   if(!gameOver){
     if(!figActual.mouBaix(t)){
@@ -47,8 +40,8 @@ void draw(){
         boolean[] plenes = t.comprovaFilesPlenes();
         for(int f=0; f<plenes.length; f++){
           if(plenes[f]==true){
-            t.borraFila(f);
             t.baixarFiguresAbansDe(f);
+            numLinies++;
           }
         }
         
@@ -62,7 +55,9 @@ void draw(){
     fill(0); textAlign(CENTER); textSize(50);
     text("GAME OVER", width/2, height/2);
     // Número de figures col·locades
-    text(t.getNumFigures(), width/2, height/2 + 100);
+    text("FIGURES:"+t.getNumFigures(), width/2, height/2 + 100);
+    // Número de línies  
+    text("LINIES:"+numLinies, width/2, height/2+200);
   }
 }
 
@@ -79,5 +74,8 @@ void keyPressed(){
   }
   else if(key=='r' || key=='R'){
     figActual.rota();
+  }
+  else if(key=='b' || key=='B'){
+    figActual.mouTopeBaix(t);
   }
 }

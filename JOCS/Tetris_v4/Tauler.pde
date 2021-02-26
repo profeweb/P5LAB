@@ -1,5 +1,4 @@
 
-
 class Tauler {
   
   int numCols, numFils;
@@ -40,11 +39,15 @@ class Tauler {
     }
   }
   
-  
   void dibuixa(){
+    dibuixaGraella();
+    dibuixaCelles();
+  }
+  
+  void dibuixaGraella(){
     for(float c=0; c<numCols; c++){
       for(float f=0; f<numFils; f++){
-        fill(255);
+        fill(colorBUIT);
         stroke(0);
         rect(c*cellWidth, f*cellHeight, cellWidth, cellHeight);
       } 
@@ -54,9 +57,10 @@ class Tauler {
   void dibuixaCelles(){
     for(int c=0; c<numCols; c++){
       for(int f=0; f<numFils; f++){
-        fill(255);
-        if(cells[f][c]==1){
-          fill(55);
+        fill(colorBUIT);
+        if(cells[f][c]!=0){
+          int numColor = cells[f][c];
+          fill(colors[numColor]);
         }
         stroke(0);
         rect(c*cellWidth, f*cellHeight, cellWidth, cellHeight);
@@ -71,22 +75,9 @@ class Tauler {
         if(fig.quadres[f][c]==1){
           int ct = c + fig.col;
           int ft = f + fig.fila;
-          this.cells[ft][ct] = 1;
+          this.cells[ft][ct] = fig.tipus;
         }
       } 
-    }
-  }
-  
-  void aplicaFigures(){
-    reset();
-    for(Figura f : figures){
-      aplica(f);
-    }
-  }
-  
-  void dibuixaFigures(){
-    for(Figura f : figures){
-      dibuixa(f);
     }
   }
   
@@ -96,7 +87,7 @@ class Tauler {
         int ct = c + fig.col;
         int ft = f + fig.fila;
         if(fig.quadres[f][c]==1){
-          fill(fig.c);
+          fill(colors[fig.tipus]);
           stroke(0);
         }
         else{
@@ -124,20 +115,20 @@ class Tauler {
     return true;
   }
   
-  void borraFila(int nf){
-    for(Figura fig : figures){
-      fig.borrarFila(nf);
-    }
-    reset();
-    aplicaFigures();
-  }
-  
-  void baixarFiguresAbansDe(int f){
-    for(Figura fig: figures){
-      if(fig.fila<f){
-        fig.fila++;
+  void baixarFiguresAbansDe(int numf){
+    
+    // Baixar files de 0 a numF-1
+    for(int f=numf; f>0; f--){
+      for(int c = 0; c < cells[f].length; c++){
+        cells[f][c] = cells[f-1][c];
       }
     }
+    
+    // Buidar fila zero
+    for(int c = 0; c < cells[0].length; c++){
+        cells[0][c] = 0;
+    }
+    
   }
   
 }
