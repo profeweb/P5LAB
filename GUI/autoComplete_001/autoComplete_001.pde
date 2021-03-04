@@ -75,6 +75,9 @@ void updateCursor(){
 
 // Quan pitjam tecla
 void keyPressed() {
-   tList.textField.keyPressed(key, (int)keyCode);
-   tList.update();
+  
+  if(tList.textField.selected){
+    tList.textField.keyPressed(key, (int)keyCode);
+    tList.update();
+  }
 }
