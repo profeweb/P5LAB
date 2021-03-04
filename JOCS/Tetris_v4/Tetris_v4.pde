@@ -4,24 +4,29 @@ Figura figActual;
 boolean gameOver = false;
 int numLinies = 0;
 
+IntList figList;
+
 void setup(){
   
-  size(400, 800);
+  size(800, 800);
   frameRate(5);
   
-  t = new Tauler(20,40);
+  t = new Tauler(10,20, 200, 0, 400, 800);
   figActual = creaFiguraRandom();
 }
 
 
 void draw(){
   background(255);
+  pushMatrix();
+      translate(t.x, t.y);
+    // Dibuixa el tauler
+    t.dibuixa();
+      
+    // Dibuixa la figura actual
+    t.dibuixa(figActual);
   
-  // Dibuixa el tauler
-  t.dibuixa();
-    
-  // Dibuixa la figura actual
-  t.dibuixa(figActual);
+  popMatrix();
     
   // Bucle del joc
   if(!gameOver){

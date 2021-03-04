@@ -1,9 +1,4 @@
 
-
-
-
-
-
 class FiguraO extends Figura {
    
   FiguraO(){

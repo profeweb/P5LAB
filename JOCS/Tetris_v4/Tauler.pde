@@ -1,17 +1,20 @@
 
 class Tauler {
   
+  int x, y;
   int numCols, numFils;
   float cellWidth, cellHeight;
   int[][] cells;
   
   ArrayList<Figura> figures;
   
-  Tauler(int nc, int nf){
+  Tauler(int nc, int nf, int x, int y, int w, int h){
     this.numCols = nc;
     this.numFils = nf;
-    this.cellWidth = width/(float)numCols;
-    this.cellHeight = height/(float)numFils;
+    this.x = x;
+    this.y = y;
+    this.cellWidth = w/(float)numCols;
+    this.cellHeight = h/(float)numFils;
     
     figures = new ArrayList<Figura>();
     reset();
@@ -40,8 +43,8 @@ class Tauler {
   }
   
   void dibuixa(){
-    dibuixaGraella();
-    dibuixaCelles();
+      dibuixaGraella();
+      dibuixaCelles();
   }
   
   void dibuixaGraella(){
@@ -89,11 +92,13 @@ class Tauler {
         if(fig.quadres[f][c]==1){
           fill(colors[fig.tipus]);
           stroke(0);
+          rect(ct*cellWidth, ft*cellHeight, cellWidth, cellHeight);
         }
         else{
-          fill(100, 50);
+          //fill(100, 50);
+          //rect(ct*cellWidth, ft*cellHeight, cellWidth, cellHeight);
         }
-        rect(ct*cellWidth, ft*cellHeight, cellWidth, cellHeight);
+        
       } 
     }
   }
