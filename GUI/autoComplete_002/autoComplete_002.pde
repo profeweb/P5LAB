@@ -6,12 +6,19 @@ TextList tList1, tList2;   // Llista de textos
 String[][] listCountries = {{"0", "Alemania"},
                             {"1", "Angola"},
                             {"2", "Canada"},
-                            {"3", "Brasil"}};
+                            {"3", "Brasil"},
+                            {"4", "Italy"},
+                            {"5", "France"},
+                            {"6", "Russia"},
+                           };
 
 String[][] listLanguages = {{"0", "Alemany"},
                             {"1", "Angolés"},
                             {"2", "Francés"},
-                            {"3", "Portugués"}};
+                            {"3", "Portugués"},
+                            {"4", "Belga"},
+                            {"5", "Hungarés"}
+                           };
 
 String selectedCountry, selectedLanguage; 
 
@@ -83,6 +90,15 @@ void mousePressed() {
    
    tList2.textField.isPressed();
    tList2.buttonPressed();
+   
+   if(tList1.textField.selected){
+     tList1.update();
+     tList2.buttons.clear();
+   }
+   else if(tList2.textField.selected){
+     tList2.update();
+     tList1.buttons.clear();
+   }
 }
 
 

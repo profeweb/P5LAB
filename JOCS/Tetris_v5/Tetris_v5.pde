@@ -11,7 +11,7 @@ int numLinies = 0;
 void setup(){
   
   size(800, 800);
-  frameRate(5);
+  frameRate(15);
   
   t = new Tauler(10,20, 200, 0, 400, 800);
   figs = new FigList();

@@ -42,20 +42,31 @@ class TextList {
   void update() {
 
     String searchFor = this.textField.text;
-    println("SEARCH FOR: "+searchFor);
     
     this.numMatchs = 0;
     this.buttons = new ArrayList<Button>();
     
-    if (searchFor.length() > 0) {
-      for (int i=0; i<texts.length; i++) {
-        if (texts[i][1].startsWith(searchFor)) {
-          Button b = new Button(texts[i][1], x + 10, y + h + 50 + (h + 50)*numMatchs, w, h);
-          buttons.add(b);
-          this.numMatchs++;
-          if (this.numMatchs==5) {
-            break;
+    if(this.textField.selected){
+    
+      if (searchFor.length() > 0) {
+        for (int i=0; i<texts.length; i++) {
+          if (texts[i][1].startsWith(searchFor)) {
+            Button b = new Button(texts[i][1], x + 10, y + h + 50 + (h + 50)*numMatchs, w, h);
+            buttons.add(b);
+            this.numMatchs++;
+            if (this.numMatchs==5) {
+              break;
+            }
           }
+        }
+      }
+      else {
+        for (int i=0; i<texts.length; i++) {
+            Button b = new Button(texts[i][1], x + 10, y + h + 50 + (h + 50)*i, w, h);
+            buttons.add(b);
+            if (i==3) {
+              break;
+            }
         }
       }
     }
@@ -80,12 +91,12 @@ class TextList {
          this.textField.text = b.textBoto;
          this.selectedValue = b.textBoto;
          pressed = true;
-         println("PRESSED");
        }
      }
      if(pressed){
        buttons.clear();
-       println("REMOVED BUTTONS");
      }
    }
+   
+   
 }
