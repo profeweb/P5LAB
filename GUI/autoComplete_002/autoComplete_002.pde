@@ -99,6 +99,10 @@ void mousePressed() {
      tList2.update();
      tList1.buttons.clear();
    }
+   else{
+     tList1.buttons.clear();
+     tList2.buttons.clear();
+   }
 }
 
 
