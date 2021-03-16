@@ -5,7 +5,6 @@ class TextList {
 
   TextField textField;       // Camp de text
 
-  int selectedIndex;         // Fila seleccionada
   String selectedId;         // Id Seleccionat
   String selectedValue;      // Valor Seleccionat
 
@@ -89,7 +88,13 @@ class TextList {
      for(Button b : buttons){
        if(b.mouseOverButton()){
          this.textField.text = b.textBoto;
-         this.selectedValue = b.textBoto;
+         this.selectedValue  = b.textBoto;
+         for(int i=0; i<texts.length; i++){
+           if(texts[i][1].equals(this.selectedValue)){
+             this.selectedId = texts[i][0];
+             break;
+           }
+         }
          pressed = true;
        }
      }

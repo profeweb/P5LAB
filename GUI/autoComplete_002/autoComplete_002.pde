@@ -78,10 +78,10 @@ void mousePressed() {
    
   // Pitjam sobre el botó de TRIA
    if(b1.mouseOverButton() && b1.enabled){
-     selectedCountry = tList1.selectedValue;
+     selectedCountry = tList1.selectedValue + "("+tList1.selectedId+")";
    }
    else if(b2.mouseOverButton() && b2.enabled){
-     selectedLanguage = tList2.selectedValue;
+     selectedLanguage = tList2.selectedValue + "("+tList2.selectedId+")";
    }
    
    // Pitjam damunt el textList
