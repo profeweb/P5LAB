@@ -3,7 +3,11 @@ import java.nio.file.*;
 
 // Imatge
 PImage img;
+
+// Ruta del fitxer imatge
 String rutaImatge ="";
+
+// Nom del fitxer imatge
 String titol="";
 
 // Botó
@@ -55,15 +59,7 @@ void mousePressed(){
   }
   else if(b2.mouseOverButton()){
     // Copiam la imatge
-    Path original = Paths.get(rutaImatge);
-    Path copia   = Paths.get(rutaCopia+"/"+titol);
-    try{
-      Files.copy(original, copia);
-      println("OK: imatge copiada a la carpeta.");
-    } catch (IOException e) {
-      println("ERROR: No s'ha pogut copiar la imatge.");
-    }
-
+    copiar(rutaImatge, rutaCopia, titol);
   }
 }
 
