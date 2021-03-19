@@ -1,8 +1,6 @@
 
-
 // LIBRARIES
 import processing.pdf.*;
-
 
 // GLOBAL VARIABLES
 PShape baseMap;
