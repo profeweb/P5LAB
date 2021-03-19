@@ -1,4 +1,3 @@
-
 // Variables Globals
 PShape baseMap;
 String csv[];
@@ -20,14 +19,23 @@ void setup() {
   for(int i=1; i<csv.length; i++) {
     myData[i] = csv[i].split(",");
   }
-  
-  // Imprimeix les dades de la fila 4
-  printArray(myData[4]);
 }
 
-// DRAW
+
 void draw() {
   
   // Dibuixa el mapa
   shape(baseMap, 0, 0, width, height);
+  noStroke();
+  
+  // Per cada dada, dibuixa ellipse
+  for(int i=0; i<myData.length; i++){
+    fill(255, 0, 0, 50);
+    
+    // Mapeig de latiutd i longitud
+    float graphLong = map(float(myData[i][3]), -180, 180, 0, width);
+    float graphLat = map(float(myData[i][4]), 90, -90, 0, height);
+    
+    ellipse(graphLong, graphLat, 5, 5);
+  }
 }
