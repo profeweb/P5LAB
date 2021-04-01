@@ -2,7 +2,7 @@
 // Variable de Calendari
 Calendari c;
 
-String[][] datesClau = {{"25/03/2021", "CUMPLE"}, {"28/03/2021", "FESTA"}};
+String[][] datesClau = {{"2021-03-15", "CUMPLE"}, {"2021-03-28", "FESTA"}};
 
 void setup(){
   size(800,800);

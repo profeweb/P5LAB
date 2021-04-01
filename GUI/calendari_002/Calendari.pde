@@ -83,6 +83,7 @@ class Calendari {
   // Assigna dies especials a mostrar en el calendari
   void setSpecialDates(String[][] info){
     this.specialDates = info;
+    createCalendar(x, y, w, h);
   }
   
   String getSpecialDateInfo(String date){
@@ -137,6 +138,8 @@ class Calendari {
     int numDia = 1;
     int f = 0, nb = 0;
     
+    this.buttons = new DayButton[37];
+    
     while(numDia<=numDaysMonth){
       
       if(firstDay!=1 && f==0){
@@ -150,9 +153,9 @@ class Calendari {
           buttons[nb] = new DayButton(x + c*dayWidth, y + f*dayHeight, dayWidth, dayHeight, numDia, mes, any);
           String d = (numDia<10) ? ("0"+numDia) : String.valueOf(numDia);
           String m = (mes<10) ? ("0"+mes) : String.valueOf(mes);
-          if(isSpecialDate(d+"/"+m+"/"+any)){
+          if(isSpecialDate(any+"-"+m+"-"+d)){
             buttons[nb].setSelected2(true);
-            String info = getSpecialDateInfo(d+"/"+m+"/"+any);
+            String info = getSpecialDateInfo(any+"-"+m+"-"+d);
             buttons[nb].setInfo(info);
           }
           numDia++; nb++;
@@ -164,9 +167,9 @@ class Calendari {
           buttons[nb] = new DayButton(x + c*dayWidth, y + f*dayHeight, dayWidth, dayHeight, numDia, mes, any);
           String d = (numDia<10) ? ("0"+numDia) : String.valueOf(numDia);
           String m = (mes<10) ? ("0"+mes) : String.valueOf(mes);
-          if(isSpecialDate(d+"/"+m+"/"+any)){
+          if(isSpecialDate(any+"-"+m+"-"+d)){
             buttons[nb].setSelected2(true);
-            String info = getSpecialDateInfo(d+"/"+m+"/"+any);
+            String info = getSpecialDateInfo(any+"-"+m+"-"+d);
             buttons[nb].setInfo(info);
           }
           numDia++; nb++;
