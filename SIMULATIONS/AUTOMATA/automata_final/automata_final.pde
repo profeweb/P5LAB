@@ -52,7 +52,7 @@ void draw(){
   // Calculates the values of the Next Generation
   calculateNextGeneration();
   
-  // Sawps the values of Arrays
+  // Swaps the values of Arrays
   swapArrays();
   
   // Move to the next generation
