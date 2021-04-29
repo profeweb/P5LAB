@@ -168,7 +168,6 @@ void mousePressed() {
 }
 
 void mousePressedOnTrack(int i) {
-  //displayTrack(i,50,50 + 150*i,width-100,100, 5);
   float x = 50;
   float y = 50 + 150*i;
   float s = 5;
@@ -177,7 +176,6 @@ void mousePressedOnTrack(int i) {
   if (mouseX>x && mouseX<x+w && 
       mouseY>= y && mouseY< y +100) {
       for (int b=0; b<numBits; b++) {
-        //ellipse(x + i*(ww+s) + ww/2, y + ww/2, ww, ww);
         float d = dist(mouseX, mouseY, x + b*(ww+s) + ww/2, y + ww/2);
         if (d<ww/2) {
           track[i][b] = !track[i][b];
