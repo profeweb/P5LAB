@@ -1,3 +1,7 @@
+// Tipus enumerat
+enum Tipus {ESTRELLA, PLANETA, SATELIT, COMETA};
+
+// SUPERCLASSE
 class CosAstronomic {
 
   // Atributs generals

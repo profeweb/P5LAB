@@ -1,5 +1,8 @@
-// Tipus enumerat
-static enum Tipus {ESTRELLA, PLANETA, SATELIT, COMETA};
+/*
+  Planetari v1.0
+  Introducció de la Superclasse.
+  Cos Astronòmic. Atributs bàsics.
+*/
 
 // Variables de classe CosAtronomic
 CosAstronomic c1, c2, c3, c4;
