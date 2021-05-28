@@ -171,5 +171,15 @@ class CosAstronomic {
     System.out.println("\t\t Excentricitat: "+this.excentricitat);
     System.out.println("");
   }
+  
+  void display(float x, float y){
+    fill(0); textAlign(CENTER); textSize(18);
+    text(this.nom, x, y);
+    textSize(12);
+    text("MASA:"+this.masa+"Kg", x, y + 20);
+    text("RADI ORBITAL:"+this.radiOrbita+"Km", x, y + 40);
+    char simbol = (char) Integer.parseInt(this.codi, 16);
+    text(simbol, x, y+60);
+  }
 
 }

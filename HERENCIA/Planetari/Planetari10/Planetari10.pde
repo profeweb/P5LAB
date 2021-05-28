@@ -1,12 +1,8 @@
-
-// Tipus de Cosos Astronòmics (enumerat)
-enum Tipus {ESTRELLA, PLANETA, SATELIT, COMETA, COSMENOR};
-
-// Tipus de Planetes (enumerat)
-enum TipusPlaneta { ROCOS, GASOS, NAN};
-
-// Tipus de Satèl·lits (enumerat)
-enum TipusSatelit {NATURAL, PASTOR,  TROIA, COORBITAL, ASTEROIDAL};
+/*
+  Planetari v10.0
+  Superclasse CosAstronomic / display.
+  GUI / Elements multimedia: fonts i imatges.
+*/
 
 // Variables Estrella, Planeta i Satelit
 Estrella sol;

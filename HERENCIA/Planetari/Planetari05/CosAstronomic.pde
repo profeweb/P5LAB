@@ -1,11 +1,10 @@
-
+// Tipus enumerat
 enum Tipus {ESTRELLA, PLANETA, SATELIT, COMETA};
 
 // SUPERCLASSE
 class CosAstronomic {
  
-  
-  // Atributs
+  // Atributs Bàsics
   String nom;
   Tipus tipus;
   String codi;

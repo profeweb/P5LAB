@@ -8,6 +8,8 @@ class Planeta extends CosAstronomic {
   // Atributs
   TipusPlaneta tipusPlaneta;
   Estrella estrella;
+  boolean anells;
+  int numSatelits;
 
   // Constructor
   Planeta(String n, String c, TipusPlaneta tp, Estrella e){
@@ -25,6 +27,14 @@ class Planeta extends CosAstronomic {
   void setEstrella(Estrella e){
     this.estrella = e;
   }
+  
+  void setAnells(boolean b){
+    this.anells = true;
+  }
+
+  void setNumSatelits(int n){
+    this.numSatelits = n;
+  }
 
   // Getters
 
@@ -35,6 +45,14 @@ class Planeta extends CosAstronomic {
   Estrella getEstrella(){
     return this.estrella;
   }
+  
+  boolean getAnells(){
+    return this.anells;
+  }
+
+  int getNumSatelits(){
+    return this.numSatelits;
+  }
 
   // Altres
 
@@ -42,6 +60,14 @@ class Planeta extends CosAstronomic {
     System.out.println("PLANETA: ");
     System.out.println("\t Nom: "+this.nom);
     System.out.println("\t Tipus: "+this.tipusPlaneta);
+    System.out.println("\t Estrella: "+this.estrella.nom);
+    if(this.anells){
+      System.out.println("\t Anells: Sí.");
+    }
+    else {
+      System.out.println("\t Anells: No.");
+    }
+    System.out.println("\t Núm. Satèlits: "+this.numSatelits);
     System.out.println("\t Estrella: "+this.estrella.nom);
     char simbol = (char) Integer.parseInt(this.codi, 16);
     System.out.println("\t Símbol: "+simbol);
@@ -59,6 +85,5 @@ class Planeta extends CosAstronomic {
     System.out.println("\t\t Excentricitat: "+this.excentricitat);
     System.out.println("");
   }
-
 
 }

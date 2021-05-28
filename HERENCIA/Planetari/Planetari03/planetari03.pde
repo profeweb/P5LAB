@@ -1,19 +1,31 @@
+/*
+  Planetari v3.0
+  Introducció de la Subclasse.
+  Estrella. Atributs bàsics.
+*/
 
-CosAstronomic c1, c2, c3, c4;
-Estrella e1;
+// Variables de classe Estrella
+Estrella e1, e2;
 
 void setup(){
+  
   size(800,800);
   
-  e1 = new Estrella("Sol", "2609", 'G', -26.8);
-  e1.setPosicio(1, 2, 3);
-  e1.setPropsFisiques(1, 2, 3, 4, 5);
-  e1.setPropsOrbitals(6, 7, 8, 9);
+  // Instanciació d'objectes Estrella  
   
+  e1 = new Estrella( "Sol", "2609", 'G', -26.8f );
+  e1.setMasa(64547);
   e1.print();
+
+  e2 = new Estrella( "Canopus", "2605", 'F', -1.47f);
+  e2.print();
 }
 
 void draw(){
+  
   background(255);
-  e1.display(width/2, height/5);
+  
+  // Dibuixa els objectes Estrella
+  e1.display(width/2, height/3);
+  e2.display(width/2, 2*height/3);
 }

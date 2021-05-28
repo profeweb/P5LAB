@@ -8,18 +8,21 @@ class Estrella extends CosAstronomic {
   float indexColorUB;
   
   //Constructor
+  
   Estrella(String n, String c, char t, float b){
     super(n, Tipus.ESTRELLA, c);
     this.tipusEspectral = t;
     this.brillo = b;
   }
   
-  void setTipusEspectral(char t){
+  // Setters
+
+  void setTipusEspectral( char t){
     this.tipusEspectral = t;
   }
-  
-  char getTipusEspectral(){
-    return this.tipusEspectral;
+
+  void setBrillo(float b){
+    this.brillo = b;
   }
   
   void setTemperatura(float t){
@@ -29,6 +32,16 @@ class Estrella extends CosAstronomic {
   void setIndexColorUB(float c){
     this.indexColorUB = c;
   }
+
+  // Getters
+
+  char getTipusEspectral(){
+    return this.tipusEspectral;
+  }
+
+  float getBrillo(){
+    return this.brillo;
+  }
   
   float getTemperatura(){
     return this.temperatura;
@@ -37,6 +50,8 @@ class Estrella extends CosAstronomic {
   float getIndexColorUB(){
     return this.indexColorUB;
   }
+  
+  // Altres
   
   void print(){
     System.out.println("ESTRELLA: ");
@@ -56,7 +71,6 @@ class Estrella extends CosAstronomic {
     System.out.println("\t\t Gravetat: "+this.gravetat);
     System.out.println("\t\t Radi: "+this.radi);
     System.out.println("");
-
   }
   
 }

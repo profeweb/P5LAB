@@ -1,12 +1,9 @@
-
-// Tipus de Cosos Astronòmics (enumerat)
-enum Tipus {ESTRELLA, PLANETA, SATELIT, COMETA, COSMENOR};
-
-// Tipus de Planetes (enumerat)
-enum TipusPlaneta { ROCOS, GASOS, NAN};
-
-// Tipus de Satèl·lits (enumerat)
-enum TipusSatelit {NATURAL, PASTOR,  TROIA, COORBITAL, ASTEROIDAL};
+/*
+  Planetari v11.0
+  Array de cossos astronòmics.
+  Instanciació amb dades reals.
+  Dibuix de panell info. i cossos astronòmics.
+*/
 
 // Array de cossos astronòmics
 CosAstronomic[] astres;
@@ -30,6 +27,7 @@ void setup(){
   
   //size(1800, 600, P3D);
   fullScreen(P3D);
+  background(255);
   smooth(10);
   
   // Creació de l'Array de Cossos Astronòmics
@@ -145,9 +143,9 @@ void draw(){
   // Fons 
   dibuixaFons();
   
-  // Dibuixar els cossos astronòmics
-  for(CosAstronomic c : astres){
-    c.display();
+  // Dibuixar els cossos astronòmics 
+  for(int i=0; i<numTotalAstres; i++){
+    astres[i].display();
   }
   
   // Dibuixa el panell informatiu del cos astronòmic seleccionat (numAstre)
@@ -156,11 +154,14 @@ void draw(){
 
 // Dibuixa la imatge de fons
 void dibuixaFons(){
+  background(0);
+  /*
   pushMatrix();
-    translate(width/2, height/2, -1000);
+    translate(width/2, height/2, 1000);
     imageMode(CENTER);
     image(fons, 0, 0);
   popMatrix();
+  */
 }
 
 
@@ -171,7 +172,7 @@ void loadMedia(){
   panell = loadShape("panel.svg");
   
   // Imatge de fons
-  fons = loadImage("fons.jpg");
+  fons = loadImage("fons2.jpg");
   
   // Fonts per als textos informatius
   font1 = createFont("Starge.ttf", 40);
