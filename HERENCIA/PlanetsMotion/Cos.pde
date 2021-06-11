@@ -1,4 +1,6 @@
 
+// Clase Cos Astronòmic
+
 class Cos {
   
   // Atributs

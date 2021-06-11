@@ -1,3 +1,8 @@
+/*
+  Planets Motion v2.0
+  Moviment rotacional de cossos astronòmics
+*/
+
 
 // Declaració de variables Cos
 Cos sol, terra, lluna;

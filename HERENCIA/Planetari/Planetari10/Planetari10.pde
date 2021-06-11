@@ -77,13 +77,13 @@ void displayInfo(float x, float y, CosAstronomic c){
   // Variables per definir el marge esquerre i l'altura entre línies.
   float marginLeft = 80, lineHeight = 45;
   
-  // Font pel nom del Cos Astronòmic
+  // Font pel NOM del Cos Astronòmic
   fill(20, 96, 88); textSize(40); textAlign(LEFT); textFont(font1);
   
-  // Dibuixa el NOM del cos astronòmic
+  // Dibuixa el NOM del Cos Astronòmic
   text(c.nom, x + 140, y + 80);
   
-  // Font per al TIPUS de cos astronòmic
+  // Font per al TIPUS de Cos Astronòmic
   fill(50); textSize(24); textAlign(LEFT); textFont(font2);
   
   // Dibuixa el TIPUS del cos astronòmic

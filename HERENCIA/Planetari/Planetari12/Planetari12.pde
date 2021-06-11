@@ -1,12 +1,7 @@
-
-// Tipus de Cosos Astronòmics (enumerat)
-enum Tipus {ESTRELLA, PLANETA, SATELIT, COMETA, COSMENOR};
-
-// Tipus de Planetes (enumerat)
-enum TipusPlaneta { ROCOS, GASOS, NAN};
-
-// Tipus de Satèl·lits (enumerat)
-enum TipusSatelit {NATURAL, PASTOR,  TROIA, COORBITAL, ASTEROIDAL};
+/*
+  Planetari v12.0
+  Botons de l'app.
+*/
 
 // Array de cossos astronòmics
 CosAstronomic[] astres;
@@ -159,8 +154,8 @@ void draw(){
   dibuixaFons();
   
   // Dibuixar els cossos astronòmics
-  for(CosAstronomic c : astres){
-    c.display();
+  for(int i=0; i<numTotalAstres; i++){
+    astres[i].display();
   }
   
   // Dibuixa el panell informatiu del cos astronòmic seleccionat (numAstre)
@@ -176,11 +171,14 @@ void draw(){
 
 // Dibuixa la imatge de fons
 void dibuixaFons(){
+  background(0);
+  /*
   pushMatrix();
     translate(width/2, height/2, -1000);
     imageMode(CENTER);
     image(fons, 0, 0);
   popMatrix();
+  */
 }
 
 
