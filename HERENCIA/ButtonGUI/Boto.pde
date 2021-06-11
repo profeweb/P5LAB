@@ -66,7 +66,7 @@ class Boto {
   void display(){
 
     pushMatrix();
-      translate(this.x, this.y, 0);
+      translate(this.x, this.y);
       shapeMode(CENTER);
       if(mouseDinsBoto()){
         cursor(HAND);
