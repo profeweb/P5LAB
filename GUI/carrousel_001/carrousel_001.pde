@@ -11,10 +11,12 @@ void setup(){
   
   size(1000,800);
   
-  // Inicialitza el mosaic
-  c = new Carrousel(50,100,900,300, 3);
-  // Assigna les imatges al mosaic
+  // Inicialitza el carrousel
+  c = new Carrousel(50, 100, 900, 300, 3);
+  // Assigna les imatges al carrousel
   c.setImages(noms);
+  // Assigna les imatges dels botons al carrousel
+  c.setButtons("bPrev.png", "bNext.png");
 }
 
 void draw(){
@@ -23,6 +25,9 @@ void draw(){
   
   // Dibuixa el mosaic
   c.display();
+  
+  // Actualitza cursor
+  updateCursor();
 }
 
 
@@ -32,5 +37,18 @@ void keyPressed(){
   }
   else if(keyCode==RIGHT){
     c.next();
+  }
+}
+
+void mousePressed(){
+  c.checkButtons();
+}
+
+void updateCursor(){
+  if(c.checkCursor()){
+    cursor(HAND);
+  }
+  else {
+    cursor(ARROW);
   }
 }

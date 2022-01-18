@@ -18,12 +18,17 @@ class Carrousel {
   // Imatges del carrousel
   PImage[] imgs;
   
+  // Botons del carrousel
+  RoundButton bPrev, bNext;
+  
   // Constructor
   Carrousel(int x, int y, int w, int h, int nv){
     this.x = x; this.y = y; this.w = w; this.h = h;
     this.numImatgesVisibles = nv; 
     this.currentImage = 0;
     this.imgW = (w - margeH*(nv-1)) / (float) nv;
+    
+
   }
   
   // Setters
@@ -35,6 +40,14 @@ class Carrousel {
     for(int i=0; i<imgs.length; i++){
       imgs[i] = loadImage(noms[i]);
     }
+  }
+  
+  void setButtons(String img1, String img2){
+    PImage imgPrev = loadImage(img1);
+    bPrev = new RoundButton(imgPrev, x, y + h/2, 30);
+    
+    PImage imgNext = loadImage(img2);
+    bNext = new RoundButton(imgNext, x + w, y + h/2, 30);
   }
   
   void next(){
@@ -53,8 +66,8 @@ class Carrousel {
   // Dibuixa el Mosaic
   void display(){
     
-    fill(150); noStroke();
-    rect(x, y, w, h);
+    fill(150); stroke(0);
+    rect(x-5, y-5, w+10, h+10);
     
     for(int i=0; i<this.numImatgesVisibles; i++){
       
@@ -75,6 +88,32 @@ class Carrousel {
       fill(0);
       text(index, xPos + 30, y + 40);
     }
+    
+    if(bNext!=null){
+      bNext.display();
+    }
+    if(bPrev!=null){
+      bPrev.display();
+    }
+  }
+  
+  void checkButtons(){
+    if(bNext.mouseOverButton() && bNext.enabled){
+      this.next();
+    }
+    else if(bPrev.mouseOverButton() && bPrev.enabled){
+      this.prev();
+    }
+  }
+  
+  boolean checkCursor(){
+    if(bNext.mouseOverButton() && bNext.enabled){
+      return true;
+    }
+    else if(bPrev.mouseOverButton() && bPrev.enabled){
+      return true;
+    }
+    return false;
   }
 
   
