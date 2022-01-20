@@ -18,16 +18,21 @@ class Node {
   }
   
   void inordre(){
-    
-    if(this.esq != null){
-      this.esq.inordre();
-    }
-    
-    println(this.num);
-    
-    if(this.dret != null){
-      this.dret.inordre();
-    }
+    if(this.esq != null){ this.esq.inordre(); }
+    print(this.num, ", ");
+    if(this.dret != null){ this.dret.inordre(); }
+  }
+  
+  void preordre(){
+    print(this.num, ", ");
+    if(this.esq != null){ this.esq.inordre(); }
+    if(this.dret != null){ this.dret.inordre(); }
+  }
+  
+  void postordre(){
+    if(this.esq != null){ this.esq.inordre(); }
+    if(this.dret != null){ this.dret.inordre(); }
+    print(this.num, ", ");
   }
   
   
