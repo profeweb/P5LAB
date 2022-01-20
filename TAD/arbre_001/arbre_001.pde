@@ -6,12 +6,12 @@ float maxDx = 300;
 
 void setup(){
   size(1400, 900);
-  a = new Arbre((int)random(100));
+  a = new Arbre();
   for(int i=0; i<15; i++){
     a.addElement((int)random(100));
   }
   
-  //a.arrel.inordre();
+  a.inordreArbre();
 }
 
 void draw(){
