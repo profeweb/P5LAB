@@ -45,8 +45,7 @@ class Arbre {
   
   void display(Node n, float x, float y, float r, int level){
     
-    float dx = map(level, 0, 5, maxDx, minDx);
-    dx = (width/4)/(level+2);
+    float dx = (width/3)/(level+2);
     n.display(x, y, r, level);
     
     if(n.esq != null){

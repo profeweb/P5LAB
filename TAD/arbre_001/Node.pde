@@ -38,8 +38,7 @@ class Node {
   
   void display(float x, float y, float r, int level){
     
-    float dx = map(level, 0, 5,  maxDx, minDx);
-    dx = (width/4)/(level+2);
+    float dx = (width/3)/(level+2);
     pushStyle();
     
       if(this.esq!=null){
@@ -52,7 +51,7 @@ class Node {
       
       ellipse(x, y, r,r);
       fill(0); textSize(18); textAlign(CENTER);
-      text(this.num, x, y + r/4);
+      text(this.num, x, y + r/6);
     popStyle();
   }
   

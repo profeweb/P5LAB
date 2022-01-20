@@ -1,9 +1,6 @@
 
 Arbre a;
 
-float minDx = 50;
-float maxDx = 300;
-
 void setup(){
   size(1400, 900);
   
