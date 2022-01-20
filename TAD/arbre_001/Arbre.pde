@@ -21,7 +21,8 @@ class Arbre {
     }
     else {
       Node pare = this.arrel;
-      while (pare.esq!=null && pare.dret != null){
+      while ((pare.esq!=null && n<pare.num)
+      ||(pare.dret!=null && n>pare.num)) {
         if(n < pare.num){
           pare = pare.esq;
         }
