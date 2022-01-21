@@ -10,11 +10,12 @@ class Llibre {
   
   float marge = 10;
   
-  Llibre(String t, String i, String a, String g){
+  Llibre(String t, String i, String a, String g, String p){
     this.titol = t;
     this.isbn = i;
     this.autor = a;
     this.genere = g;
+    setPortada(p);
   }
   
   void setPortada(String imgName){

@@ -42,7 +42,7 @@ class Estant {
   }
   
   void afegirLLibre(String[] info){
-    Llibre l = new Llibre(info[0], info[1], info[2], info[3] );
+    Llibre l = new Llibre(info[0], info[1], info[2], info[3], info[4] );
     afegirLlibre(l);
   }
   
@@ -59,16 +59,22 @@ class Estant {
     PImage imgNext = loadImage(img2);
     bNext = new RoundButton(imgNext, x + w + 30, y + h/2, 30);
   }
+  
+  void setColor(color c){
+    this.cFons = c;
+  }
 
   void next() {
     if (this.currentLlibre<this.numLlibres - this.numLlibresVisibles) {
-      this.currentLlibre++;
+      this.currentLlibre+=this.numLlibresVisibles;
+      this.currentLlibre = constrain(this.currentLlibre, 0,this.numLlibres-1); 
     }
   }
 
   void prev() {
     if (this.currentLlibre>0) {
-      this.currentLlibre--;
+      this.currentLlibre-=this.numLlibresVisibles;
+      this.currentLlibre = constrain(this.currentLlibre, 0,this.numLlibres-1); 
     }
   }
 
@@ -83,7 +89,7 @@ class Estant {
     rect(x+w-200+ margeH*2+6, y -39, 198, 44, 5);
     
     fill(0); textAlign(CENTER); textSize(24);
-    text(this.nom, x+w-100+ margeH*2+10, y -10);
+    text("("+this.numLlibres+") "+this.nom, x+w-100+ margeH*2+10, y -10);
 
     for (int i=0; i<this.numLlibresVisibles; i++) {
 
@@ -102,7 +108,7 @@ class Estant {
         fill(cFons); noStroke(); rectMode(CENTER);
         rect(xPos + 40, y + 40, 40, 40, 10);
         fill(0); textAlign(CENTER);
-        text(index, xPos + 40, y + 45);
+        text(index+1, xPos + 40, y + 48);
       }
     }
 
