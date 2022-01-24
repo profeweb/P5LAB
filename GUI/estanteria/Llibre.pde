@@ -48,4 +48,9 @@ class Llibre {
       text(this.genere, marge + x, y + 3*h/4 + 110);
     popStyle();
   }
+  
+  boolean mouseOver(float x, float y, float w, float h){
+    return mouseX>x && mouseX<x+w &&
+           mouseY>y && mouseY<y+h;
+  }
 }

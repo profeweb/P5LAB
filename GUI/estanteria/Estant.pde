@@ -13,6 +13,7 @@ class Estant {
 
   float llibreW;
   float margeH = 15;
+  int selected = -1;
 
   RoundButton bPrev, bNext;
 
@@ -130,13 +131,16 @@ class Estant {
     popStyle();
   }
   
-  void checkButtons(){
+  boolean checkButtons(){
     if(bNext.mouseOverButton() && bNext.enabled){
       this.next();
+      return true;
     }
     else if(bPrev.mouseOverButton() && bPrev.enabled){
       this.prev();
+      return true;
     }
+    return false;
   }
   
   boolean checkCursor(){
@@ -146,6 +150,39 @@ class Estant {
     else if(bPrev.mouseOverButton() && bPrev.enabled){
       return true;
     }
+    else if(this.checkMouseLlibre()){
+      return true;
+    }
     return false;
   }
+
+  
+  int checkClickLlibre(){
+    for (int i=0; i<this.numLlibresVisibles; i++) {
+      int index = i + this.currentLlibre;
+      if (index<this.numLlibres) {
+        float xPos = x + i*(this.llibreW + this.margeH);
+        Llibre l= llibres[index];
+        if(l.mouseOver(xPos, y, this.llibreW, h)){
+          return index;
+        }
+      }
+    }
+    return -1;
+  }
+  
+  boolean checkMouseLlibre(){
+    for (int i=0; i<this.numLlibresVisibles; i++) {
+      int index = i + this.currentLlibre;
+      if (index<this.numLlibres) {
+        float xPos = x + i*(this.llibreW + this.margeH);
+        Llibre l= llibres[index];
+        if(l.mouseOver(xPos, y, this.llibreW, h)){
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
 }
