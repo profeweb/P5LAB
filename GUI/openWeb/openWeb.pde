@@ -11,7 +11,7 @@ void setup(){
   b1 = new Button("IES MANACOR", width/3, height/5, buttonW, buttonH);
   b2 = new Button("GOOGLE", width/3, 3*height/5, buttonW, buttonH);
   
-  // Creació de
+  // Creació de link a navegador
   desktop = Desktop.getDesktop();
 }
 
