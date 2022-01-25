@@ -21,8 +21,6 @@ void setup() {
   e.afegirLlibres(info);
   e.setColor(color(200, 200, 100));
   e.setButtons("bPrev.png", "bNext.png");
-
-  llibreSeleccionat = e.llibres[0];
 }
 
 void draw() {
@@ -31,7 +29,7 @@ void draw() {
   updateCursor();
 
   if (llibreSeleccionat!=null) {
-    llibreSeleccionat.display(width - 400, 150, 300, 500);
+    llibreSeleccionat.display(width-400, 150, 300, 500);
   }
 }
 
@@ -44,9 +42,7 @@ void keyPressed() {
 }
 
 void mousePressed() {
-
   if (!e.checkButtons()) {
-
     int nl = e.checkClickLlibre();
     if (nl!=-1) {
       llibreSeleccionat = e.llibres[nl];

@@ -6,7 +6,7 @@ ShowCase m;
 Button bShuffle;
 
 // Ruta de la carpeta on hi ha les imatges
-String carpetaImatges ="D:\\GITHUB\\P5 LAB\\P5LAB\\GUI\\showcase_001\\data";
+String carpetaImatges ="C:\\Users\\tonim\\Documents\\CODE\\P5LAB\\GUI\\showcase_001\\data";
 
 void setup(){
   
