@@ -15,6 +15,7 @@ void setup(){
   a.arrel.preordre();
   println("\nPOSTORDRE: ");
   a.arrel.postordre();
+  println();
 }
 
 void draw(){
@@ -26,5 +27,33 @@ void mousePressed(){
   a = new Arbre((int)random(100));
   for(int i=0; i<15; i++){
     a.addElement((int)random(100));
+  }
+}
+
+void keyPressed(){
+  if(key=='i' || key=='I'){
+    println("\nINORDRE: ");
+    a.arrel.inordre();
+  }
+  else if(key=='e' || key=='E'){
+    println("\nPREORDRE: ");
+    a.arrel.preordre();
+  }
+  else if(key=='o' || key=='O'){
+    println("\nPROSTORDRE: ");
+    a.arrel.postordre();
+  }
+  else if(key=='f' || key=='F'){
+    int nf = (int)random(0, 100);
+    boolean b = a.cercaElement(nf, a.arrel);
+    println(nf +" "+ (b?"Sí":"No") + " està a l'arbre.");
+  }
+  else if(key=='M'){
+    int nf = a.getMaxim();
+    println("MÀXIM: "+nf);
+  }
+  else if(key=='m'){
+    int nf = a.getMinim();
+    println("MÍNIM: "+nf);
   }
 }

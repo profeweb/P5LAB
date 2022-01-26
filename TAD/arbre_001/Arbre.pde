@@ -57,6 +57,42 @@ class Arbre {
       display(n.dret, x+dx, y + 2*r, r, level +1);
     }
   }
+  
+  boolean cercaElement(int valor, Node n){
+    if(n==null){
+      return false;
+    }
+    else if(n.num == valor){
+      return true;
+    }
+    else {
+     if(n.esq!=null && valor < n.num){
+       return cercaElement(valor, n.esq);
+     }
+     else if(n.dret!=null && valor > n.num){
+       return cercaElement(valor, n.dret);
+     }
+     else {
+       return false;
+     }
+    }
+  }
+  
+  int getMinim(){
+    Node pare = this.arrel;
+    while (pare.esq!=null) {
+       pare = pare.esq;
+    }
+    return pare.num;
+  }
+  
+  int getMaxim(){
+    Node pare = this.arrel;
+    while (pare.dret!=null) {
+       pare = pare.dret;
+    }
+    return pare.num;
+  }
  
   
 }
