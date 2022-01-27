@@ -28,13 +28,13 @@ class Select {
     rect(x, y, w, h);
     
     fill(100);
-    rect(x + w - 30, y, 30, h);
+    rect(x + w - 50, y, 50, h);
     
     fill(0); stroke(0);
-    triangle(x + w - 25, y+5, x + w - 15, y + 25, x + w - 5 , y+5);
+    triangle(x + w - 40, y+10, x + w - 25, y + 40, x + w - 10 , y+10);
     
-    fill(0); textSize(14); 
-    text(selectedValue, x + 10, y + 20);
+    fill(0); textSize(18); 
+    text(selectedValue, x + 10, y + 30);
     
     if(!this.collapsed){
       
@@ -48,7 +48,7 @@ class Select {
           rect(x+4, y+4 + h + (h + lineSpace)*i - 2, w -8, h + lineSpace - 8);
         }
         
-        fill(0);
+        fill(0); textSize(18);
         text(texts[i], x + 10, y + h + 25 + (h + lineSpace)*i);
       }
     }
