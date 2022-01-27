@@ -59,12 +59,8 @@ class Arbre {
   }
   
   boolean cercaElement(int valor, Node n){
-    if(n==null){
-      return false;
-    }
-    else if(n.num == valor){
-      return true;
-    }
+    if(n==null){ return false; }
+    else if(n.num == valor){ return true;}
     else {
      if(n.esq!=null && valor < n.num){
        return cercaElement(valor, n.esq);
@@ -72,9 +68,7 @@ class Arbre {
      else if(n.dret!=null && valor > n.num){
        return cercaElement(valor, n.dret);
      }
-     else {
-       return false;
-     }
+     else { return false; }
     }
   }
   

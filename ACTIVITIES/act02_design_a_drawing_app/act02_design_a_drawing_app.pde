@@ -1,4 +1,4 @@
-
+// Variables de l'App de Dibuix
 color c;
 String s;
 float r;
@@ -11,12 +11,14 @@ void setup() {
   rectMode(CENTER);
   ellipseMode(CENTER);
 
+  // Valors inicials de les variables
   c = color(255);
   s = "RECT";
   r = 20;
   enableDrawing = false;
 }
 
+// Funció per establir el color de la figura
 void setColor() {
   if (key == 'R' || key == 'r') {
     c = color(255, 0, 0);
@@ -26,9 +28,10 @@ void setColor() {
     c = color(0, 255, 0);
   }
   fill(c);
-  println("COLOR: " + c);
+  println("COLOR: " + red(c)+"-"+green(c)+"-"+blue(c));
 }
 
+// Funció per establir la mida de la figura
 void setSize() {
   if (keyCode == UP) {
     r+=10;
@@ -41,6 +44,7 @@ void setSize() {
   println("SIZE: " + r);
 }
 
+// Funció per establir la forma de la figura
 void setShape() {
   if (key == '1') {
     s = "RECT";
@@ -52,13 +56,15 @@ void setShape() {
   println("SHAPE: " + s);
 }
 
-void setEnableDrawing(){
-  if(key=='d' || key=='D'){
+// Funció per abilitar / desabilitar el dibuixar
+void setEnableDrawing() {
+  if (key=='d' || key=='D') {
     enableDrawing = !enableDrawing;
   }
   println("ENABLE DRAWING:"+enableDrawing);
 }
 
+// Funció que s'executa en pitjar el teclat
 void keyPressed() {
   resetCanvas();
   setEnableDrawing();
@@ -67,13 +73,16 @@ void keyPressed() {
   setColor();
 }
 
-void mousePressed(){
+// Funció que s'executa en pitjar el ratolí
+void mousePressed() {
   drawShape();
 }
 
+// Funció que dibuixa la figura
 void drawShape() {
-  if(enableDrawing){
-  if (s == "RECT") {
+  if (enableDrawing) {
+    fill(c);
+    if (s == "RECT") {
       rect(mouseX, mouseY, r, r);
     } else if (s == "CIRCLE") {
       ellipse(mouseX, mouseY, r, r);
@@ -83,6 +92,7 @@ void drawShape() {
   }
 }
 
+// Funció per esborra el dibuix anterior
 void resetCanvas() {
   if (keyCode == DELETE) {
     background(220);
