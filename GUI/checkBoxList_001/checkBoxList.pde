@@ -17,6 +17,7 @@ class CheckBoxList {
     this.cbs = new CheckBoxText[ info.length ];
     for(int i=0; i<info.length; i++){
       cbs[i] = new CheckBoxText(info[i], x, y + (h+margeV)*i, w, h);
+      cbs[i].setImage(info[i].toLowerCase()+".png");
     }
   }
   
@@ -26,6 +27,7 @@ class CheckBoxList {
     this.cbs = new CheckBoxText[ info.length ];
     for(int i=0; i<info.length; i++){
       cbs[i] = new CheckBoxText(info[i], x, y + h*i, w, h);
+      cbs[i].setImage(info[i].toLowerCase()+".png");
     }
   }
   

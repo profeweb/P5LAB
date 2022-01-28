@@ -5,6 +5,7 @@ class CheckBoxText {
   // Propietats
   float x, y, w, h;
   String texte;
+  PImage img;
   
   // Colors
   color bgColor;
@@ -34,6 +35,10 @@ class CheckBoxText {
     this.checkedColor = color(180);
   }
   
+  void setImage(String imgName){
+    this.img = loadImage(imgName);
+  }
+  
   // Dibuixa el CheckBox
   void display(){
     
@@ -49,6 +54,10 @@ class CheckBoxText {
     rect(x, y, w, h);
     fill(0); textAlign(LEFT); textSize(24);
     text(this.texte, x + w + 15, y + h/2 + 5);
+    
+    if(img!=null){
+      image(img, x - w, y, w, h);
+    }
     
     if(this.checked){
       line(x, y, x + w, y + w);

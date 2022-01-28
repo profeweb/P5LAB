@@ -4,7 +4,7 @@
 CheckBoxList cbl;
 
 // Textos de les opcions del checkboxlist
-String[] info = {"Opció 1", "Opció 2", "Opció 3", "Opció 4"};
+String[] info = {"Almond", "Apple", "Avocado", "Banana", "Blackberry"};
 
 void setup() {
 
