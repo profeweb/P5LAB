@@ -22,7 +22,6 @@ class CheckBoxText {
     this.borderColor = color(0);
     this.checkedColor = color(180);
     this.texte = "";
-    this.img = null;
   }
   
   CheckBoxText(String t, float x, float y, float w, float h){

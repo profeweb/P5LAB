@@ -2,6 +2,7 @@ class CheckBoxList {
   
   // Propietats (posició i dimensions)
   float x, y, w, h;
+  float margeV = 15;
   
   // Propietats(informació i checkboxes)
   String[] info;
@@ -15,7 +16,7 @@ class CheckBoxList {
     this.info = info;
     this.cbs = new CheckBoxText[ info.length ];
     for(int i=0; i<info.length; i++){
-      cbs[i] = new CheckBoxText(info[i], x, y + (h + 15)*i, w, h);
+      cbs[i] = new CheckBoxText(info[i], x, y + (h+margeV)*i, w, h);
     }
   }
   
@@ -55,6 +56,16 @@ class CheckBoxList {
     for(CheckBoxText cb : cbs){
       if(cb.texte.equals(s)){
         return cb.checked;
+      }
+    }
+    return false;
+  }
+  
+  // Retorna true si el mouse està sobre algun checkbox
+  boolean checkCursor(){
+    for(CheckBoxText cb : cbs){
+      if(cb.onMouseOver()){
+        return true;
       }
     }
     return false;
