@@ -4,8 +4,8 @@ Button b1, b2;             // Botons
 TextList tList1, tList2;   // Llista de textos
 
 String[][] listCountries = {{"0", "Alemania"},
-                            {"1", "Angola"},
-                            {"2", "Canada"},
+                            {"1", "Algola"},
+                            {"2", "Aanada"},
                             {"3", "Brasil"},
                             {"4", "Italy"},
                             {"5", "France"},
