@@ -9,13 +9,13 @@ void draw(){
   if(mouseX < width/2 && mouseY<height/2){
     c = color(255, 0, 0);
   }
-  else if(mouseX > width/2 && mouseY<height/2){
+  if(mouseX > width/2 && mouseY<height/2){
     c = color(0, 255, 0);
   }
-  else if(mouseX < width/2 && mouseY>height/2){
+  if(mouseX < width/2 && mouseY>height/2){
     c = color(0, 0, 255);
   }
-  else {
+  if(mouseX > width/2 && mouseY>height/2){
     c = color(255, 255, 0);
   }
   background(c);
