@@ -1,0 +1,55 @@
+class Color{
+  
+ float[] cromosoma;
+ 
+ Color(float r, float g, float b){
+   
+   cromosoma = new float[3];
+   
+   cromosoma[0] = r;  // Gen R
+   cromosoma[1] = g;  // Gen G
+   cromosoma[2] = b;  // Gen B
+ }
+ 
+ Color(){
+   this(random(255), random(255), random(255));
+ }
+ 
+ float distance(Color altre){
+   float distR = abs(this.cromosoma[0] - altre.cromosoma[0]);
+   float distG = abs(this.cromosoma[1] - altre.cromosoma[1]);
+   float distB = abs(this.cromosoma[2] - altre.cromosoma[2]);
+   return distR + distG +distB;
+ }
+ 
+ Color creua(Color altre){
+   float cR = (this.cromosoma[0] + altre.cromosoma[0]) / 2;
+   float cG = (this.cromosoma[1] + altre.cromosoma[1]) / 2;
+   float cB = (this.cromosoma[2] + altre.cromosoma[2]) / 2;
+   return new Color(cR, cG, cB);
+ }
+ 
+ color getColor(){
+   return color(this.cromosoma[0], this.cromosoma[1], this.cromosoma[2]);
+ }
+ 
+ void display(float x, float y, float s){
+   pushStyle();
+   fill(this.getColor());
+   rectMode(CENTER);
+   rect(x, y, s, s);
+   fill(0); textAlign(CENTER); textSize(12);
+   text(this.cromosoma[0], x, y - s/4);
+   text(this.cromosoma[1], x, y - 0);
+   text(this.cromosoma[2], x, y + s/4);
+   popStyle();
+ }
+ 
+ Color muta(){
+   float mR = constrain(this.cromosoma[0] + random(-50, 50), 0, 255);;
+   float mG = constrain(this.cromosoma[1] + random(-50, 50), 0, 255);;
+   float mB = constrain(this.cromosoma[2] + random(-50, 50), 0, 255);;
+   return new Color(mR, mG, mB);
+ }
+ 
+}
