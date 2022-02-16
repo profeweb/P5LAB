@@ -33,22 +33,22 @@ class Color{
    return color(this.cromosoma[0], this.cromosoma[1], this.cromosoma[2]);
  }
  
- void display(float x, float y, float s){
+ void display(float x, float y, float w, float h){
    pushStyle();
    fill(this.getColor());
    rectMode(CENTER);
-   rect(x, y, s, s);
+   rect(x, y, w, h);
    fill(0); textAlign(CENTER); textSize(12);
-   text(this.cromosoma[0], x, y - s/4);
+   text(this.cromosoma[0], x, y - h/4);
    text(this.cromosoma[1], x, y - 0);
-   text(this.cromosoma[2], x, y + s/4);
+   text(this.cromosoma[2], x, y + h/4);
    popStyle();
  }
  
  Color muta(){
-   float mR = constrain(this.cromosoma[0] + random(-50, 50), 0, 255);;
-   float mG = constrain(this.cromosoma[1] + random(-50, 50), 0, 255);;
-   float mB = constrain(this.cromosoma[2] + random(-50, 50), 0, 255);;
+   float mR = constrain(this.cromosoma[0] + random(-150, 150), 0, 255);;
+   float mG = constrain(this.cromosoma[1] + random(-150, 150), 0, 255);;
+   float mB = constrain(this.cromosoma[2] + random(-150, 150), 0, 255);;
    return new Color(mR, mG, mB);
  }
  
