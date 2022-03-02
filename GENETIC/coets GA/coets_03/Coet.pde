@@ -59,6 +59,7 @@ class Coet {
     acc.mult(0);
   }
   
+  // Comprova si el coet arriba al target
   void checkTarget(PVector target) {
     float d = dist(pos.x, pos.y, target.x, target.y);
     if (d < 25 + r) {
