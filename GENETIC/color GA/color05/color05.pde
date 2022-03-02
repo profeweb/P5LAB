@@ -1,24 +1,33 @@
 // Número d'Elements
 int numColors = 20;
+
 // Número de Generació
 int generacio = 0;
+
 // Número d'Elements a Seleccionar
 int numSelecs = 5;
+
 // Taxa de mutació [0,1]
-float tasaMutacio = 0.75;
+float taxaMutacio = 0.75;
 
 // Població inicial
 Color[] poblacio;
+
 // Descendència resultant
 Color[] childhood;
+
 // Avaluacions de la població
 float[] avaluacio;
+
 // Posicions dels millors exemplars
 int[] posMillors;
+
 // Millors exemplars seleccionats
 Color[] millors;
+
 // Exemplars creuats
 Color[] creuats;
+
 // Casos on s'aplica mutació
 boolean[] mutats;
 
@@ -99,7 +108,7 @@ void muta() {
   childhood = new Color[poblacio.length];
   for (int i=0; i<poblacio.length; i++) {
     float r = random(1);
-    if (r<tasaMutacio) {
+    if (r<taxaMutacio) {
       mutats[i] = true;
       childhood[i] = creuats[i].muta();
     } else {
@@ -185,7 +194,7 @@ void display() {
   text("Creuament", width/2, 385);
   displayColors(creuats, 390);
   
-  text("Mutació", width/2, 495);
+  text("Mutació ("+taxaMutacio+")", width/2, 495);
   displayMutats(500);
   
   text("Descendents", width/2, 605);
@@ -242,6 +251,7 @@ void displayMutats(float y) {
   }
 }
 
+// Aplica la seguent generació
 void setNextGeneration() {
   for (int i=0; i<creuats.length; i++) {
     poblacio[i] = childhood[i];
