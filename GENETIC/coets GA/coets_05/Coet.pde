@@ -126,4 +126,22 @@ class Coet {
   PVector[] getGenes(){
     return this.genes;
   }
+  
+  // Aplica mutació als gens
+  void mutate(float taxaMutacio) {
+    // Per cada gen
+    for (int i = 0; i < genes.length; i++) {
+      // Si hi ha mutació
+      if (taxaMutacio < random(1)) {
+        
+        // Angle aleatori
+        float angle = random(TWO_PI);
+        
+        // Modificació del gen i-èssim
+        genes[i] = new PVector(cos(angle), sin(angle));
+        genes[i].mult(random(0, maxforce));
+        
+      }
+    }
+  }
 }

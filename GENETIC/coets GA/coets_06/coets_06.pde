@@ -13,6 +13,9 @@ Coet[] fills;
 // Número de generació
 int generacio;
 
+// Taxa de mutació
+float taxaMutacio = 0.01;
+
 // Index del millor coet
 int millorCoet;
 
@@ -49,16 +52,24 @@ void draw() {
       // Mou i visualitza el coet i-èssim
       coets[i].run(target, i);
     }
-  } else {
+  } 
+  // Si no hi ha hit i esgotat temps
+  else if(!hitTarget && time>=lifetime) {
     
     // Avalua els coets
     avaluacio();
     
-    // Selecciona el(s) millor(s)
+    // Selecciona els millors (proporcionalment)
     seleccio();
     
-    // Creuament del(s) millor(s)
+    // Creuament dels millors (proporcionalment)
     creuament();
+    
+    // Mutació dels gens dels fills
+    mutacio();
+    
+    // Seguent generació
+    seguentGeneracio();
 
     fill(0); 
     textSize(18); 
@@ -68,6 +79,9 @@ void draw() {
     // Dibuixa el millor coet
     coets[millorCoet].display(millorCoet);
 
+  }
+  // Si hi ha hit
+  else {
     // Atura el bucle
     noLoop();
   }
@@ -103,6 +117,9 @@ void avaluacio() {
     coets[i].fitness(target);
   }
   millorCoet = getMillorCoet();
+  if(coets[millorCoet].fitness < 100){
+    hitTarget = true;
+  }
 }
 
 // Selecciona els millors
@@ -175,6 +192,24 @@ void creuament(){
       // Crea el fill i-èssim a partir dels gens
       fills[i] = new Coet(start, gensFill);
     }
+}
+
+void mutacio(){
+   // Per cada coet fill
+   for (int i = 0; i < fills.length; i++) {
+     // Aplica mutació
+     fills[i].mutate(taxaMutacio);
+   }
+}
+
+void seguentGeneracio(){
+   // Copiam els fills a la població
+   for (int i = 0; i < fills.length; i++) {
+     coets[i] = fills[i];
+   }
+   hitTarget = false;
+   time = 0;
+   generacio++;
 }
 
 void mousePressed() {

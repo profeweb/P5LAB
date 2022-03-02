@@ -13,6 +13,9 @@ Coet[] fills;
 // Número de generació
 int generacio;
 
+// Taxa de mutació
+float taxaMutacio = 0.75;
+
 // Index del millor coet
 int millorCoet;
 
@@ -54,11 +57,14 @@ void draw() {
     // Avalua els coets
     avaluacio();
     
-    // Selecciona el(s) millor(s)
+    // Selecciona els millors (proporcionalment)
     seleccio();
     
-    // Creuament del(s) millor(s)
+    // Creuament dels millors (proporcionalment)
     creuament();
+    
+    // Mutació dels gens dels fills
+    mutacio();
 
     fill(0); 
     textSize(18); 
@@ -175,6 +181,14 @@ void creuament(){
       // Crea el fill i-èssim a partir dels gens
       fills[i] = new Coet(start, gensFill);
     }
+}
+
+void mutacio(){
+   // Per cada coet fill
+   for (int i = 0; i < fills.length; i++) {
+     // Aplica mutació
+     fills[i].mutate(taxaMutacio);
+   }
 }
 
 void mousePressed() {
