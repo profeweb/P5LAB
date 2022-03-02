@@ -4,23 +4,19 @@ int numColors = 20;
 int generacio = 0;
 // Número d'Elements a Seleccionar
 int numSelecs = 5;
-// Taxa de mutació [0,1]
-float tasaMutacio = 0.75;
 
 // Població inicial
 Color[] poblacio;
-// Descendència resultant
-Color[] childhood;
+
 // Avaluacions de la població
 float[] avaluacio;
+
 // Posicions dels millors exemplars
 int[] posMillors;
+
 // Millors exemplars seleccionats
 Color[] millors;
-// Exemplars creuats
-Color[] creuats;
-// Casos on s'aplica mutació
-boolean[] mutats;
+
 
 float wItem, hItem;
 boolean acabar = false;
@@ -62,8 +58,6 @@ void init(int num) {
 
   wItem = (width - 10) / (float)poblacio.length;
   hItem = 80;
-
-  childhood = new Color[num];
 }
 
 // Avalua la Població
@@ -85,28 +79,10 @@ void selecciona() {
 
 // Creuament dels millors exemplars
 void creua() {
-  creuats = new Color[poblacio.length];
-  for (int i=0; i<creuats.length; i++) {
-    Color c1 = millors[i%millors.length];
-    Color c2 = millors[(i+1)%millors.length];
-    creuats[i] = c1.creua(c2);
-  }
 }
 
 // Mutació
 void muta() {
-  mutats = new boolean[poblacio.length];
-  childhood = new Color[poblacio.length];
-  for (int i=0; i<poblacio.length; i++) {
-    float r = random(1);
-    if (r<tasaMutacio) {
-      mutats[i] = true;
-      childhood[i] = creuats[i].muta();
-    } else {
-      mutats[i] = false;
-      childhood[i] = creuats[i];
-    }
-  }
 }
 
 // Comprovació d'acabament
@@ -181,15 +157,6 @@ void display() {
   
   text("Selecció", width/2, 285);
   displayMillors(288);
-  
-  text("Creuament", width/2, 385);
-  displayColors(creuats, 390);
-  
-  text("Mutació", width/2, 495);
-  displayMutats(500);
-  
-  text("Descendents", width/2, 605);
-  displayColors(childhood, 610);
 
   if (acabar) {
     fill(0); 
@@ -232,29 +199,10 @@ void displayMillors(float y) {
   }
 }
 
-void displayMutats(float y) {
-  for (int i=0; i<mutats.length; i++) {
-    pushStyle();
-    color c = mutats[i] ? color(255, 0, 0) : color(255);
-    fill(c); rectMode(CORNER);
-    rect(i*wItem + 5, y, wItem, hItem);
-    popStyle();
-  }
-}
-
-void setNextGeneration() {
-  for (int i=0; i<creuats.length; i++) {
-    poblacio[i] = childhood[i];
-  }
-}
 
 void keyPressed() {
   if (keyCode==RIGHT) {
-    // Si no hem acabat, passar a la seguent generació
-    if (!acabar) {
-      generacio++;
-      setNextGeneration();
-      loop();
-    }
+    init(numColors);
+    loop();
   }
 }

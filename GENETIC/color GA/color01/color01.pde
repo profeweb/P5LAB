@@ -92,11 +92,7 @@ void displayColors(Color[] array, float y) {
 
 void keyPressed() {
   if (keyCode==RIGHT) {
-    // Si no hem acabat, passar a la seguent generació
-    if (!acabar) {
-      generacio++;
       init(numColors);
       loop();
-    }
   }
 }
