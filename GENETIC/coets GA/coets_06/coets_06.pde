@@ -1,5 +1,6 @@
 // Número d'elements
-int numCoets = 10;
+int numCoets = 50;
+int numHits = 0;
 
 // Pobació de coets
 Coet[] coets;
@@ -89,7 +90,11 @@ void draw() {
   fill(0); 
   textSize(18); 
   textAlign(LEFT);
-  text("Life: "+ time, 100, 100);
+  text("Life: "+ time, 50, 100);
+  text("Generation: "+ generacio, 50, 130);
+  text("Population: "+ numCoets, 50, 160);
+  text("Hits: "+ numHits, 50, 190);
+  text("Mutació: "+ taxaMutacio, 50, 220);
 
   // Dibuixa destí
   ellipse(target.x, target.y, 50, 50);
@@ -113,8 +118,12 @@ void init(int num) {
 
 // Avalua els coets
 void avaluacio() {
+  numHits = 0;
   for (int i = 0; i < coets.length; i++) {
     coets[i].fitness(target);
+    if(coets[i].checkHit(target)){
+      numHits++;
+    }
   }
   millorCoet = getMillorCoet();
   if(coets[millorCoet].fitness < 100){
@@ -213,9 +222,6 @@ void seguentGeneracio(){
 }
 
 void mousePressed() {
-  // Resetea població
-  init(numCoets);
-  
-  // Abilita bucle
-  loop();
+  // Canvia posició de Target
+  target = new PVector(mouseX, mouseY);
 }

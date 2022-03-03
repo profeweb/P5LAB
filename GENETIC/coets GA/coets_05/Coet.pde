@@ -132,7 +132,7 @@ class Coet {
     // Per cada gen
     for (int i = 0; i < genes.length; i++) {
       // Si hi ha mutació
-      if (taxaMutacio < random(1)) {
+      if (taxaMutacio > random(1)) {
         
         // Angle aleatori
         float angle = random(TWO_PI);

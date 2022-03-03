@@ -79,6 +79,11 @@ class Coet {
     } 
   }
   
+  boolean checkHit(PVector target){
+    float d = dist(pos.x, pos.y, target.x, target.y);
+    return (d < 25 + r);
+  }
+  
   // Funció de Fitness Avaluació
   void fitness(PVector target) {
     float d = dist(pos.x, pos.y, target.x, target.y);
@@ -132,7 +137,7 @@ class Coet {
     // Per cada gen
     for (int i = 0; i < genes.length; i++) {
       // Si hi ha mutació
-      if (taxaMutacio < random(1)) {
+      if (taxaMutacio > random(1)) {
         
         // Angle aleatori
         float angle = random(TWO_PI);
