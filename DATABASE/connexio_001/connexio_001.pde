@@ -10,7 +10,7 @@ void setup(){
   
     // Paràmetres de la connexió
     String user     = "root";
-    String pass     = "mitjanit3";   
+    String pass     = "12345";   
     String database = "trivio";
     
     // Establim la connexió
@@ -20,13 +20,14 @@ void setup(){
     if (msql.connect()){
       
         // Sol·lictam una query
-        msql.query( "SELECT * FROM unitat" );
+        msql.query( "SELECT nom FROM unitat WHERE numero=3" );
         
         // Recorrem les files de la resposta a la query
         while (msql.next()){
             String s = msql.getString("nom");   // Agafam la columna nom
-            int n = msql.getInt("numero");      // Agafam la columna numero
-            println(n + "   " + s);
+            //int n = msql.getInt("numero");      // Agafam la columna numero
+            //println(n + "   " + s);
+            println(s);
         }
     }
     else {

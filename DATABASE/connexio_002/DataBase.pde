@@ -3,8 +3,8 @@
 MySQL msql;
 
 // Paràmetres de la connexió
-String user     = "root";
-String pass     = "mitjanit3";   
+String user     = "admin";
+String pass     = "12345";   
 String database = "trivio";
 
 
