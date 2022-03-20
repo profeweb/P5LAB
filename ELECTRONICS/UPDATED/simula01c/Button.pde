@@ -4,7 +4,6 @@ class Button {
   
  // Propietats d'un botó:
  float x, y, w, h;  // Posició i dimensions
- 
  // Colors de contorn, farciment, actiu i desactiu
  color fillColor, strokeColor;
  color fillColorOver, fillColorDisabled;
@@ -20,7 +19,7 @@ class Button {
    this.h = h;
    this.enabled = true;
    fillColor = color(155, 55, 155);
-   fillColorOver = color(155, 155, 155);
+   fillColorOver = color(255, 55, 155);
    fillColorDisabled = color(150);
    strokeColor = color(0);
  }
