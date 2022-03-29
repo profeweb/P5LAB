@@ -15,7 +15,7 @@ void setup(){
   
   // Num Files (Paisos d'Europa)
   int np = getNumRowsPaisosContinente(2);
-  println("Num Paisos d'Europa:"+np);
+  println("\nNum Paisos d'Europa:"+np);
   
   // Paisos de Europa
   String[][] dades2 = getInfoTaulaPaisos(2);

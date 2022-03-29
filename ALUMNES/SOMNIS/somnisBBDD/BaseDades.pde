@@ -34,6 +34,14 @@ int getNumRowsTaula(String nomTaula){
   return numRows;
 }
 
+// Número de Somnis de l'usuari ID
+int getNumRowsSuenosUsuario(int id){
+  msql.query( "SELECT COUNT(*) AS n FROM sueño WHERE usuario='"+id+"'");
+  msql.next();
+  int numRows = msql.getInt("n");
+  return numRows;
+}
+
 // Obté la informació d'una taula Etiqueta
 String[][] getInfoTaulaEtiqueta(){
   int numFil = getNumRowsTaula("etiqueta");
@@ -44,6 +52,25 @@ String[][] getInfoTaulaEtiqueta(){
   while (msql.next()){
       info[nr][0] = String.valueOf(msql.getInt("id"));
       info[nr][1] = msql.getString("nombre");
+      nr++;
+  }
+  return info;
+}
+
+// Dades de Somnis d'un usuari
+String[][] getInfoTaulaSomnisUsuari(int idc){
+  int numFil = getNumRowsSuenosUsuario(idc);
+  int numCol = 6;
+  String[][] info = new String[numFil][numCol];
+  int nr=0;
+  msql.query( "SELECT * FROM sueño WHERE usuario='"+idc+"'" );
+  while (msql.next()){
+      info[nr][0] = String.valueOf(msql.getInt("id"));
+      info[nr][1] = msql.getString("fecha");
+      info[nr][2] = msql.getString("lucidez");
+      info[nr][3] = msql.getString("descripcion");
+      info[nr][4] = String.valueOf(msql.getInt("tipo"));
+      info[nr][5] = String.valueOf(msql.getInt("usuario"));
       nr++;
   }
   return info;
