@@ -7,9 +7,13 @@ void setup(){
   int n = getNumRowsTaula("etiqueta");
   println(n);
   
-  // Dades d'una taula
-  String[][] dades = getInfoTaulaEtiqueta();
-  printArray2D(dades);
+  // Dades d'una taula Etiqueta
+  String[][] dades1 = getInfoTaulaEtiqueta();
+  printArray2D(dades1);
+  
+  // Dades d'una taula Categoria
+  String[][] dades2 = getInfoTaulaCategoria();
+  printArray2D(dades2);
 }
 
 void draw(){

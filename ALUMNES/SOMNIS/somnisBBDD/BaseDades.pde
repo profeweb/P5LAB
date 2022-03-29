@@ -34,13 +34,28 @@ int getNumRowsTaula(String nomTaula){
   return numRows;
 }
 
-// Obté la informació d'una taula
+// Obté la informació d'una taula Etiqueta
 String[][] getInfoTaulaEtiqueta(){
   int numFil = getNumRowsTaula("etiqueta");
   int numCol = 2;
   String[][] info = new String[numFil][numCol];
   int nr=0;
   msql.query( "SELECT * FROM etiqueta" );
+  while (msql.next()){
+      info[nr][0] = String.valueOf(msql.getInt("id"));
+      info[nr][1] = msql.getString("nombre");
+      nr++;
+  }
+  return info;
+}
+
+// Obté la informació d'una taula Categoria
+String[][] getInfoTaulaCategoria(){
+  int numFil = getNumRowsTaula("categoria");
+  int numCol = 2;
+  String[][] info = new String[numFil][numCol];
+  int nr=0;
+  msql.query( "SELECT * FROM categoria" );
   while (msql.next()){
       info[nr][0] = String.valueOf(msql.getInt("id"));
       info[nr][1] = msql.getString("nombre");
