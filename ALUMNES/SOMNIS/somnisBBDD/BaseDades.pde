@@ -33,3 +33,28 @@ int getNumRowsTaula(String nomTaula){
   int numRows = msql.getInt("n");
   return numRows;
 }
+
+// Obté la informació d'una taula
+String[][] getInfoTaulaEtiqueta(){
+  int numFil = getNumRowsTaula("etiqueta");
+  int numCol = 2;
+  String[][] info = new String[numFil][numCol];
+  int nr=0;
+  msql.query( "SELECT * FROM etiqueta" );
+  while (msql.next()){
+      info[nr][0] = String.valueOf(msql.getInt("id"));
+      info[nr][1] = msql.getString("nombre");
+      nr++;
+  }
+  return info;
+}
+
+// Imprimeix contingut array 2D
+void printArray2D(String[][] dades){
+  for(int f=0; f<dades.length; f++){
+    for(int c=0; c<dades[f].length; c++){
+      print(dades[f][c]+" \t ");
+    }
+    println();
+  }
+}
