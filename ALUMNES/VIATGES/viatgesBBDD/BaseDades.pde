@@ -48,3 +48,13 @@ String[][] getInfoTaulaContinente(){
   }
   return info;
 }
+
+// Imprimeix contingut array 2D
+void printArray2D(String[][] dades){
+  for(int f=0; f<dades.length; f++){
+    for(int c=0; c<dades[f].length; c++){
+      print(dades[f][c]+" \t ");
+    }
+    println();
+  }
+}
