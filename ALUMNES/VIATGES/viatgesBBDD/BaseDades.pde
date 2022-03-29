@@ -34,6 +34,14 @@ int getNumRowsTaula(String nomTaula){
   return numRows;
 }
 
+// Número de Paisos del Continente ID
+int getNumRowsPaisosContinente(int id){
+  msql.query( "SELECT COUNT(*) AS n FROM pais WHERE continente_id='"+id+"'");
+  msql.next();
+  int numRows = msql.getInt("n");
+  return numRows;
+}
+
 // Obté la informació d'una taula
 String[][] getInfoTaulaContinente(){
   int numFil = getNumRowsTaula("continente");
@@ -47,6 +55,36 @@ String[][] getInfoTaulaContinente(){
       nr++;
   }
   return info;
+}
+
+// Dades de Països d'un continent
+String[][] getInfoTaulaPaisos(int idc){
+  int numFil = getNumRowsPaisosContinente(idc);
+  int numCol = 2;
+  String[][] info = new String[numFil][numCol];
+  int nr=0;
+  msql.query( "SELECT id, nombre FROM pais WHERE continente_id='"+idc+"'" );
+  while (msql.next()){
+      info[nr][0] = String.valueOf(msql.getInt("id"));
+      info[nr][1] = msql.getString("nombre");
+      nr++;
+  }
+  return info;
+}
+
+// Retorna ID del continente
+int getIdContinente(String n){
+  msql.query( "SELECT id FROM continente WHERE nombre='"+n+"'" );
+  msql.next();
+  int id = msql.getInt("id");
+  return id;
+}
+
+String getNombreContinente(int id){
+  msql.query( "SELECT nombre FROM continente WHERE id='"+id+"'" );
+  msql.next();
+  String n = msql.getString("nombre");
+  return n;
 }
 
 // Imprimeix contingut array 2D
