@@ -2,7 +2,7 @@ void setup(){
   size(800,800);
   connexioBBDD();
   
-  int n = getNumRowsTaula("pais");
+  int n = getNumRowsTaula("continente");
   println(n);
 }
 

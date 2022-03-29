@@ -33,3 +33,18 @@ int getNumRowsTaula(String nomTaula){
   int numRows = msql.getInt("n");
   return numRows;
 }
+
+// Obté la informació d'una taula
+String[][] getInfoTaulaContinente(){
+  int numFil = getNumRowsTaula("continente");
+  int numCol = 2;
+  String[][] info = new String[numFil][numCol];
+  int nr=0;
+  msql.query( "SELECT * FROM continente" );
+  while (msql.next()){
+      info[nr][0] = String.valueOf(msql.getInt("id"));
+      info[nr][1] = msql.getString("nombre");
+      nr++;
+  }
+  return info;
+}
