@@ -9,7 +9,6 @@ String user     = "admin";
 String pass     = "12345";   
 String database = "libros";
 
-
 // Connexió
 void connexioBBDD(){
     

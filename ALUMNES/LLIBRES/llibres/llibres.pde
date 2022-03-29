@@ -1,19 +1,19 @@
 void setup(){
   size(800,800);
   
-  // Connexió
+  // Connexió a la BBDD (Libros)
   connexioBBDD();
   
-  // Número de files d'una taula
+  // Número de files d'una taula (Editorial)
 
   
-  // Dades d'una taula
+  // Dades d'una taula (Editorial)
 
   
-  // Num Files (Llibres d'un determinat Editorial)
+  // Num. Llibres d'un editorial determinat (p.ex: ANAYA).
   
   
-  // Llibres d'Editorial ANAYA
+  // Dades dels Llibres d'un editorial determinat (p.ex: ANAYA).
   
 }
 
