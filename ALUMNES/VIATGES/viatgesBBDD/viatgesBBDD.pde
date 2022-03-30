@@ -22,6 +22,9 @@ void setup(){
   println("\nDades Taula Pais (2 - Europa):");
   printArray2D(dades2);
   
+  // Insereix un nou Lugar
+  insertLugar("Museo Reina Sofia", "Museo de Arte Contemporaneo...", "Madrid");
+  
 }
 
 void draw(){

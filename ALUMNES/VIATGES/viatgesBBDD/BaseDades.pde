@@ -96,3 +96,34 @@ void printArray2D(String[][] dades){
     println();
   }
 }
+
+// Retorna ID de la ciudad
+int getIdCiudad(String n){
+  msql.query( "SELECT id FROM ciudad WHERE nombre='"+n+"'" );
+  msql.next();
+  int id = msql.getInt("id");
+  return id;
+}
+
+// Insereix dades d'un Lugar
+void insertLugar(String n, String d, String c){
+  int idc = getIdCiudad(c);
+  String q= "INSERT INTO lugar (id, nombre, descripcion, ciudad) VALUES (NULL, '"+n+"', '"+d+"', '"+idc+"')";
+  msql.query(q);
+  println("INSERT OK! :)");
+}
+
+// Update dades d'un Lugar ID
+void updateLugar(int id, String n, String d, String c){
+  int idc = getIdCiudad(c);
+  String q= "UPDATE lugar SET nombre='"+n+"', descripcion='"+d+"' ciudad='"+idc+"' WHERE id='"+id+"'";
+  msql.query(q);
+  println("UPDATE OK! :)");
+}
+
+// Elimina dades d'un Lugar ID
+void deleteLugar(int id){
+  String q= "DELETE FROM lugar WHERE id='"+id+"'";
+  msql.query(q);
+  println("DELETE OK! :)");
+}
