@@ -33,18 +33,24 @@ int getNumRowsTable(String nomTaula) {
 }
 
 
-// Número de L del Continente ID
+// Número de Autors de la nacionalitat
+int getNumRowsAutorNacionalitat(String pais){
+  msql.query("SELECT COUNT(*) AS n FROM autor WHERE pais LIKE '"+pais+"'");
+  msql.next();
+  int numRows = msql.getInt("n");
+  return numRows;
+}
 
 
 // Obté la informació d'una taula (Editorial)
 String[][] getInfoTaulaEditorial() {
 
-  int numFiles = getNumRowsTable("editoral");
+  int numFiles = getNumRowsTable("editorial");
   int numCols = 2;
 
   String[][] info = new String[numFiles][numCols];
 
-  msql.query( "SELECT * FROM editorial");
+  msql.query("SELECT * FROM editorial");
   int nr=0;
   while (msql.next()) {
     info[nr][0] = String.valueOf(msql.getInt("id"));
@@ -55,7 +61,7 @@ String[][] getInfoTaulaEditorial() {
   return info;
 }
 
-// Dades de tots els Llibres d'una editorial concreta
+// Dades de tots els Autors d'una nacionalitat concreta
 
 
 // Retorna ID de l'editorial
