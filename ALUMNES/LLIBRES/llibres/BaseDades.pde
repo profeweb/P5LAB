@@ -34,7 +34,7 @@ int getNumRowsTable(String nomTaula) {
 
 
 // Número de Autors de la nacionalitat
-int getNumRowsAutorNacionalitat(String pais){
+int getNumRowsAutorNacionalitat(String pais) {
   msql.query("SELECT COUNT(*) AS n FROM autor WHERE pais LIKE '"+pais+"'");
   msql.next();
   int numRows = msql.getInt("n");
@@ -64,10 +64,31 @@ String[][] getInfoTaulaEditorial() {
 // Dades de tots els Autors d'una nacionalitat concreta
 
 
-// Retorna ID de l'editorial
+// Retorna ID del genere
+int getIdFromGenere(String nom){
+  msql.query( "SELECT id FROM genero WHERE nombre='"+nom+"'" );
+  msql.next();
+  int numRows = msql.getInt("id");
+  return numRows;
+}
+
+// Retorna ID del genere
+String getNombreFromGenere(int id){
+  msql.query( "SELECT nombre FROM genero WHERE id='"+id+"'" );
+  msql.next();
+  return msql.getString("nombre");
+}
 
 
 // Retorna Nom de l'editorial
 
 
 // Imprimeix contingut array 2D
+void printArray2D(String[][] dades) {
+  for (int f=0; f<dades.length; f++) {
+    for (int c=0; c<dades[f].length; c++) {
+      print(dades[f][c]+"\t");
+    }
+    println();
+  }
+}

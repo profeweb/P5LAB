@@ -10,18 +10,20 @@ void setup(){
   
   // Dades d'una taula (Editorial)
   String[][] dades = getInfoTaulaEditorial();
-  for(int f=0; f<dades.length; f++){
-    for(int c=0; c<dades[f].length; c++){
-      print(dades[f][c]+"\t");
-    }
-    println();
-  }
+  printArray2D(dades);
+
   
   // Num. Autor d'una nacionalitat determinada (p.ex: España).
   int na = getNumRowsAutorNacionalitat("España");
   println("Num.Autors España:"+na);
   
-  // Dades dels Llibres d'un editorial determinat (p.ex: ANAYA).
+  // Id del genere novela
+  int idn = getIdFromGenere("novela");
+  println("\nId del genere novela:"+idn);
+  
+  // Nom del genere amb id 2
+  String ng = getNombreFromGenere(2);
+  println("\nNom del genere 2:"+ng);
   
 }
 
