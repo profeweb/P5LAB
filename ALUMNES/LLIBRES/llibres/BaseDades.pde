@@ -10,29 +10,50 @@ String pass     = "12345";
 String database = "libros";
 
 // Connexió
-void connexioBBDD(){
-    
-    msql = new MySQL( this, "localhost", database, user, pass );
-    
-    // Si la connexió s'ha establert
-    if (msql.connect()){
-      // La connexió s'ha establert correctament
-      println("Connexió establerta :)");
-    }
-    else {
-      // La connexió ha fallat!!!
-      println("Error de Connexió :(");
-    }
+void connexioBBDD() {
+
+  msql = new MySQL( this, "localhost", database, user, pass );
+
+  // Si la connexió s'ha establert
+  if (msql.connect()) {
+    // La connexió s'ha establert correctament
+    println("Connexió establerta :)");
+  } else {
+    // La connexió ha fallat!!!
+    println("Error de Connexió :(");
+  }
 }
 
 // Obté el número de files de la taula (Editorial)
+int getNumRowsTable(String nomTaula) {
+  msql.query( "SELECT COUNT(*) AS n FROM %s", nomTaula );
+  msql.next();
+  int numRows = msql.getInt("n");
+  return numRows;
+}
 
 
 // Número de L del Continente ID
 
 
 // Obté la informació d'una taula (Editorial)
+String[][] getInfoTaulaEditorial() {
 
+  int numFiles = getNumRowsTable("editoral");
+  int numCols = 2;
+
+  String[][] info = new String[numFiles][numCols];
+
+  msql.query( "SELECT * FROM editorial");
+  int nr=0;
+  while (msql.next()) {
+    info[nr][0] = String.valueOf(msql.getInt("id"));
+    info[nr][1] = msql.getString("nombre");
+    nr++;
+  }
+
+  return info;
+}
 
 // Dades de tots els Llibres d'una editorial concreta
 

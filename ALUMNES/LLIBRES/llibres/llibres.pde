@@ -5,7 +5,8 @@ void setup(){
   connexioBBDD();
   
   // Número de files d'una taula (Editorial)
-
+  int nf = getNumRowsTable("editorial");
+  println("Num.Files Editorial:"+nf);
   
   // Dades d'una taula (Editorial)
 
