@@ -100,3 +100,16 @@ void printArray2D(String[][] dades){
     println();
   }
 }
+
+int getIdCategoria(String n){
+}
+
+// Inserta dades a Somnis
+//INSERT INTO sueño (id,fecha,lucidez,descripcion,tipo,usuario) 
+// VALUES (NULL, '2022-03-19', 'N', 'Resumen del sueño', '1', '1');
+void insertSomni(String f, String l, String d, String t, String u){
+  int idt = getIdCategoria(t);
+  int idu = getIdUsuario(u);
+  String q="INSERT INTO sueño (id,fecha,lucidez,descripcion,tipo,usuario)VALUES (NULL, '"+f+"', '"+l+"', '"+d+"', '"+idt+"', '"+idu+"')";
+  msql.query(q);
+}
