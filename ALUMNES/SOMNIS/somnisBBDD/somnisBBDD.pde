@@ -22,6 +22,15 @@ void setup(){
   // Dades d'una taula Sueño d'un Usuari
   String[][] dades3 = getInfoTaulaSomnisUsuari(1);
   printArray2D(dades3);
+  
+  // Inserir somni
+  //insertSomni("2022-03-19","N","Resumen del sueño", "Pesadilla", "Paco");
+
+  // Update somni
+  //updateSomni(3,"2022-05-24","S","Resumen del sueño2", "Pesadilla", "Paco");
+  
+  // Delete somni
+  //deleteSomni(4);
 }
 
 void draw(){
