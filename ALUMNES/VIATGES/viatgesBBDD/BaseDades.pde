@@ -105,10 +105,19 @@ int getIdCiudad(String n){
   return id;
 }
 
+// Retorna ID del lugar
+int getIdLugar(String n){
+  msql.query( "SELECT id FROM lugar WHERE nombre='"+n+"'" );
+  msql.next();
+  int id = msql.getInt("id");
+  return id;
+}
+
 // Insereix dades d'un Lugar
 void insertLugar(String n, String d, String c){
   int idc = getIdCiudad(c);
   String q= "INSERT INTO lugar (id, nombre, descripcion, ciudad) VALUES (NULL, '"+n+"', '"+d+"', '"+idc+"')";
+  println("INSERT: "+q);
   msql.query(q);
   println("INSERT OK! :)");
 }
@@ -116,7 +125,8 @@ void insertLugar(String n, String d, String c){
 // Update dades d'un Lugar ID
 void updateLugar(int id, String n, String d, String c){
   int idc = getIdCiudad(c);
-  String q= "UPDATE lugar SET nombre='"+n+"', descripcion='"+d+"' ciudad='"+idc+"' WHERE id='"+id+"'";
+  String q= "UPDATE lugar SET nombre='"+n+"', descripcion='"+d+"', ciudad='"+idc+"' WHERE id='"+id+"'";
+  println("UPDATE: "+q);
   msql.query(q);
   println("UPDATE OK! :)");
 }
@@ -124,6 +134,7 @@ void updateLugar(int id, String n, String d, String c){
 // Elimina dades d'un Lugar ID
 void deleteLugar(int id){
   String q= "DELETE FROM lugar WHERE id='"+id+"'";
+  println("DELETE: "+q);
   msql.query(q);
   println("DELETE OK! :)");
 }

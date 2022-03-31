@@ -25,6 +25,16 @@ void setup(){
   String ng = getNombreFromCategoria(2);
   println("\nNom de la categoria 2:"+ng);
   
+  // Inserir nova categoria
+  
+  // Inserir nou component
+  
+  // Actualitzar categoria
+  
+  // Actualitzar component
+  
+  // Eliminar component
+  
 }
 
 void draw(){

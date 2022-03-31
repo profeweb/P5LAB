@@ -23,8 +23,17 @@ void setup(){
   printArray2D(dades2);
   
   // Insereix un nou Lugar
-  insertLugar("Museo Reina Sofia", "Museo de Arte Contemporaneo...", "Madrid");
+  //insertLugar("Museo Reina Sofia", "Museo de Arte Contemporaneo...", "Madrid");
+  //insertLugar("Nombre", "Descripción", "Madrid");
   
+  // Modifica un Lugar
+  int idl = getIdLugar("Paseo del Prado");
+  println("\nId del Paseo del Prado:"+idl);
+  updateLugar(idl,"Paseo del Prado","Paseo Precioso...","Madrid");
+  
+  // Elimina un Lugar
+  int idl2 = getIdLugar("Nombre");
+  //deleteLugar(idl2);
 }
 
 void draw(){

@@ -99,4 +99,4 @@ void printArray2D(String[][] dades) {
 
 // Actualizar componente
 
-// Eliminar categoria
+// Eliminar component
