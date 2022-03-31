@@ -16,7 +16,7 @@ void setup(){
   size(800, 800);
   
   // Constructor de la Llista de Link
-  l = new ListLink(100, 100, 300, 600);
+  l = new ListLink(3,100, 100, 300, 600);
   l.setData(info);
   
   // Creació de Link a navegador
@@ -36,6 +36,15 @@ void draw(){
 // Comprova clicks de mouse
 void mousePressed(){
   l.checkClicks();
+}
+
+void keyPressed(){
+  if(keyCode==LEFT){
+    l.prevPage();
+  }
+  else if(keyCode==RIGHT){
+    l.nextPage();
+  }
 }
 
 // Actualitza el cursor
