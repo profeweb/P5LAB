@@ -32,10 +32,13 @@ void setup(){
   //insertComp("Desc", "Recom", 125.33, "foto.jpg", "Intel", "Procesador");
   
   // Actualitzar categoria
+  updateCategoria(7, "Controlador MIDI");
   
   // Actualitzar component
   
+  
   // Eliminar component
+  deleteCategoria(6);
   
 }
 

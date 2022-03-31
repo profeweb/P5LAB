@@ -118,8 +118,19 @@ void insertComp(String d, String r, float p, String f, String m, String c){
 }
 
 // Actualizar categoria
-void updateCategoria
+void updateCategoria(int idc, String n ){
+  String q = "UPDATE categoria SET nombre = '"+n+"' WHERE id ='"+ idc+"'";
+  println("UPDATE:"+q);
+  msql.query(q);
+  println("UPDATE OK");
+}
 
 // Actualizar componente
 
 // Eliminar component
+void deleteCategoria(int id){
+  String q = "DELETE FROM categoria WHERE id = '"+id+"'";
+  println("DELETE:"+q);
+  msql.query(q);
+  println("DELETE OK");
+}
