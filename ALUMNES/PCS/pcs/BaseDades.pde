@@ -73,6 +73,13 @@ int getIdFromCategoria(String nom){
   return numRows;
 }
 
+int getIdFromMarca(String nom){
+  msql.query( "SELECT id FROM marca WHERE nombre='"+nom+"'" );
+  msql.next();
+  int numRows = msql.getInt("id");
+  return numRows;
+}
+
 // Retorna Nom de la categoria
 String getNombreFromCategoria(int id){
   msql.query( "SELECT nombre FROM categoria WHERE id='"+id+"'" );
@@ -90,12 +97,28 @@ void printArray2D(String[][] dades) {
   }
 }
 
-
 // Insertar categoria
+// INSERT INTO categoria (id,nombre) VALUES (NULL,'Monitor');
+void insertCategoria(String n){
+  String q="INSERT INTO categoria (id,nombre) VALUES (NULL,'"+n+"')";
+  println("INSERT:"+q);
+  msql.query(q);
+  println("INSERT OK");
+}
 
 // Insertar componente
+void insertComp(String d, String r, float p, String f, String m, String c){
+  int idm = getIdFromMarca(m);
+  int idc = getIdFromCategoria(c);
+  String q="INSERT INTO componente (id,descripcion, recomendacion, precio, imagen, marca_id, categoria_id) VALUES (NULL, '"+d+"', '"+r+"', '"+p+"', '"+f+"', '"+idm+"', '"+idc+"')";
+  println("INSERT:"+q);
+  msql.query(q);
+  println("INSERT OK");
+
+}
 
 // Actualizar categoria
+void updateCategoria
 
 // Actualizar componente
 

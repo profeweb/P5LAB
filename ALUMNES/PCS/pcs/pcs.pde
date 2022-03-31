@@ -26,8 +26,10 @@ void setup(){
   println("\nNom de la categoria 2:"+ng);
   
   // Inserir nova categoria
+  //insertCategoria("Teclado");
   
   // Inserir nou component
+  //insertComp("Desc", "Recom", 125.33, "foto.jpg", "Intel", "Procesador");
   
   // Actualitzar categoria
   
