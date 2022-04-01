@@ -22,6 +22,11 @@ void setup(){
   println("\nDades Taula Pais (2 - Europa):");
   printArray2D(dades2);
   
+  // Dades d'una columna (nombre) d'una taula (continente)
+  String[] noms = getNomsContinents();
+  println("\nNoms Continents:");
+  printArray(noms);
+  
   // Insereix un nou Lugar
   //insertLugar("Museo Reina Sofia", "Museo de Arte Contemporaneo...", "Madrid");
   //insertLugar("Nombre", "Descripción", "Madrid");

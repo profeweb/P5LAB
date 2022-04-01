@@ -72,6 +72,19 @@ String[][] getInfoTaulaPaisos(int idc){
   return info;
 }
 
+// Noms dels continents en orde ascendent
+String[] getNomsContinents(){
+  int numFiles = getNumRowsTaula("continente");
+  String[] info = new String[numFiles];
+  int nr=0;
+  msql.query( "SELECT nombre FROM continente ORDER BY nombre ASC" );
+  while (msql.next()){
+      info[nr] = msql.getString("nombre");
+      nr++;
+  }
+  return info;
+}
+
 // Retorna ID del continente
 int getIdContinente(String n){
   msql.query( "SELECT id FROM continente WHERE nombre='"+n+"'" );
@@ -137,17 +150,4 @@ void deleteLugar(int id){
   println("DELETE: "+q);
   msql.query(q);
   println("DELETE OK! :)");
-}
-
-// Noms dels continents en orde ascendent
-String[] getNomsContinents(){
-  int numFiles = getNumRowsTaula("continente");
-  String[] info = new String[numFiles];
-  int nr=0;
-  msql.query( "SELECT nombre FROM continente ORDER BY nombre ASC" );
-  while (msql.next()){
-      info[nr] = msql.getString("nombre");
-      nr++;
-  }
-  return info;
 }
