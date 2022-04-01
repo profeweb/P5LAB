@@ -139,14 +139,14 @@ void deleteLugar(int id){
   println("DELETE OK! :)");
 }
 
-// Noms dels continents en orde ascendent
-String[] getNomsContinents(){
-  int numFiles = getNumRowsTaula("continente");
+// Dades de la columna c d'una taula t en orde ascendent
+String[] getColumn(String c, String t){
+  int numFiles = getNumRowsTaula(t);
   String[] info = new String[numFiles];
   int nr=0;
-  msql.query( "SELECT nombre FROM continente ORDER BY nombre ASC" );
+  msql.query( "SELECT "+c+" FROM "+t+" ORDER BY "+c+" ASC");
   while (msql.next()){
-      info[nr] = msql.getString("nombre");
+      info[nr] = msql.getString(c);
       nr++;
   }
   return info;

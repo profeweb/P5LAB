@@ -134,3 +134,16 @@ void deleteCategoria(int id){
   msql.query(q);
   println("DELETE OK");
 }
+
+// Dades de la columna c d'una taula t en orde ascendent
+String[] getColumn(String c, String t){
+  int numFiles = getNumRowsTable(t);
+  String[] info = new String[numFiles];
+  int nr=0;
+  msql.query( "SELECT "+c+" FROM "+t+" ORDER BY "+c+" ASC");
+  while (msql.next()){
+      info[nr] = msql.getString(c);
+      nr++;
+  }
+  return info;
+}

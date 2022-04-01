@@ -23,9 +23,14 @@ void setup(){
   printArray2D(dades2);
   
   // Dades d'una columna (nombre) d'una taula (continente)
-  String[] noms = getNomsContinents();
+  String[] nomsC = getColumn("nombre", "continente");
   println("\nNoms Continents:");
-  printArray(noms);
+  printArray(nomsC);
+  
+  // Dades d'una columna (nombre) d'una taula (continente)
+  String[] nomsP = getColumn("nombre", "pais");
+  println("\nNoms Paisos:");
+  printArray(nomsP);
   
   // Insereix un nou Lugar
   //insertLugar("Museo Reina Sofia", "Museo de Arte Contemporaneo...", "Madrid");
@@ -37,7 +42,7 @@ void setup(){
   updateLugar(idl,"Paseo del Prado","Paseo Precioso...","Madrid");
   
   // Elimina un Lugar
-  int idl2 = getIdLugar("Nombre");
+  //int idl2 = getIdLugar("Nombre");
   //deleteLugar(idl2);
 }
 
