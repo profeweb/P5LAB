@@ -56,6 +56,32 @@ String[][] getInfoTaulaEtiqueta() {
   return info;
 }
 
+// Noms de les etiquetes en orde ascendent
+String[] getNomsEtiquetes(){
+  int numFiles = getNumRowsTaula("etiqueta");
+  String[] info = new String[numFiles];
+  int nr=0;
+  msql.query( "SELECT nombre FROM etiqueta ORDER BY nombre ASC" );
+  while (msql.next()){
+      info[nr] = msql.getString("nombre");
+      nr++;
+  }
+  return info;
+}
+
+// Noms de les categories en orde ascendent
+String[] getNomsCategories(){
+  int numFiles = getNumRowsTaula("categoria");
+  String[] info = new String[numFiles];
+  int nr=0;
+  msql.query( "SELECT nombre FROM categoria ORDER BY nombre ASC" );
+  while (msql.next()){
+      info[nr] = msql.getString("nombre");
+      nr++;
+  }
+  return info;
+}
+
 // Dades de Somnis d'un usuari
 String[][] getInfoTaulaSomnisUsuari(int idc) {
   int numFil = getNumRowsSuenosUsuario(idc);
