@@ -272,3 +272,12 @@ String[] getFotosCiudad(String c){
   }
   return info;
 }
+
+// Comprueva usuario de BBDD
+boolean login(String u, String p){
+  String q= "SELECT COUNT(*) AS n FROM usuario "+
+            "WHERE nombre='"+u+"' AND password='"+p+"'";
+  msql.query(q);
+  msql.next();
+  return msql.getInt("n")==1;
+}

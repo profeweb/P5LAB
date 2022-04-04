@@ -79,6 +79,14 @@ void setup(){
   String[] nomsFC= getFotosCiudad("Madrid");
   println("\nNoms Fotos Ciudad:");
   printArray(nomsFC);
+  
+  // Login d'usuari OK
+  boolean l1 = login("admin", "12345");
+  println("Usuario logeado: "+l1);
+  
+  // Login d'usuari NO OK (password)
+  boolean l2 = login("admin", "abcdefgh");
+  println("Usuario logeado: "+l2);
 }
 
 void draw(){
