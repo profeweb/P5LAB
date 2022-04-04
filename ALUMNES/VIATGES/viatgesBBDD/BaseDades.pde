@@ -194,6 +194,10 @@ String[] getColumn(String c, String t){
 
 // SELECTS
 
+String[] getUsuarios(){
+  return getColumn("nombre", "usuario");
+}
+
 String[] getContinents(){
   return getColumn("nombre", "continente");
 }

@@ -87,6 +87,11 @@ void setup(){
   // Login d'usuari NO OK (password)
   boolean l2 = login("admin", "abcdefgh");
   println("Usuario logeado: "+l2);
+  
+  // Nombres de usuarios
+  String[] nomsU= getUsuarios();
+  println("\nNoms Usuaris:");
+  printArray(nomsU);
 }
 
 void draw(){
