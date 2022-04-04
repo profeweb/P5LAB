@@ -56,6 +56,12 @@ void setup(){
   String etiquetas = "'araña','calvo'";
   String buscar = "";
   String[][] infoS = filtraSuenos(email, categoria, etiquetas, buscar);
+  // Afegeix etiquetes:
+  for(int i=0; i<infoS.length; i++){
+    int ids = Integer.valueOf(infoS[i][0]);
+    infoS[i][7]=array2String(getEtiquetasSueno(ids));
+  }
+  
   println("\nSueños Filtrados:");
   printArray2D(infoS);
   

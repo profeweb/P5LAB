@@ -190,6 +190,19 @@ String[] getEtiquetasSueno(int ids) {
 }
 
 
+// ARRAY To STRING
+String array2String(String[] array){
+  String s = "";
+  for(int i=0; i<array.length; i++){
+    s+=array[i];
+    if(i<array.length-1){
+      s+=",";
+    }
+  }
+  return s;
+}
+
+
 // BÚSQUEDA
 
 // Número de Etiquetas del Sueño ID

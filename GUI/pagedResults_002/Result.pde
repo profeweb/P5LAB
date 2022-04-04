@@ -43,8 +43,12 @@ class Result {
    float imgH = h - 2*b;
    
    // Títol
-   fill(0); textSize(24); textAlign(CENTER);
-   text(title + "("+ fecha + ")", x + w/2, y + h/5);
+   fill(0); textSize(24); textAlign(LEFT);
+   text(title, x + 10, y + h/7);
+   
+   // Fecha
+   fill(0); textSize(16); textAlign(LEFT);
+   text(fecha, x + 10, y + 2*h/7);
    
    // Categoria
    fill(100, 100, 200); noStroke();
@@ -54,7 +58,7 @@ class Result {
    
    // Descripció
    fill(0);textSize(14); textAlign(LEFT);
-   text(description+" ...", x + b, y + h/3, w - b*2, h/4);
+   text(description+" ...", x + b, y + 3*h/7, w - b*2, h/4);
    
    float espaiLabels = 220;
     for(int i=0; i<min(4, this.labels.length); i++){
