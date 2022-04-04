@@ -41,6 +41,15 @@ int getNumRowsSuenosUsuario(int id) {
   return numRows;
 }
 
+
+// Número de Etiquetas del Sueño ID
+int getNumRowsEtiquetasSueno(int ids) {
+  msql.query( "SELECT COUNT(*) AS n FROM sueño s, etiquetasueño es, etiqueta e WHERE es.sueño_id=s.id AND es.etiqueta_id=e.id AND s.id='"+ids+"'");
+  msql.next();
+  int numRows = msql.getInt("n");
+  return numRows;
+}
+
 // Obté la informació d'una taula Etiqueta
 String[][] getInfoTaulaEtiqueta() {
   int numFil = getNumRowsTaula("etiqueta");
@@ -57,27 +66,27 @@ String[][] getInfoTaulaEtiqueta() {
 }
 
 // Noms de les etiquetes en orde ascendent
-String[] getNomsEtiquetes(){
+String[] getNomsEtiquetes() {
   int numFiles = getNumRowsTaula("etiqueta");
   String[] info = new String[numFiles];
   int nr=0;
   msql.query( "SELECT nombre FROM etiqueta ORDER BY nombre ASC" );
-  while (msql.next()){
-      info[nr] = msql.getString("nombre");
-      nr++;
+  while (msql.next()) {
+    info[nr] = msql.getString("nombre");
+    nr++;
   }
   return info;
 }
 
 // Noms de les categories en orde ascendent
-String[] getNomsCategories(){
+String[] getNomsCategories() {
   int numFiles = getNumRowsTaula("categoria");
   String[] info = new String[numFiles];
   int nr=0;
   msql.query( "SELECT nombre FROM categoria ORDER BY nombre ASC" );
-  while (msql.next()){
-      info[nr] = msql.getString("nombre");
-      nr++;
+  while (msql.next()) {
+    info[nr] = msql.getString("nombre");
+    nr++;
   }
   return info;
 }
@@ -150,7 +159,7 @@ void insertSomni(String f, String l, String d, String t, String u) {
   println("INSERT OK! :)");
 }
 
-void updateSomni(int ids, String f, String l, String d, String t, String u){
+void updateSomni(int ids, String f, String l, String d, String t, String u) {
   int idt = getIdCategoria(t);
   int idu = getIdUsuario(u);
   String q= "UPDATE sueño SET fecha='"+f+"', lucidez='"+l+"', descripcion='"+d+"', tipo='"+idt+"', usuario='"+idu+"' WHERE id='"+ids+"'";
@@ -164,4 +173,51 @@ void deleteSomni(int id) {
   println("DELETE: "+q);
   msql.query(q);
   println("DELETE OK! :)");
+}
+
+// SELECTS
+
+String[] getEtiquetasSueno(int ids) {
+  int numFiles = getNumRowsEtiquetasSueno(ids);
+  String[] info = new String[numFiles];
+  msql.query("SELECT e.nombre AS nombre FROM sueño s, etiquetasueño es, etiqueta e WHERE es.sueño_id=s.id AND es.etiqueta_id=e.id AND s.id='"+ids+"'" );
+  int nr=0;
+  while (msql.next()) {
+    info[nr] = msql.getString("nombre");
+    nr++;
+  }
+  return info;
+}
+
+
+// BÚSQUEDA
+
+// Número de Etiquetas del Sueño ID
+int getNumRowsFiltros(String email, String categoria, String etiquetas, String buscar) {
+  msql.query( "SELECT COUNT(DISTINCT s.id) AS n FROM sueño s, usuario u, categoria c, etiquetasueño es, etiqueta e WHERE u.id=s.usuario AND s.tipo=c.id AND es.sueño_id=s.id AND es.etiqueta_id=e.id AND c.nombre='"+categoria+"' AND u.email='"+email+"' AND (s.descripcion LIKE '%"+buscar+"%') AND e.nombre IN ("+etiquetas+")");
+  msql.next();
+  int numRows = msql.getInt("n");
+  return numRows;
+}
+
+String[][] filtraSuenos(String email, String categoria, String etiquetas, String buscar){
+  
+  int numFilas = getNumRowsFiltros(email, categoria, etiquetas, buscar);
+  int numCols = 8;
+  String[][] info = new String[numFilas][numCols];
+  msql.query("SELECT DISTINCT s.id AS ID, s.titulo As titulo, s.fecha AS fecha, s.descripcion AS resumen, s.lucidez AS lucidez, c.nombre AS categoria, u.email AS email FROM sueño s, usuario u, categoria c, etiquetasueño es, etiqueta e WHERE u.id=s.usuario AND s.tipo=c.id AND es.sueño_id=s.id AND es.etiqueta_id=e.id AND c.nombre='"+categoria+"' AND u.email='"+email+"' AND (s.descripcion LIKE '%"+buscar+"%') AND e.nombre IN ("+etiquetas+")");
+  int nr=0;
+  while(msql.next()){
+    info[nr][0] = String.valueOf(msql.getInt("id"));
+    info[nr][1] = msql.getString("titulo");
+    info[nr][2] = msql.getString("fecha");
+    info[nr][3] = msql.getString("resumen");
+    info[nr][4] = msql.getString("lucidez");
+    info[nr][5] = msql.getString("categoria");
+    info[nr][6] = msql.getString("email");
+    info[nr][7] = "";
+    nr++;
+  }
+  return info;
+
 }

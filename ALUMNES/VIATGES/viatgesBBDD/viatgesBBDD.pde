@@ -37,13 +37,48 @@ void setup(){
   //insertLugar("Nombre", "Descripción", "Madrid");
   
   // Modifica un Lugar
-  int idl = getIdLugar("Paseo del Prado");
-  println("\nId del Paseo del Prado:"+idl);
-  updateLugar(idl,"Paseo del Prado","Paseo Precioso...","Madrid");
+  //int idl = getIdLugar("Paseo del Prado");
+  //println("\nId del Paseo del Prado:"+idl);
+  //updateLugar(idl,"Paseo del Prado","Paseo Precioso...","Madrid");
   
   // Elimina un Lugar
   //int idl2 = getIdLugar("Nombre");
   //deleteLugar(idl2);
+  
+  // Noms dels continents
+  String[] nomsCs = getContinents();
+  println("\nNoms Continents:");
+  printArray(nomsCs);
+  
+  // Noms dels paisos d'un continent
+  String[] nomsPC = getPaisesContinente("Europa");
+  println("\nNoms Paisos Continent:");
+  printArray(nomsPC);
+  
+  // Noms de les ciutats d'un pais
+  String[] nomsCP = getCiutatsPais("España");
+  println("\nNoms Ciutats Pais:");
+  printArray(nomsCP);
+  
+  // Noms dels lugares d'una ciutat
+  String[] nomsLC = getLugaresCiudad("Madrid");
+  println("\nNoms Lugares Ciudad:");
+  printArray(nomsLC);
+  
+  // Noms dels tipos de rutes
+  String[] nomsTR= getTiposRutas();
+  println("\nNoms Tipus Rutes:");
+  printArray(nomsTR);
+  
+  // Fotos de un lugar
+  String[] nomsFL= getFotosLugar(1);
+  println("\nNoms Fotos Lugar:");
+  printArray(nomsFL);
+  
+  // Fotos de una ciudad
+  String[] nomsFC= getFotosCiudad("Madrid");
+  println("\nNoms Fotos Ciudad:");
+  printArray(nomsFC);
 }
 
 void draw(){

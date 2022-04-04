@@ -44,6 +44,21 @@ void setup(){
   
   // Delete somni
   //deleteSomni(4);
+  
+  // Etiquetes d'un Somni
+  String[] nomsES = getEtiquetasSueno(1);
+  println("\nEtiquetes Somni:");
+  printArray(nomsES);
+  
+  // Sueños filtrados
+  String email = "paco@gmail.com";
+  String categoria = "pesadilla";
+  String etiquetas = "'araña','calvo'";
+  String buscar = "";
+  String[][] infoS = filtraSuenos(email, categoria, etiquetas, buscar);
+  println("\nSueños Filtrados:");
+  printArray2D(infoS);
+  
 }
 
 void draw(){

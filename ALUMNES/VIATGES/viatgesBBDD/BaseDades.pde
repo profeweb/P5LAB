@@ -42,6 +42,37 @@ int getNumRowsPaisosContinente(int id){
   return numRows;
 }
 
+// Número de Ciudades del Pais ID
+int getNumRowsCiudadesPais(int id){
+  msql.query( "SELECT COUNT(*) AS n FROM ciudad WHERE pais='"+id+"'");
+  msql.next();
+  int numRows = msql.getInt("n");
+  return numRows;
+}
+
+// Número de Fotos del Lugar ID
+int getNumRowsFotosLugar(int idl){
+  msql.query( "SELECT COUNT(*) AS n FROM foto WHERE lugar='"+idl+"'");
+  msql.next();
+  int numRows = msql.getInt("n");
+  return numRows;
+}
+
+int getNumRowsFotosCiudad(int idc){
+  msql.query( "SELECT COUNT(*) AS n FROM foto f, lugar l, ciudad c WHERE l.id = f.lugar AND c.id=l.ciudad AND c.id='"+idc+"'");
+  msql.next();
+  int numRows = msql.getInt("n");
+  return numRows;
+}
+
+// Número de Lugares de la Ciudad ID
+int getNumRowsLugaresCiudad(int id){
+  msql.query( "SELECT COUNT(*) AS n FROM lugar WHERE ciudad='"+id+"'");
+  msql.next();
+  int numRows = msql.getInt("n");
+  return numRows;
+}
+
 // Obté la informació d'una taula
 String[][] getInfoTaulaContinente(){
   int numFil = getNumRowsTaula("continente");
@@ -75,6 +106,14 @@ String[][] getInfoTaulaPaisos(int idc){
 // Retorna ID del continente
 int getIdContinente(String n){
   msql.query( "SELECT id FROM continente WHERE nombre='"+n+"'" );
+  msql.next();
+  int id = msql.getInt("id");
+  return id;
+}
+
+// Retorna ID del pais
+int getIdPais(String n){
+  msql.query( "SELECT id FROM pais WHERE nombre='"+n+"'" );
   msql.next();
   int id = msql.getInt("id");
   return id;
@@ -148,6 +187,88 @@ String[] getColumn(String c, String t){
   while (msql.next()){
       info[nr] = msql.getString(c);
       nr++;
+  }
+  return info;
+}
+
+
+// SELECTS
+
+String[] getContinents(){
+  return getColumn("nombre", "continente");
+}
+
+String[] getTiposRutas(){
+  return getColumn("nombre", "tipo");
+}
+
+String[] getPaisesContinente(String c){
+  int idc = getIdContinente(c);
+  int numFiles = getNumRowsPaisosContinente(idc);
+  String[] info = new String[numFiles];
+  String q = "SELECT p.nombre AS nombre FROM pais p, continente c WHERE p.continente_id = c.id AND c.id='"+idc+"'";
+  msql.query(q);
+  int nr=0;
+  while(msql.next()){
+    info[nr] = msql.getString("nombre");
+    nr++;
+  }
+  return info;
+}
+
+String[] getCiutatsPais(String p){
+  int idp = getIdPais(p);
+  int numFiles = getNumRowsCiudadesPais(idp);
+  String[] info = new String[numFiles];
+  String q = "SELECT c.nombre AS nombre FROM pais p, ciudad c WHERE p.id = c.pais AND p.id='"+idp+"'";
+  msql.query(q);
+  int nr=0;
+  while(msql.next()){
+    info[nr] = msql.getString("nombre");
+    nr++;
+  }
+  return info;
+}
+
+String[] getLugaresCiudad(String c){
+  int idc = getIdCiudad(c);
+  int numFiles = getNumRowsLugaresCiudad(idc);
+  String[] info = new String[numFiles];
+  String q = "SELECT l.nombre AS nombre FROM lugar l, ciudad c WHERE c.id = l.ciudad AND c.id='"+idc+"'";
+  msql.query(q);
+  int nr=0;
+  while(msql.next()){
+    info[nr] = msql.getString("nombre");
+    nr++;
+  }
+  return info;
+}
+
+
+// Fotos de un Lugar
+String[] getFotosLugar(int idl){
+  int numFiles = getNumRowsFotosLugar(idl);
+  String[] info = new String[numFiles];
+  String q = "SELECT f.nombre AS nombre FROM foto f, lugar l WHERE l.id = f.lugar AND l.id='"+idl+"'";
+  msql.query(q);
+  int nr=0;
+  while(msql.next()){
+    info[nr] = msql.getString("nombre");
+    nr++;
+  }
+  return info;
+}
+
+String[] getFotosCiudad(String c){
+  int idc = getIdCiudad(c);
+  int numFiles = getNumRowsFotosCiudad(idc);
+  String[] info = new String[numFiles];
+  String q = "SELECT f.nombre AS nombre FROM foto f, lugar l, ciudad c WHERE l.id = f.lugar AND c.id=l.ciudad AND c.id='"+idc+"'";
+  msql.query(q);
+  int nr=0;
+  while(msql.next()){
+    info[nr] = msql.getString("nombre");
+    nr++;
   }
   return info;
 }
