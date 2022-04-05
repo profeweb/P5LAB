@@ -65,6 +65,9 @@ void setup(){
   println("\nSueños Filtrados:");
   printArray2D(infoS);
   
+  int nse = getNumSomnisEtiqueta("araña");
+  println("\nSueños Etiqueta araña:" + nse);
+  
 }
 
 void draw(){

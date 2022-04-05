@@ -149,6 +149,13 @@ int getIdUsuario(String n) {
   return id;
 }
 
+int getIdEtiqueta(String e) {
+  msql.query( "SELECT id FROM etiqueta WHERE nombre='"+e+"'" );
+  msql.next();
+  int id = msql.getInt("id");
+  return id;
+}
+
 // Inserta dades a Somnis
 void insertSomni(String f, String l, String d, String t, String u) {
   int idt = getIdCategoria(t);
@@ -233,4 +240,37 @@ String[][] filtraSuenos(String email, String categoria, String etiquetas, String
   }
   return info;
 
+}
+
+
+int getNumSomnisCategoria(String c){
+  int idc = getIdCategoria(c);
+  String q = "SELECT COUNT(*) AS n FROM sueño s, categoria c WHERE c.id=s.tipo AND c.id='"+idc+"'";
+  msql.query(q);
+  msql.next();
+  return msql.getInt("n");
+}
+
+int getNumSomnisEtiqueta(String e){
+  int ide = getIdEtiqueta(e);
+  String q = "SELECT COUNT(*) AS n FROM sueño s, etiquetasueño es, etiqueta e WHERE s.id=es.sueño_id AND es.etiqueta_id=e.id AND e.id='"+ide+"'";
+  msql.query(q);
+  msql.next();
+  return msql.getInt("n");
+}
+
+int[] getNumSomnisEtiquetas(String[] es){
+  int[] nums = new int[es.length];
+  for(int i=0; i<es.length; i++){
+    nums[i] = getNumSomnisEtiqueta(es[i]);
+  }
+  return nums;
+}
+
+int[] getNumSomnisCategorias(String[] cs){
+  int[] nums = new int[cs.length];
+  for(int i=0; i<cs.length; i++){
+    nums[i] = getNumSomnisCategoria(cs[i]);
+  }
+  return nums;
 }
