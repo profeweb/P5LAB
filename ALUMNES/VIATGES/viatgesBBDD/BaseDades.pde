@@ -220,6 +220,21 @@ String[] getPaisesContinente(String c){
   return info;
 }
 
+String[][] getInfoPaisesContinente(String c){
+  int idc = getIdContinente(c);
+  int numFiles = getNumRowsPaisosContinente(idc);
+  String[][] info = new String[numFiles][2];
+  String q = "SELECT p.id AS id, p.nombre AS nombre FROM pais p, continente c WHERE p.continente_id = c.id AND c.id='"+idc+"'";
+  msql.query(q);
+  int nr=0;
+  while(msql.next()){
+    info[nr][0] = String.valueOf(msql.getInt("id"));
+    info[nr][1] = msql.getString("nombre");
+    nr++;
+  }
+  return info;
+}
+
 String[] getCiutatsPais(String p){
   int idp = getIdPais(p);
   int numFiles = getNumRowsCiudadesPais(idp);
@@ -229,6 +244,21 @@ String[] getCiutatsPais(String p){
   int nr=0;
   while(msql.next()){
     info[nr] = msql.getString("nombre");
+    nr++;
+  }
+  return info;
+}
+
+String[][] getInfoCiutatsPais(String p){
+  int idp = getIdPais(p);
+  int numFiles = getNumRowsCiudadesPais(idp);
+  String[][] info = new String[numFiles][2];
+  String q = "SELECT c.id AS id, c.nombre AS nombre FROM pais p, ciudad c WHERE p.id = c.pais AND p.id='"+idp+"'";
+  msql.query(q);
+  int nr=0;
+  while(msql.next()){
+    info[nr][0] = String.valueOf(msql.getInt("id"));
+    info[nr][1] = msql.getString("nombre");
     nr++;
   }
   return info;
