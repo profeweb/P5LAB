@@ -2,7 +2,7 @@ Lugar lu;
 Ruta r;
 
 String[] rutaInfo = { "1",
-                  "Nombre Ruta", 
+                  "Museos de Madrid", 
                   "Resumen Ruta.... ", 
                   "Cultural"};
 
