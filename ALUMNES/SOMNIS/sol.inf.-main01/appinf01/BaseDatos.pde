@@ -162,13 +162,6 @@ void printArray2D(String[][] dades) {
   }
 }
 
-int getIdEtiqueta(String e) {
-  msql.query( "SELECT id FROM etiqueta WHERE nombre='"+e+"'" );
-  msql.next();
-  int id = msql.getInt("id");
-  return id;
-}
-
 int getIdCategoria(String n) {
   msql.query( "SELECT id FROM categoria WHERE nombre='"+n+"'" );
   msql.next();
@@ -183,26 +176,12 @@ int getIdUsuario(String n) {
   return id;
 }
 
-int getIdUsuarioEmail(String e) {
-  msql.query( "SELECT id FROM usuario WHERE email='"+e+"'" );
-  msql.next();
-  int id = msql.getInt("id");
-  return id;
-}
-
 // Inserta dades a Somnis
-void insertSomni(String n, String f, String l, String d, String t, String u) {
+void insertSomni(String f, String l, String d, String t, String u) {
   int idt = getIdCategoria(t);
-  int idu = getIdUsuarioEmail(u);
-  String q="INSERT INTO sueño (id,titulo,fecha,lucidez,descripcion,tipo,usuario)VALUES (NULL, '"+n+"','"+f+"', '"+l+"', '"+d+"', '"+idt+"', '"+idu+"')";
+  int idu = getIdUsuario(u);
+  String q="INSERT INTO sueño (id,fecha,lucidez,descripcion,tipo,usuario)VALUES (NULL, '"+f+"', '"+l+"', '"+d+"', '"+idt+"', '"+idu+"')";
   println("INSERT: "+q);
-  msql.query(q);
-  println("INSERT OK! :)");
-}
-
-void insertEtiquetaSueno(int ids, int ide){
-  String q="INSERT INTO etiquetasueño (sueño_id,etiqueta_id) VALUES ('"+ids+"','"+ide+"')";
-  println("INSERT ETIQUETASUEÑO: "+q);
   msql.query(q);
   println("INSERT OK! :)");
 }
@@ -266,9 +245,7 @@ String[][] filtraSuenos(String email, String categoria, String etiquetas, String
   int numFilas = getNumRowsFiltros(email, categoria, etiquetas, buscar);
   int numCols = 8;
   String[][] info = new String[numFilas][numCols];
-  String q = "SELECT DISTINCT s.id AS ID, s.titulo As titulo, s.fecha AS fecha, s.descripcion AS resumen, s.lucidez AS lucidez, c.nombre AS categoria, u.email AS email FROM sueño s, usuario u, categoria c, etiquetasueño es, etiqueta e WHERE u.id=s.usuario AND s.tipo=c.id AND es.sueño_id=s.id AND es.etiqueta_id=e.id AND c.nombre='"+categoria+"' AND u.email='"+email+"' AND (s.descripcion LIKE '%"+buscar+"%') AND e.nombre IN ("+etiquetas+")";
-  println(q);
-  msql.query(q);
+  msql.query("SELECT DISTINCT s.id AS ID, s.titulo As titulo, s.fecha AS fecha, s.descripcion AS resumen, s.lucidez AS lucidez, c.nombre AS categoria, u.email AS email FROM sueño s, usuario u, categoria c, etiquetasueño es, etiqueta e WHERE u.id=s.usuario AND s.tipo=c.id AND es.sueño_id=s.id AND es.etiqueta_id=e.id AND c.nombre='"+categoria+"' AND u.email='"+email+"' AND (s.descripcion LIKE '%"+buscar+"%') AND e.nombre IN ("+etiquetas+")");
   int nr=0;
   while(msql.next()){
     info[nr][0] = String.valueOf(msql.getInt("id"));
@@ -282,92 +259,14 @@ String[][] filtraSuenos(String email, String categoria, String etiquetas, String
     nr++;
   }
   return info;
-}
 
-
-String[][] todosSuenos(){
-  
-  int numFilas = getNumRowsTaula("sueño");
-  int numCols = 8;
-  String[][] info = new String[numFilas][numCols];
-  String q = "SELECT DISTINCT s.id AS ID, s.titulo As titulo, s.fecha AS fecha, s.descripcion AS resumen, s.lucidez AS lucidez, c.nombre AS categoria, u.email AS email FROM sueño s, usuario u, categoria c WHERE u.id=s.usuario AND s.tipo=c.id ORDER BY s.fecha ASC ";
-  println(q);
-  msql.query(q);
-  int nr=0;
-  while(msql.next()){
-    info[nr][0] = String.valueOf(msql.getInt("id"));
-    info[nr][1] = msql.getString("titulo");
-    info[nr][2] = msql.getString("fecha");
-    info[nr][3] = msql.getString("resumen");
-    info[nr][4] = msql.getString("lucidez");
-    info[nr][5] = msql.getString("categoria");
-    info[nr][6] = msql.getString("email");
-    info[nr][7] = "";
-    nr++;
-  }
-  return info;
 }
 
 // Comprueva usuario de BBDD
 boolean testLogin(String u, String p){
   String q= "SELECT COUNT(*) AS n FROM usuario "+
-            "WHERE nombre='"+u+"' AND password='"+p+"' AND role='admin'";
+            "WHERE nombre='"+u+"' AND password='"+p+"'";
   msql.query(q);
   msql.next();
   return msql.getInt("n")==1;
-}
-
-
-int getNumSomnisCategoria(String c){
-  int idc = getIdCategoria(c);
-  String q = "SELECT COUNT(*) AS n FROM sueño s, categoria c WHERE c.id=s.tipo AND c.id='"+idc+"'";
-  msql.query(q);
-  msql.next();
-  return msql.getInt("n");
-}
-
-int getNumSomnisEtiqueta(String e){
-  int ide = getIdEtiqueta(e);
-  String q = "SELECT COUNT(*) AS n FROM sueño s, etiquetasueño es, etiqueta e WHERE s.id=es.sueño_id AND es.etiqueta_id=e.id AND e.id='"+ide+"'";
-  msql.query(q);
-  msql.next();
-  return msql.getInt("n");
-}
-
-float getNumSomnisNoLucidos(){
-  return getNumSomnisLucidez("N");
-}
-
-float getNumSomnisLucidos(){
-  return getNumSomnisLucidez("S");
-}
-
-float getNumSomnisLucidez(String l){
-  String q = "SELECT COUNT(*) AS n FROM sueño s WHERE s.lucidez='"+l+"'";
-  msql.query(q);
-  msql.next();
-  return msql.getInt("n");
-}
-
-float[] getNumSomnisEtiquetas(String[] es){
-  float[] nums = new float[es.length];
-  for(int i=0; i<es.length; i++){
-    nums[i] = getNumSomnisEtiqueta(es[i]);
-  }
-  return nums;
-}
-
-float[] getNumSomnisCategorias(String[] cs){
-  float[] nums = new float[cs.length];
-  for(int i=0; i<cs.length; i++){
-    nums[i] = getNumSomnisCategoria(cs[i]);
-  }
-  return nums;
-}
-
-int getMaxIdSueno(){
-String q = "SELECT MAX(id) AS n FROM sueño";
-  msql.query(q);
-  msql.next();
-  return msql.getInt("n");
 }

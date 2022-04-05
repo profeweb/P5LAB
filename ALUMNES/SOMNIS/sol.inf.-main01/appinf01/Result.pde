@@ -21,6 +21,7 @@ class Result {
    this.categoria = data[5];
    this.email = data[6];
    this.labels = split(data[7], ",");
+   
 }
  
 
@@ -54,13 +55,6 @@ class Result {
    rect(x + w - 100, y + 8, 100, 25);
    fill(0);  textAlign(RIGHT); textSize(14);
    text(categoria, x + w - 10, y + 25);
-   
-   // Lucidez
-   fill(100, 200, 200); noStroke();
-   rect(x + w - 100, y + 38, 100, 25);
-   fill(0);  textAlign(RIGHT); textSize(14);
-   String l = this.lucidez.equals("S") ? "Lúcido" : "No Lúcido";
-   text(l, x + w - 10, y + 55);
    
    // Descripció
    fill(0);textSize(14); textAlign(LEFT);

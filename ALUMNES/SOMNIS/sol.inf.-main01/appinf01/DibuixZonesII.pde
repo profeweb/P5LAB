@@ -20,10 +20,10 @@ bEliminar.display();
 }
 
 void dibuixaCalendari(){
+ bFecha.display();
  if(viewCalendar){
    c.display();
  }
- bFecha.display();
 }
 void dibuixaTittleDream(){
  fill(150); textSize(20); textAlign(LEFT);
@@ -36,7 +36,6 @@ void dibuixaSwitch(){
 }
 void dibuixaSelect(){
 selCategoria.display();
-selEmail.display();
 }
 
 void dibuixaFiltres(){

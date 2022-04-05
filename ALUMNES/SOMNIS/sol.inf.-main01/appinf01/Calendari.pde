@@ -212,12 +212,4 @@ class Calendari {
     }
   }
   
-  String getSelectedDateDDMMYYYY(){
-    return this.selectedDay+"/"+this.selectedMonth+"/"+this.selectedYear;
-  }
-  
-  String getSelectedDateYYYYMMDD(){
-    return this.selectedYear+"-"+this.selectedMonth+"-"+this.selectedDay;
-  }
-  
 }

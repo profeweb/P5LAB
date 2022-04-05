@@ -103,12 +103,6 @@ void mousePressed() {
       }
       selCategoria.toggle();        // Plegar o desplegar
     }
-    if (selEmail.mouseOverSelect() && selEmail.enabled) {
-      if (!selEmail.collapsed) {
-        selEmail.update();      // Actualitzar valor
-      }
-      selEmail.toggle();        // Plegar o desplegar
-    }
     if (b1.mouseOverButton()) {
       b1.toggle();
       if (b1.enabled) {
@@ -116,27 +110,6 @@ void mousePressed() {
       } else {
         bgColor = color(0);
       }
-    }
-    
-    if (bGuardar.mouseOverButton() && bGuardar.enabled) {
-      //Recollir dades
-      String t = tittleDream.text; // titulo
-      String d = areaText.text;    // descripcion
-      String f = c.getSelectedDateYYYYMMDD();  // fecha
-      String l = b1.enabled ? "S" : "N";
-      String c = selCategoria.selectedValue;
-      String e = "paco@gmail.com";
-      
-      // Insert del SUEÑO
-      insertSomni(t,f, l, d, c, e);
-      int ids = getMaxIdSueno();
-      // Insert de ETIQUETAS - SUEÑO
-      String[]es = sfa.getSelectedValues();
-      for(String etiqueta : es){
-        int ide = getIdEtiqueta(etiqueta);
-        insertEtiquetaSueno(ids, ide);
-      }
-     // 
     }
     if (bEliminar.mouseOverButton() && bEliminar.enabled) {
       pantalla = Pantalla.GRAFICS;
@@ -150,13 +123,11 @@ void mousePressed() {
       bVariablesShow  = !bVariablesShow;
     }
 
-    if (selGrafico.mouseOverSelect() && selGrafico.enabled) {
-      if (!selGrafico.collapsed) {
-        selGrafico.update();      // Actualitzar valor
-        tipoGrafico = selGrafico.selectedValue;
-        initBarsDiagram();
+    if (s2.mouseOverSelect() && s2.enabled) {
+      if (!s2.collapsed) {
+        s2.update();      // Actualitzar valor
       }
-      selGrafico.toggle();        // Plegar o desplegar
+      s2.toggle();        // Plegar o desplegar
     }
   }
 
@@ -174,12 +145,6 @@ void mousePressed() {
     cercaText.isPressed();
     sfc.updateFilters();
     if (bCerca.mouseOverButton()&& bCerca.enabled) {
-      // AGAFAR VALORS
-      String b = cercaText.text;
-      String u = selUsuario.selectedValue;
-      String c = s4.selectedValue;
-      String f = sfc.getSelectedValuesIn();
-      filterResults(u,c,f,b);
       pantalla=pantalla.RESULTATS;
     }
     if (selUsuario.mouseOverSelect() && selUsuario.enabled) {

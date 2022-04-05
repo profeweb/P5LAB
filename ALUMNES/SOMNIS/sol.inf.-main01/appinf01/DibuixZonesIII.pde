@@ -1,5 +1,5 @@
 void dibuixaGrafic() {
-  diagrama.display();
+  s.display();
 }  
 void dibuixaVariables() {
   
@@ -9,6 +9,6 @@ void dibuixaVariables() {
 
 void dibuixaSelect2() {
   if (bVariablesShow) {
-  selGrafico.display();
+  s2.display();
   }
 }
