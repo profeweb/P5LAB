@@ -259,6 +259,21 @@ int getNumSomnisEtiqueta(String e){
   return msql.getInt("n");
 }
 
+int getNumSomnisNoLucidos(){
+  return getNumSomnisLucidez("S");
+}
+
+int getNumSOmnisLucidos(){
+  return getNumSomnisLucidez("S");
+}
+
+int getNumSomnisLucidez(String l){
+  String q = "SELECT COUNT(*) AS n FROM sueño s WHERE s.lucidez='"+l+"'";
+  msql.query(q);
+  msql.next();
+  return msql.getInt("n");
+}
+
 int[] getNumSomnisEtiquetas(String[] es){
   int[] nums = new int[es.length];
   for(int i=0; i<es.length; i++){
