@@ -13,7 +13,10 @@ class Lugar {
     this.id = data[0];
     this.nombre = data[1];
     this.descripcion = data[2];
-    this.resumen = this.descripcion.substring(0, 10)+"...";
+    int nLetras = this.descripcion.length();
+    int maxLetras = min(nLetras, 100);
+    String endText = nLetras==maxLetras ? "" : " ...";
+    this.resumen = this.descripcion.substring(0, maxLetras)+endText;
     this.ciudad = data[3];
     this.lat = data[4];
     this.lon = data[5];
@@ -58,10 +61,16 @@ class Lugar {
     textSize(18);
     text(this.resumen, x + h +10, y + 60, w - h - 20, h - 60);
 
-    fill(100); 
+    fill(255); 
     textAlign(LEFT); 
     textSize(16);
     text(this.ciudad, x+ h +10, y + h - 30);
+    
+    fill(255, 250, 50); 
+    textAlign(LEFT); 
+    textSize(12);
+    String latlon = "LAT: "+this.lat+", LON: "+this.lon;
+    text(latlon, x+ h +10, y + h - 10);
 
     if (mouseOver) {
       fill(255); 

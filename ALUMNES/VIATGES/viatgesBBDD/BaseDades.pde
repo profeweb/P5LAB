@@ -317,7 +317,7 @@ boolean login(String u, String p){
 }
 
 
-// Pendent
+// Numero de Rutas que cumplen Filtros
 
 int getNumRowsFiltraRutas(String tipoRuta, String fecha1, String fecha2, String ciudad){
   String q = "SELECT COUNT(DISTINCT r.id) AS n FROM ruta r, tipo t, temporada te, rutatemporada rt, lugaresruta lr, lugar l, ciudad c WHERE r.tipo = t.id AND t.nombre='"+tipoRuta+"' AND r.id=rt.ruta_id AND te.id=rt.temporada_id AND te.inicio<='"+fecha1+"' AND te.fin>='"+fecha2+"' AND lr.ruta_id = r.id AND lr.lugar_id=l.id AND l.ciudad=c.id AND c.nombre='"+ciudad+"'";
@@ -326,6 +326,8 @@ int getNumRowsFiltraRutas(String tipoRuta, String fecha1, String fecha2, String 
   msql.next();
   return msql.getInt("n");
 }
+
+// Info de Rutas que cumplen Filtros
 
 String[][] filtraRutas(String tipoRuta, String fecha1, String fecha2, String ciudad){
   
@@ -351,7 +353,7 @@ String[][] filtraRutas(String tipoRuta, String fecha1, String fecha2, String ciu
 
 
 
-// Pendent
+// Número de Lugares de nua Ruta ID
 
 int getNumRowsLugaresRuta(int idr){
   String q = "SELECT COUNT(*) AS n FROM ruta r, lugaresruta lr, lugar l, ciudad c, foto f WHERE r.id=lr.ruta_id AND lr.lugar_id=l.id AND l.ciudad=c.id AND l.id = f.lugar AND r.id='"+idr+"' ORDER BY lr.orden ASC";
@@ -360,6 +362,8 @@ int getNumRowsLugaresRuta(int idr){
   msql.next();
   return msql.getInt("n");
 }
+
+// Info de Lugares de nua Ruta ID
 
 String[][] lugaresRuta(int idr){
   int numFilas = getNumRowsLugaresRuta(idr);
