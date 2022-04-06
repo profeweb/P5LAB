@@ -13,7 +13,7 @@ class Lugar {
     this.id = data[0];
     this.nombre = data[1];
     this.descripcion = data[2];
-    this.resumen = this.descripcion.substring(0, 100)+"...";
+    this.resumen = this.descripcion.substring(0, 10)+"...";
     this.ciudad = data[3];
     this.lat = data[4];
     this.lon = data[5];

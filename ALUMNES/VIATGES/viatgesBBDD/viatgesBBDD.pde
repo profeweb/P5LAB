@@ -92,6 +92,21 @@ void setup(){
   String[] nomsU= getUsuarios();
   println("\nNoms Usuaris:");
   printArray(nomsU);
+  
+  // Rutas Filtros
+  String tipoRuta ="Cultural";
+  String fecha1 = "2022-05-10";
+  String fecha2 = "2022-05-20";
+  String ciudad = "Madrid";
+  
+  String[][] rF = filtraRutas(tipoRuta, fecha1, fecha2, ciudad);
+  println("\n Ruta FIltros:");
+  printArray2D(rF);
+  
+  // Lugares de una Ruta ID
+  String[][] lR = lugaresRuta(1);
+  println("\n Lugares Ruta:");
+  printArray2D(lR);
 }
 
 void draw(){
