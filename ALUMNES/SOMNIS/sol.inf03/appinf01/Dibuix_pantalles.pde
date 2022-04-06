@@ -22,7 +22,7 @@ void dibuixaPantalla02() {
   dibuixaCalendari();
   dibuixaFiltres();
   dibuixaCheckBoxList();
-  dibuixaPopup();
+
 }
 
 void dibuixaPantalla03(){
@@ -40,6 +40,4 @@ void dibuixaPantalla04(){
 
 void dibuixaPantalla05(){
 dibuixaResultats();
-dibuixaConfirm();
-dibuixaPopup();
 }

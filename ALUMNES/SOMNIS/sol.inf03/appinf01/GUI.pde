@@ -1,6 +1,3 @@
-
-String[] meses = {"Ene","Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"};
-    
 PImage img;
 
 boolean colorselected= false;
@@ -16,19 +13,8 @@ PopUp pop;             // PopUp
 // Dimensions del PopUp
 float popW = 600, popH = 340;
 // Textos del PopUp
-String title = "Información";
-String message = "Actualitzada la Base de Datos.";
-
-// Confirm
-Confirm conf;
-
-// Dimensions del Confirm 
-float compW = 600;
-float compH = 340;
-
-// Textos del Confirm
-String title2 = "Atención!";
-String message2 = "¿Desea eliminar el sueño?";
+String title = "Informació!";
+String message = "S'ha actualitzat la Base de Dades.";
 
 String titol="fitxer.txt";
 String ruta ="C:\\Users\\tonim\\Documents\\CODE\\P5LAB\\GUI\\textfileSave_001\\data\\";
@@ -50,7 +36,15 @@ String tipoGrafico="Etiquetas";
 int sfW = 800;
 int sfH = 40;
 
-String[][] inforesults;
+String[][] inforesults = {
+  {"1", "Títol 1", "10/03/2022", "Descripció 1", "S", "pesadilla", "paco@gmail.com", "Label1,Label2,Label3,Label4"}, 
+  {"2", "Títol 2", "10/03/2022", "Descripció 2", "S", "pesadilla", "paco@gmail.com", "Label1,Label2,Label3"}, 
+  {"3", "Títol 3", "10/03/2022", "Descripció 3", "N", "pesadilla", "paco@gmail.com", "Label1,Label3"}, 
+  {"4", "Títol 4", "10/03/2022", "Descripció 4", "S", "pesadilla", "paco@gmail.com", "Label2,Label3"}, 
+  {"5", "Títol 5", "10/03/2022", "Descripció 5", "N", "pesadilla", "paco@gmail.com", "Label1,Label2,Label3,Label4"}, 
+  {"6", "Títol 6", "10/03/2022", "Descripció 6", "S", "pesadilla", "paco@gmail.com", "Label1,Label3"}, 
+  {"7", "Títol 7", "10/03/2022", "Descripció 7", "N", "pesadilla", "paco@gmail.com", "Label1,Label2,Label3"}, 
+};
 
 
 boolean viewCalendar = false;
@@ -74,8 +68,7 @@ void setGUI() {
   initFilter();
   initTextFieldlogin();
   pagedResults();
-  initPopup();
-  initConfirm();
+  //initPopUp();
 }
 
 // Creació dels botons de la GUI
@@ -129,7 +122,7 @@ void initCalendari() {
 
 void initSelect() {
   String[] valoresCategorias = getNomsCategories();
-  String[] valoresGraficos = { "Etiquetas", "Categorias", "Lucidez", "Mes"};
+  String[] valoresGraficos = { "Etiquetas", "Categorias", "Lucidez"};
   String[] valoresEmails = getEmailsUsuaris();
 
   float selectW = 200;
@@ -156,7 +149,7 @@ void initBarsDiagram() {
   } else if (tipoGrafico=="Categorias") {
     textos = getNomsCategories();
     values = getNumSomnisCategorias(textos);
-  } else if(tipoGrafico=="Lucidez") {
+  } else {
     textos = new String[2];
     textos[0] = "Lúcido";
     textos[1]="No Lúcido";
@@ -165,21 +158,11 @@ void initBarsDiagram() {
     values[0] = getNumSomnisLucidos();
     values[1] = getNumSomnisNoLucidos();
   }
-  else {
-    textos = new String[12];
-    for(int i=0; i<textos.length; i++){
-      textos[i]=meses[i];
-    }
-    values = new float[12];
-    for(int m=0; m<11; m++){
-      values[m] = getNumSomnisMes(m);
-    }
-  }
 
   color[] colors = {color(0, 0, 255), color(50, 50, 200), 
     color(255, 0, 0), color(0, 255, 0)};
 
-  diagrama = new BarsDiagram(200, 300, width-400, height-400);
+  diagrama = new BarsDiagram(50, 50, width/1.2, height/1.2);
   diagrama.setTexts(textos);
   diagrama.setValues(values);
   diagrama.setColors(colors);
@@ -232,12 +215,6 @@ void filterResults(String email, String categoria, String etiquetas, String busc
 
 void initPopup(){
   // Creació del PopUp
-  pop = new PopUp(title, message, width/2 - popW/2, height/2 - popH/2, popW, popH);
+  pop = new PopUp(title, message, 250, 250, popW, popH);
   pop.setVisible(false);
-}
-
-void initConfirm(){
-  // Creació del Confirm
-  conf = new Confirm(title2, message2, width/2 - compW/2, height/2 - compH/2, compW, compH);
-  conf.setVisible(false);
 }

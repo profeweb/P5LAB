@@ -1,4 +1,4 @@
-class PopUp {
+class Confirm {
   
   // Dimensions
   float x, y, w, h;
@@ -8,20 +8,22 @@ class PopUp {
  String title;
  String message;
  
- Button bAceptar;
- float buttonW = 200;
- float buttonH = 80;
+ Button bAceptar, bCancelar;
+ float buttonW = 200, buttonH = 80;
  
  boolean visible = true;
  
  // Constructor
  
- PopUp(String title, String message, float x, float y, float w, float h){
+ Confirm(String title, String message, float x, float y, float w, float h){
    this.title = title;
    this.message = message;
    this.x = x; this.y = y; 
    this.w = w; this.h = h;
-   this.bAceptar = new Button("Acceptar", x + w/2 - buttonW/2, 
+   this.bAceptar = new Button("Acceptar", x + w/4 - buttonW/2, 
+                                         y + h - buttonH*1.5, 
+                                         buttonW, buttonH);
+   this.bCancelar = new Button("Cancelar", x + 3*w/4 - buttonW/2, 
                                          y + h - buttonH*1.5, 
                                          buttonW, buttonH);
  }
@@ -41,13 +43,15 @@ class PopUp {
    this.visible = b;
    if(!this.visible){
      this.bAceptar.setEnabled(false);
+     this.bCancelar.setEnabled(false);
    }
    else {
      this.bAceptar.setEnabled(true);
+     this.bCancelar.setEnabled(true);
    }
  }
  
- // Dibuixa el PopUp
+ // Dibuixa el Confirm
  
  void display(){
    pushStyle();
@@ -55,7 +59,6 @@ class PopUp {
      float b = 40;
     
      // Rectangle
-     rectMode(CORNER);
      stroke(0); strokeWeight(3);fill(255);
      rect(x, y, w, h, b/2);
      
@@ -69,15 +72,13 @@ class PopUp {
      fill(0);textSize(24); textAlign(CENTER);
      text(message, x + w/2, y + 4*b);
      
-     // Botó d'Acceptar
+     // Botons d'Acceptar i Cancelar
      bAceptar.display();
+     bCancelar.display();
      
    }
    popStyle();
  }
  
- // Comprova si estam sobre el botó del PopUp
- boolean mouseOverButton(){
-   return bAceptar.mouseOverButton() && bAceptar.enabled;
- }
+  
 }

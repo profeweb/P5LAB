@@ -1,5 +1,5 @@
 
-enum Pantalla { 
+enum Pantalla {
   USUARI, INICI, SOMNI, GRAFICS, CERCA, RESULTATS
 };
 Pantalla pantalla = Pantalla.USUARI;
@@ -40,6 +40,7 @@ void draw() {
     break;
   }
 
+
   updateCursor();
 }
 
@@ -74,8 +75,7 @@ void mousePressed() {
     }
 
     if (bSRecientes.mouseOverButton() &&  bSRecientes.enabled) {
-      pagedResults();
-      pantalla = Pantalla.RESULTATS;
+      pantalla = Pantalla.SOMNI;
     }
     if (bRGrafico.mouseOverButton() &&  bRGrafico.enabled) {
       pantalla = Pantalla.GRAFICS;
@@ -124,7 +124,7 @@ void mousePressed() {
       String f = c.getSelectedDateYYYYMMDD();  // fecha
       String l = b1.enabled ? "S" : "N";
       String c = selCategoria.selectedValue;
-      String e = selEmail.selectedValue;
+      String e = "paco@gmail.com";
 
       // Insert del SUEÑO
       insertSomni(t, f, l, d, c, e);
@@ -135,18 +135,12 @@ void mousePressed() {
         int ide = getIdEtiqueta(etiqueta);
         insertEtiquetaSueno(ids, ide);
       }
-
-      println("POP VISIBLE");
-      pop.setVisible(true);
+      //
     }
     if (bEliminar.mouseOverButton() && bEliminar.enabled) {
       pantalla = Pantalla.GRAFICS;
     }
     tittleDream.isPressed();
-
-    if (pop.bAceptar.mouseOverButton() && pop.bAceptar.enabled) {
-      pop.setVisible(false);
-    }
   }
 
   // CLICKS EN PANTALLA DE GRAFICOS
@@ -173,24 +167,16 @@ void mousePressed() {
     } else if (br2.mouseOverButton() && br2.enabled) {
       pc.prevPage();
     } else if (bEliminar.mouseOverButton() && bEliminar.enabled) {
-      conf.setVisible(true);
-    } else if (conf.bAceptar.mouseOverButton() && conf.bAceptar.enabled) {
-      conf.setVisible(false);
       // DELETE SOMNI
       if (rs!=null) {
         int ids = Integer.valueOf(rs.id);
         deleteSomni(ids);
         // Refrescar dades
         pagedResults();
-        pop.setVisible(true);
-      } else if (conf.bCancelar.mouseOverButton() && conf.bCancelar.enabled) {
-        conf.setVisible(false);
       }
-    } else if (pop.bAceptar.mouseOverButton() && pop.bAceptar.enabled) {
-      pop.setVisible(false);
-    } else {
-      rs = pc.checkCardClick(50, 50, cardsW, cardsH);
     }
+
+    rs = pc.checkCardClick(50, 50, cardsW, cardsH);
   }
   //ACCIONES PANTALLA BÚSQUEDA
   if (pantalla==pantalla.CERCA) {

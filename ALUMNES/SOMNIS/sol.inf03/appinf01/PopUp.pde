@@ -50,13 +50,14 @@ class PopUp {
  // Dibuixa el PopUp
  
  void display(){
-   pushStyle();
+   
    if(this.visible){
      float b = 40;
-    
+     
+     pushStyle();
+     
      // Rectangle
-     rectMode(CORNER);
-     stroke(0); strokeWeight(3);fill(255);
+     stroke(0); strokeWeight(10);fill(200, 200, 100);
      rect(x, y, w, h, b/2);
      
      line(x, y + 2*b , x+w, y + 2*b);
@@ -71,9 +72,8 @@ class PopUp {
      
      // Botó d'Acceptar
      bAceptar.display();
-     
+     popStyle();
    }
-   popStyle();
  }
  
  // Comprova si estam sobre el botó del PopUp

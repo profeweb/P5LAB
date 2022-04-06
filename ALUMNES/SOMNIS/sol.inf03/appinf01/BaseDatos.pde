@@ -9,6 +9,7 @@ String user     = "admin";
 String pass     = "12345";   
 String database = "sueños";
 
+
 // Connexió
 void connexioBBDD() {
 
@@ -370,13 +371,6 @@ float[] getNumSomnisCategorias(String[] cs){
 
 int getMaxIdSueno(){
 String q = "SELECT MAX(id) AS n FROM sueño";
-  msql.query(q);
-  msql.next();
-  return msql.getInt("n");
-}
-
-float getNumSomnisMes(int m){
-  String q = "SELECT COUNT(*) AS n FROM sueño s WHERE MONTH(s.fecha)='"+m+"'";
   msql.query(q);
   msql.next();
   return msql.getInt("n");
