@@ -1,11 +1,13 @@
 // Ruta a mostrar
 Ruta r;
 
-// Dades de rutes
+// Dades de rutes filtrades
 String[][] rF;
 
 // Número de ruta a mostrar
 int numRandom;
+
+// Número de rutes filtrades
 int numResultats;
 
 // Botons
@@ -23,16 +25,16 @@ void setup() {
   bSig = new Button("->", width- buttonW - 15, 160, buttonW, buttonH);
   bAnt = new Button("<-", width- buttonW - 15, 220, buttonW, buttonH);
 
-
   // Connecta amb la BBDD
   connexioBBDD();
 
-  // Query filter
+  // Filtres
   String tipoRuta ="Cultural";
   String fecha1 = "2022-05-10";
   String fecha2 = "2022-05-20";
   String ciudad = "Madrid";
 
+  // Query de filtratge
   rF = filtraRutas(tipoRuta, fecha1, fecha2, ciudad);
   numResultats = rF.length;
   numRandom = (int)random(0, numResultats);
@@ -45,11 +47,16 @@ void setup() {
 }
 
 void setRuta(int nR){
+  // Constructor de ruta
   r = new Ruta(rF[nR]);
+  // Posicions dins la finestra
   r.setLocation(100, 100, 600, 600);
+  // Id de la ruta
   int idRuta = Integer.valueOf(r.id);
+  // Info de lugares de la ruta
   String[][]info = lugaresRuta(idRuta);
   //printArray2D(info);
+  // Setter dels lugares de la ruta
   r.setLugares(info);
 }
 
@@ -62,7 +69,7 @@ void draw() {
   bSig.display();
   bAnt.display();
   
-  // Número de Rutes
+  // Número de Rutes / Ruta seleccionada
   fill(0); textAlign(RIGHT);
   text("Rutes trobades: "+ numResultats, width - 50, 50);
   text("Número Ruta: "+ numRandom, width - 50, 80);
@@ -91,13 +98,17 @@ void mousePressed() {
     setRuta(numRandom);
   }
   else if (bSig.mouseOverButton() && bSig.enabled) {
+    // Seguent ruta
     numRandom++;
     numRandom = constrain(numRandom, 0, numResultats-1);
+    // Actualitza dades de la ruta
     setRuta(numRandom);
   }
   else if (bAnt.mouseOverButton() && bAnt.enabled) {
+    // Anterior ruta
     numRandom--;
     numRandom = constrain(numRandom, 0, numResultats-1);
+    // Actualitza dades de la ruta
     setRuta(numRandom);
   }
 }
