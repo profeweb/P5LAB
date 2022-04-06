@@ -7,11 +7,15 @@ void setup(){
   int mes = c.get(Calendar.MONTH) + 1;
   int dia = c.get(Calendar.DATE);
   
-  println(dia+"/"+mes+"/"+any);
+  println(formata(dia)+"/"+formata(mes)+"/"+any);
   
   int hora = c.get(Calendar.HOUR);
   int minuts = c.get(Calendar.MINUTE);
   
-  println(hora+":"+minuts);
-  
+  println(formata(hora)+":"+formata(minuts));
 }
+
+String formata(int d){
+  String s = String.valueOf(d);
+  return d<10 ? "0"+s : s;
+} 
