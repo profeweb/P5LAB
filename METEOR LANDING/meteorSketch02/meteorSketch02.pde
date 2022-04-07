@@ -29,7 +29,7 @@ void draw() {
   noStroke();
   
   // Per cada dada, dibuixa ellipse
-  for(int i=0; i<myData.length; i++){
+  for(int i=1; i<myData.length; i++){
     fill(255, 0, 0, 50);
     
     // Mapeig de latiutd i longitud
