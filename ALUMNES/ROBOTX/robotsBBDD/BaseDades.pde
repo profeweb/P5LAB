@@ -313,3 +313,23 @@ String[][] getInfoExperiencies(){
   }
   return info;
 }
+
+int getNumRowsProcedimientos(int ide){
+  String q = "SELECT COUNT(*) AS n FROM procedimiento p WHERE p.experiencia='"+ide+"'";
+  msql.query(q);
+  msql.next();
+  return msql.getInt("n");
+}
+
+String[] getProcedimientos(int ide){
+  int numFiles = getNumRowsProcedimientos(ide);
+  String[] info = new String[numFiles];
+  String q = "SELECT p.descripcion AS descripcion FROM procedimiento p WHERE p.experiencia='"+ide+"' ORDER BY p.orden ASC";
+  msql.query(q);
+  int nr=0;
+  while(msql.next()){
+    info[nr] = msql.getString("descripcion");
+    nr++;
+  }
+  return info;
+}
