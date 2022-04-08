@@ -85,6 +85,12 @@ void setup(){
   String[] infoFotos = getFotos(1);
   printArray(infoFotos);
   
+  String comps = "'Motor', 'Sensor'";
+  String dificultad = "0";
+  boolean simula = false;
+  String[][] filtraExp = getFiltraExperiencies(comps, dificultad, simula);
+  printArray2D(filtraExp);
+  
 }
 
 void draw(){
