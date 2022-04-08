@@ -451,14 +451,14 @@ String[] getInfoAstro(int ida) {
   info[3] = msql.getString("hora_salida");
   info[4] = msql.getString("hora_puesta");
   info[5] = msql.getString("magn_aparente");
-  info[6] = msql.getString("marg_absoluta");
+  info[6] = msql.getString("magn_absoluta");
   info[7] = msql.getString("distanciatierra");
   info[8] = msql.getString("distancia_sol");
   info[9] = msql.getString("duracion_dia");
   info[10] = msql.getString("duracion_ano");
   info[11] = msql.getString("radio");
   info[12] = msql.getString("ar");
-  info[13] = msql.getString("deg");
+  info[13] = msql.getString("dec");
   return info;
 }
 
