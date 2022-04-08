@@ -42,6 +42,7 @@ void draw(){
   text("Vegana: "+sfa.getSelectedValue("Vegana"), 100, 600);
   text("Internacional: "+sfa.getSelectedValue("Internacional"), 100, 650);
   text("Italiana: "+sfa.getSelectedValue("Italiana"), 100, 700);
+  text("Selected: "+sfa.getSelectedValuesIn(), 100, 750);
 }
 
 // En cas de pitjar el ratolí

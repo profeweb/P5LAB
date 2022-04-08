@@ -57,4 +57,42 @@ class SwitchFilterArray {
     return false;
   }
   
+  int getNumSelected(){
+    int n=0;
+    for(SwitchFilter sf : sfs){
+      if(sf.getEnabled()){
+        n++;
+      }
+    }
+    return n;
+  }
+  
+  String[] getSelectedValues(){
+    String[] selected = new String[getNumSelected()];
+    int n=0;
+    for(SwitchFilter sf : sfs){
+      if(sf.getEnabled()){
+        selected[n]=sf.name;
+        n++;
+      }
+    }
+    return selected;
+  }
+  
+  String getSelectedValuesIn(){
+    String selected = "";
+    int n = getNumSelected();
+    int i = 0;
+    for(SwitchFilter sf : sfs){
+      if(sf.getEnabled()){
+        selected+="'"+sf.name+"'";
+        if(i<n-1){
+          selected+=",";
+        }
+        i++;
+      }
+    }
+    return selected;
+  }
+  
 }
