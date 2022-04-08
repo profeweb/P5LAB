@@ -353,3 +353,33 @@ String[] getFotos(int ide){
   }
   return info;
 }
+
+int getNumRowsComponentes(int ide){
+  String q = "SELECT COUNT(*) AS n FROM experiencia e, componentesexp ce, componente c, tipocomponente tc WHERE e.id=ce.experiencia AND ce.componente=c.id AND c.tipo=tc.id AND e.id='"+ide+"' ORDER BY c.nombre ASC";
+  msql.query(q);
+  msql.next();
+  return msql.getInt("n");
+}
+
+String[][] getComponentes(int ide){
+  int numFiles = getNumRowsComponentes(ide);
+  String[][] info = new String[numFiles][5];
+  String q = "SELECT c.nombre AS nombre, tc.nombre AS tipo, ce.cantidad AS cantidad FROM experiencia e, componentesexp ce, componente c, tipocomponente tc WHERE e.id=ce.experiencia AND ce.componente=c.id AND c.tipo=tc.id AND e.id='"+ide+"' ORDER BY c.nombre ASC";
+  msql.query(q);
+  int nr=0;
+  while(msql.next()){
+    info[nr][0] = msql.getString("nombre");
+    info[nr][1] = msql.getString("tipo");
+    info[nr][2] = String.valueOf(msql.getInt("cantidad"));
+    nr++;
+  }
+  return info;
+}
+
+PImage[] createArrayFotos(String[] fotos){
+  PImage[] imgs = new PImage[fotos.length];
+  for(int i=0; i<fotos.length; i++){
+    imgs[i] = loadImage(fotos[i]);
+  }
+  return imgs;
+}
