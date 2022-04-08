@@ -333,3 +333,23 @@ String[] getProcedimientos(int ide){
   }
   return info;
 }
+
+int getNumRowsFotos(int ide){
+  String q = "SELECT COUNT(*) AS n FROM foto f WHERE f.experiencia='"+ide+"'";
+  msql.query(q);
+  msql.next();
+  return msql.getInt("n");
+}
+
+String[] getFotos(int ide){
+  int numFiles = getNumRowsFotos(ide);
+  String[] info = new String[numFiles];
+  String q = "SELECT f.nombre AS nombre FROM foto f WHERE f.experiencia='"+ide+"' ORDER BY f.nombre ASC";
+  msql.query(q);
+  int nr=0;
+  while(msql.next()){
+    info[nr] = msql.getString("nombre");
+    nr++;
+  }
+  return info;
+}

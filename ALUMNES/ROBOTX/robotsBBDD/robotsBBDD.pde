@@ -79,6 +79,12 @@ void setup(){
   String[][] infoExp = getInfoExperiencies();
   printArray2D(infoExp);
   
+  String[] infoProc = getProcedimientos(1);
+  printArray(infoProc);
+  
+  String[] infoFotos = getFotos(1);
+  printArray(infoFotos);
+  
 }
 
 void draw(){
