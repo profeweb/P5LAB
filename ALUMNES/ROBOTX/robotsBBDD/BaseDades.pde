@@ -309,6 +309,7 @@ String[][] getInfoExperiencies(){
     info[nr][2] = msql.getString("descripcion");
     info[nr][3] = msql.getString("codi");
     info[nr][4] = String.valueOf(msql.getInt("simula"));
+    nr++;
   }
   return info;
 }

@@ -3,9 +3,13 @@ void setup(){
    // Connexió
   connexioBBDD();
   
+  /*
+  
   // Número de files d'una taula
   int n = getNumRowsTaula("etiqueta");
   println("\nNum Etiquetas: " + n);
+  
+  
   
   // Dades d'una taula Etiqueta
   String[][] dades1 = getInfoTaulaEtiqueta();
@@ -67,6 +71,13 @@ void setup(){
   
   int nse = getNumSomnisEtiqueta("araña");
   println("\nSueños Etiqueta araña:" + nse);
+  */
+  
+  int ne =  getNumRowsExperiencia();
+  println("Num Exp: "+ ne);
+  
+  String[][] infoExp = getInfoExperiencies();
+  printArray2D(infoExp);
   
 }
 
