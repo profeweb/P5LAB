@@ -291,7 +291,7 @@ int[] getNumSomnisCategorias(String[] cs){
 }
 
 int getNumRowsExperiencia(){
-  String q = "SELECT COUNT(*) AS n FROM experiencia";
+  String q = "SELECT COUNT(*) AS n FROM experiencia e, dificultad d WHERE e.dificultad=d.id ORDER BY e.id ASC";
   msql.query(q);
   msql.next();
   return msql.getInt("n");
@@ -299,8 +299,8 @@ int getNumRowsExperiencia(){
 
 String[][] getInfoExperiencies(){
   int numFiles = getNumRowsExperiencia();
-  String[][] info = new String[numFiles][5];
-  String q = "SELECT e.id AS id, e.nombre AS nombre, e.descripcion AS descripcion, e.codi AS codi, e.simula AS simula FROM experiencia e ORDER BY e.id ASC";
+  String[][] info = new String[numFiles][6];
+  String q = "SELECT e.id AS id, e.nombre AS nombre, e.descripcion AS descripcion, e.codi AS codi, e.simula AS simula, d.nombre AS dificultad FROM experiencia e, dificultad d WHERE e.dificultad=d.id ORDER BY e.id ASC";
   msql.query(q);
   int nr=0;
   while(msql.next()){
@@ -309,6 +309,7 @@ String[][] getInfoExperiencies(){
     info[nr][2] = msql.getString("descripcion");
     info[nr][3] = msql.getString("codi");
     info[nr][4] = String.valueOf(msql.getInt("simula"));
+    info[nr][5] = msql.getString("dificultad");
     nr++;
   }
   return info;
