@@ -452,8 +452,23 @@ void insertFotoExperiencia(int idExp, String n){
 }
 
 int getMaxIdExperiencia() {
-  msql.query( "SELECT MAX(id) FROM experiencia ");
+  msql.query( "SELECT MAX(id) AS id FROM experiencia ");
   msql.next();
   int id = msql.getInt("id");
   return id;
+}
+
+void insertProcedimientoExperiencia(int idExp, String nombre, int orden){
+  String q="INSERT INTO procedimiento (id, descripcion, orden, experiencia) VALUES (NULL, '"+nombre+"', '"+orden+"', '"+idExp+"');";
+  println("INSERT: "+q);
+  msql.query(q);
+  println("INSERT OK! :)");
+}
+
+
+void deleteExperiencia(int idExp){
+  msql.query( "DELETE FROM procedimiento WHERE experiencia ='"+idExp+"'");
+  msql.query( "DELETE FROM componentesexp WHERE experiencia ='"+idExp+"'");
+  msql.query( "DELETE FROM foto WHERE experiencia ='"+idExp+"'");
+  msql.query( "DELETE FROM experiencia WHERE id ='"+idExp+"'");
 }
