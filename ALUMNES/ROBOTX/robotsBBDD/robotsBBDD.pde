@@ -91,6 +91,9 @@ void setup(){
   String[][] filtraExp = getFiltraExperiencies(comps, dificultad, simula);
   printArray2D(filtraExp);
   
+  int maxExp = getMaxIdExperiencia();
+  println("MAX: "+maxExp);
+  
 }
 
 void draw(){
