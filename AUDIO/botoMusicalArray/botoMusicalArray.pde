@@ -7,27 +7,26 @@ ButtonMusic[] b;
 // Array amb el nom dels sons
 String[] sons = {"clap.wav", "laser.wav", "saxo.wav", "snare.wav"};
 
+color[] colors = {color(255, 0, 0), color(0, 255, 0), color(0, 0, 255), color(255, 255, 0),};
+
 void setup() {
   size(1400, 800);
-  color(HSB, 255, 255, 255);
 
   // Construcció de l'Array
   b = new ButtonMusic[numTecles];
 
   // Càlcul del radi de cada botó
   float r = width / (2f*numTecles);
-  float h = 256f / numTecles;
 
   // Construcció de cada casella de l'Array
   for (int i=0; i<b.length; i++) {
     float x = 2*r*i + r;
-    b[i] = new ButtonMusic(x, height/2, r, sons[i%sons.length], 
-      this, color(i*h, 255, 0), color(100, 100, 100));
+    b[i] = new ButtonMusic(x, height/2, r, sons[i%sons.length], this, colors[i%colors.length] , color(100));
   }
 }
 
 void draw() {
-  background(255);
+  background(255, 0, 0);
   // Dibuixa totes les caselles de l'Array
   for (int i=0; i<b.length; i++) {
     b[i].display();

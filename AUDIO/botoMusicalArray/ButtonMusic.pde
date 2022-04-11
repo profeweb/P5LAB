@@ -18,13 +18,13 @@ class ButtonMusic {
   }
 
   void display() {
+    stroke(0); 
+    strokeWeight(4);
     if (mouseOver()) {
       fill(this.c1);
     } else {
       fill(this.c2);
     }
-    stroke(0); 
-    strokeWeight(4);
     circle(this.x, this.y, 2*this.r);
   }
 
