@@ -418,3 +418,42 @@ String[][] getFiltraExperiencies(String comps, String dif, boolean sim){
   }
   return info;
 }
+
+int getIdDificultad(String n) {
+  msql.query( "SELECT id FROM dificultad WHERE nombre='"+n+"'" );
+  msql.next();
+  int id = msql.getInt("id");
+  return id;
+}
+
+// Inserta dades a Somnis
+void insertExperiencia(String n, String d, String c, String s, String f) {
+  int idf = getIdDificultad(f);
+  String q="INSERT INTO experiencia (id, nombre, descripcion, codi, simula, dificultad) VALUES (NULL, '"+n+"', '"+d+"', '"+c+"', '"+s+"', '"+idf+"')";
+  println("INSERT: "+q);
+  msql.query(q);
+  println("INSERT OK! :)");
+}
+
+void insertComponenteExperiencia(int idExp, int idComp, int cant){
+  String q="INSERT INTO componentesexp (experiencia, componente, cantidad) VALUES ('"+idExp+"', '"+idComp+"', '"+cant+"');";
+  println("INSERT: "+q);
+  msql.query(q);
+  println("INSERT OK! :)");
+}
+
+//INSERT INTO `foto` (`id`, `nombre`, `experiencia`) VALUES (NULL, 'aaaa', '1');
+
+void insertFotoExperiencia(int idExp, String n){
+  String q="INSERT INTO foto (id, nombre, experiencia) VALUES (NULL, '"+n+"', '"+idExp+"')";
+  println("INSERT: "+q);
+  msql.query(q);
+  println("INSERT OK! :)");
+}
+
+int getMaxIdExperiencia() {
+  msql.query( "SELECT MAX(id) FROM experiencia ");
+  msql.next();
+  int id = msql.getInt("id");
+  return id;
+}
