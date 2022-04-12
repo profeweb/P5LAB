@@ -87,12 +87,9 @@ void setup(){
   
   String comps = "'Motor', 'Sensor'";
   String dificultad = "0";
-  boolean simula = false;
-  String[][] filtraExp = getFiltraExperiencies(comps, dificultad, simula);
+  String simula = "S";
+  String[][] filtraExp = getFiltrarExperiencies(comps, dificultad, simula);
   printArray2D(filtraExp);
-  
-  int maxExp = getMaxIdExperiencia();
-  println("MAX: "+maxExp);
   
 }
 
