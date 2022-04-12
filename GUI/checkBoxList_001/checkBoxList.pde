@@ -73,4 +73,29 @@ class CheckBoxList {
     return false;
   }
   
+  // Retorna el número d'elements seleccionats
+  int getNumSelected(){
+    int n = 0;
+    for(CheckBoxText cb : cbs){
+      if(cb.checked){
+        n++;
+      }
+    }
+    return n;
+  }
+  
+  // Retorna un array amb el nom dels elements seleccionats
+  String[] getSelectedItems(){
+    int n = getNumSelected();
+    String[] items = new String[n];
+    int i=0;
+    for(CheckBoxText cb : cbs){
+      if(cb.checked){
+        items[i] = cb.texte;
+        i++;
+      }
+    }
+    return items;
+  }
+  
 }
