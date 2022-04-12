@@ -492,10 +492,11 @@ String whereSimulacion(String sim){
   return where;
 }
 
+//0, 1, 2, *
 String whereDificultad(String dif){
    String whereDificultad= "";
-   if(!dif.equals("*")){
-     whereDificultad= "AND d.nombre='"+dif+"'";
+   if(dif.equals("0") || dif.equals("1") || dif.equals("2")){
+     whereDificultad = "AND d.nombre='"+dif+"'";
    }
    return whereDificultad;
 }
@@ -516,7 +517,7 @@ String queryFiltrarCount(String comps, String dif, String sim){
 }
 
 String queryFiltrar(String comps, String dif, String sim){
-   return "SELECT e.id AS id, e.nombre AS nombre, e.descripcion AS descripcion, e.codi AS codi, e.simula AS simula, d.nombre AS dificultad "+
+   return "SELECT DISTINCT e.id AS id, e.nombre AS nombre, e.descripcion AS descripcion, e.codi AS codi, e.simula AS simula, d.nombre AS dificultad "+
               "FROM experiencia e, dificultad d, componentesexp ce, componente c, tipocomponente tc "+
               "WHERE e.dificultad=d.id AND e.id=ce.experiencia AND ce.componente=c.id AND c.tipo=tc.id "+
                whereDificultad(dif) + whereSimulacion(sim) + whereComponentes(comps) + " ORDER BY e.id ASC";
