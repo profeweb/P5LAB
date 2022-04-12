@@ -98,3 +98,16 @@ void setup(){
 
 void draw(){
 }
+
+
+
+String getWhereInFormat(String[] items) {
+  String txt="";
+  for (int i=0; i<items.length; i++) {
+    txt+="'"+items[i]+"'";
+    if (i!=items.length-1) {
+      txt+=",";
+    }
+  }
+  return txt;
+}
