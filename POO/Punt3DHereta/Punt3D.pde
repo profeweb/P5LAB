@@ -10,7 +10,11 @@ class Punt3D extends Punt {
   }
   
   void print(){
-    println(this.nom+" ("+this.x+", "+this.y+", "+this.z+")");
+    println(toString());
+  }
+  
+  String toString(){
+    return this.nom+" ("+this.x+", "+this.y+", "+this.z+")";
   }
   
   // Sobre-escriu el mètode de dibuix
@@ -20,7 +24,7 @@ class Punt3D extends Punt {
     translate(this.x, this.y, this.z);
     ellipse(0, 0, 20, 20);
     fill(0); textSize(18); textAlign(CENTER);
-    text(this.nom, 0, - 20);
+    text(toString(), 0, - 20);
     popMatrix();
   }
 }
