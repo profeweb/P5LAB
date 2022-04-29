@@ -23,7 +23,7 @@ void draw(){
       strokeWeight(1);
     }
     
-    float x = (i+1)*width/5;
+    float x = (i+1)*width/(gent.length+1);
     float y = height/2;
     
     if(gent[i]instanceof Professor){
@@ -102,6 +102,9 @@ void keyPressed(){
   }
   else if(key=='n' && selected!=-1){
     gent[selected].nom = nomRand();
+  }
+   else if(key=='f' && selected!=-1){
+    gent[selected].setFoto(fotoRand());
   }
     
 }
