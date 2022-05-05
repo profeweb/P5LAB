@@ -38,6 +38,11 @@ class Punt {
     this.x = x;
   }
   
+  void setXY(float x, float y){
+    this.x = x;
+    this.y = y;
+  }
+  
   // Altres
   
   void print(){

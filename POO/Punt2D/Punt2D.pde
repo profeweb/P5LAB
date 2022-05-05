@@ -19,8 +19,18 @@ void setup(){
 
 
 void draw(){
-  
   background(255);
   p1.display(c1);
   p2.display(c2);
+}
+
+void keyPressed(){
+  if(keyCode==LEFT){
+    float x = p1.getX() - 10;
+    p1.setX(x);
+  }
+  else if(keyCode==RIGHT){
+    float x = p1.getX() + 10;
+    p1.setX(x);
+  }
 }
