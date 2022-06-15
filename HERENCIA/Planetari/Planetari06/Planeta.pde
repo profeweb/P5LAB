@@ -29,7 +29,7 @@ class Planeta extends CosAstronomic {
   }
   
   void setAnells(boolean b){
-    this.anells = true;
+    this.anells = b;
   }
 
   void setNumSatelits(int n){
