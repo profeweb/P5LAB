@@ -107,3 +107,21 @@ int parArray(int[] nums){
   }
   return n;
 }
+
+int[] cosesArray(int[] nums){
+ 
+  int[] solucions = new int[3];
+  
+  for(int i=0; i<nums.length; i++){
+    if(nums[i]>0){
+      solucions[0]++;
+    }
+    if(nums[i]<0){
+      solucions[1]++;
+    }
+    if(nums[i]%2==0){
+      solucions[2]++;
+    }
+  } 
+  return solucions;
+}
