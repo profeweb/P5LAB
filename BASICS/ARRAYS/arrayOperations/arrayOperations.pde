@@ -1,9 +1,15 @@
 // Arrays
 int[] nums1 = {3, 7, 9, 2, 5};
+int[] nums2 = {3, 5, 9, 1, 7};
 
 void setup(){
   
   // Imprimeix les caselles de l'Array NUMS1
+  impArray(nums1);
+  
+  // Reverteix l'ordre de l'Array
+  reordArray(nums1);
+  
   impArray(nums1);
   
   // Calcula el màxim de l'Array NUM1
@@ -26,6 +32,9 @@ void setup(){
   
   // Calcula quants parells té l'Array NUM1
   println("PARELLS: "+ parArray(nums1));
+  
+  // Calcula quantes caselles són iguals als arrays NUM1 i NUM2
+  println("IGUALS: "+ igualsArray(nums1, nums2));
 }
 
 // Imprimeix les caselles de l'Array en ordre ascendent
@@ -124,4 +133,27 @@ int[] cosesArray(int[] nums){
     }
   } 
   return solucions;
+}
+
+void reordArray(int[] nums){
+  int i =0, j = nums.length-1;
+  while(i < j){
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+    i++;
+    j--;
+  }
+}
+
+int igualsArray(int[] a, int[] b){
+  int n = 0;
+  for(int i=0; i<a.length; i++){
+    println("I:"+i);
+    if(a[i]==b[i]){
+      println("IGUAL:"+a[i]);
+      n++;
+    }
+  }
+  return n;
 }
