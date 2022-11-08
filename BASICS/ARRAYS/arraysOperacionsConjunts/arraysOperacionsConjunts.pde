@@ -16,6 +16,10 @@ void setup(){
   int[] di = diferencia(nums1, nums2);
   printArray(di);
   
+  println("DIFERÈNCIA SIMÈTRICA:");
+  int[] ds = diferenciaSimetrica(nums1, nums2);
+  printArray(ds);
+  
 }
 
 int[] interseccio(int[] a, int[] b ){
@@ -64,6 +68,24 @@ int[] diferencia(int[] a, int[] b ){
   for(int i=0; i<a.length; i++){
     if(!hiEs(a[i], b)){
       c[k]= a[i];
+      k++;
+    }
+  }
+  return c;
+}
+
+int[] diferenciaSimetrica(int[] a, int[] b){
+  int[] c = new int[a.length + b.length];
+  int k = 0;
+  for(int i=0; i<a.length; i++){
+    if(!hiEs(a[i], b)){
+      c[k]= a[i];
+      k++;
+    }
+  }
+  for(int i=0; i<b.length; i++){
+    if(!hiEs(b[i], a)){
+      c[k]= b[i];
       k++;
     }
   }
