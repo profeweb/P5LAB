@@ -24,12 +24,6 @@ class RadioButtonGroup {
   void display(){
     for(int i=0; i<rbuttons.length; i++){
       if(rbuttons[i]!=null){
-        /*if(i==selectedOption){
-          rbuttons[i].setChecked(true);
-        }
-        else {
-          rbuttons[i].setChecked(false);
-        }*/
         rbuttons[i].display();
       }
     }
