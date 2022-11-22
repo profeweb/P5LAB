@@ -1,22 +1,33 @@
-int[][] m1 = {{1, 3, 5},
-              {2, 4, 6},
-              {0, 0, 1},
-              {3, 3, 5}};
+int[][] m1 = {{1, 3, 5, 7},
+              {2, 4, 6, 1},
+              {0, 0, 1, 0},
+              {3, 3, 5, 2}};
+              
+int[][] id = {{1, 0, 0, 0},
+              {0, 1, 0, 0},
+              {0, 0, 1, 0},
+              {0, 0, 0, 1}};  
 
-int[][] m2 = {{5, 1, 2},{4, 2, 0},{1, 2, 3},{1, 0, 0}};
+int[][] m2 = {{5, 1, 2, 3},{4, 2, 0, 8},{1, 2, 3, 1},{1, 0, 0, 2}};
 
-int[][] m3 = {{1, 2, 1, 0},{0, 2, 4, 5},{1, 1, 0, 2}};
+int[][] m3 = {{1, 2, 1, 0, 2},{0, 2, 4, 5, 1},{1, 1, 0, 2, 0},{1, 1, 0, 2, 0}};
               
 void setup(){
   
   int[][] s = sumaMatrius(m1, m2);
   printMatrix(s);
+  
   println();
   int[][] e = escalarMatriu(m1, 2);
   printMatrix(e);
+  
   println();
-  int[][]v = vectorialMatriu(m1, m3);
-  printMatrix(v);
+  int[][]v1 = vectorialMatriu(m1, m3);
+  printMatrix(v1);
+ 
+  println();
+  int[][]v2 = vectorialMatriu(m1, id);
+  printMatrix(v2);
 }
 
 void printMatrix(int[][] m){
