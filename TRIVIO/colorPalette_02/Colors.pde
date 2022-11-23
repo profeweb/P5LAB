@@ -19,11 +19,11 @@ void setColors(){
     this.colors[0][4] = color(#AEECEF);
     
     // Dark theme
-    this.colors[1][0] = color(#FF0000);
-    this.colors[1][1] = color(#515798);
-    this.colors[1][2] = color(#6B9BC3);
-    this.colors[1][3] = color(#7CDBD6);
-    this.colors[1][4] = color(#ACE9EC);
+    this.colors[1][0] = color(#1A1423);
+    this.colors[1][1] = color(#372549);
+    this.colors[1][2] = color(#774C60);
+    this.colors[1][3] = color(#B75D69);
+    this.colors[1][4] = color(#EACDC2);
 }
   
   // Getter del número de colors

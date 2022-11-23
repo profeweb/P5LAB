@@ -1,6 +1,8 @@
 // Objectes de la classe Cercle
 Cercle c1, c2, c3;
 
+SwitchButton bTheme;
+
 void setup(){
   // Dimensions de l'App
   size(800, 800);
@@ -17,6 +19,8 @@ void setup(){
   
   c3 = new Cercle(3*width/4, height/2, midaCercle);
   c3.setColor(getThirdColor());  // Color terciari
+  
+  bTheme = new SwitchButton(width/2 - 100, height - 100, 200, 50);
 }
 
 
@@ -36,18 +40,25 @@ void draw(){
   
   // Mostra la paleta de colors
   displayColors(100,100,width-200);
+  
+  // Dibuixa el botó del Tema
+  bTheme.display();
 }
 
-void keyPressed(){
-  if(key=='l' || key=='L'){
-    colorTheme = 0;
-    println("LIGHT THEME ("+colorTheme+")");
-  }
-  else {
-    colorTheme = 1;
-    println("DARK THEME ("+colorTheme+")");
-  }
-  c1.setColor(getFirstColor());
-  c2.setColor(getSecondColor()); 
-  c3.setColor(getThirdColor());
+void mousePressed(){
+  
+  if(bTheme.mouseOverButton()){
+    bTheme.toggle();
+    if(bTheme.enabled){
+      colorTheme = 0;
+      println("LIGHT THEME ("+colorTheme+")");
+    }
+    else {
+      colorTheme = 1;
+      println("DARK THEME ("+colorTheme+")");
+    }
+    c1.setColor(getFirstColor());
+    c2.setColor(getSecondColor()); 
+    c3.setColor(getThirdColor());
+  }  
 }
