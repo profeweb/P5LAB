@@ -39,6 +39,7 @@ String[][] info = {
                      {"13", "Joan", "Melis Cabrer", "47", "Home"},
                      {"14", "Bel", "Riera Mates", "52", "Dona"},
                      {"15", "Jose", "Perez Galdós", "37", "Home"},
+                     {"16", "Pepe", "Viyuela Lopez", "42", "Home"},
                   };
 
 void setup(){
