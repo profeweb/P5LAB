@@ -26,7 +26,12 @@ class PagedTable {
   
   void setData(String[][] d){
     this.tableData = d;
-    this.numTotalPages = d.length / (this.numRows-1);
+    if(d.length % (this.numRows-1)==0){
+      this.numTotalPages = (d.length / (this.numRows-1)) -1;
+    }
+    else {
+      this.numTotalPages = (d.length / (this.numRows-1)) ;
+    }
   }
   
   void setValueAt(String value, int nr, int nc){
