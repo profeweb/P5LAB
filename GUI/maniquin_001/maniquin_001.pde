@@ -1,7 +1,8 @@
 PShape body, head, arm, leg, foot, hand;
+Slider rBodyY, rArmX, rArmY, rArmZ;
 
 void setup(){ 
-  size(900, 900, P3D); 
+  size(1400, 900, P3D); 
   smooth(); frameRate(30);
   body = loadShape("body.obj");
   head = loadShape("head.obj");
@@ -9,30 +10,40 @@ void setup(){
   leg = loadShape("leg.obj");
   foot = loadShape("foot.obj");
   hand = loadShape("hand.obj");
+  
+  //String s, float x, float y, float w, float h, float minV, float maxV, float val
+  rBodyY = new Slider("BODY ROT Y", 100, 100, 300, 50, 0, 360, 0);
+  rArmX  = new Slider("ARMR ROT X", 100, 200, 300, 50, 0, 360, 0);
+  rArmY  = new Slider("ARMR ROT Y", 100, 300, 300, 50, 0, 360, 0);
+  rArmZ  = new Slider("ARMR ROT Z", 100, 400, 300, 50, 0, 360, 0);
 } 
 
 
 void draw() { 
   lights(); 
-  background(50);
+  background(150);
   
   pushMatrix();
   translate(width/2, height/2.5, -50);
   sphere(10);
   displayBody();
   popMatrix();
+  
+  rBodyY.display();
+  rArmX.display();
+  rArmY.display();
 }
 
 void displayBody(){
   pushMatrix();
-  //rotateY(PI/2);
   rotateZ(-PI);
   translate(0,0,0);
+  rotateY(radians(rBodyY.v));
   scale(50);
   shape(body);
   displayHead(0,0,0);
   displayLeftArm(0,0,PI/2);
-  displayRightArm(0,0,-PI/2);
+  displayRightArm(radians(rArmX.v),radians(rArmY.v),radians(rArmZ.v));
   displayLeftLeg(0,0,PI/6);
   displayRightLeg(0,0,-PI/10);
   popMatrix();
@@ -138,9 +149,33 @@ void displayRightFoot(float angX, float angY, float angZ){
 
 
 void mousePressed(){
-
+  // Comprova el click sobre la gui (sliders)
+  if (rBodyY.mouseOnSlider()) {
+      rBodyY.updateSlider();
+  }
+  else if (rArmX.mouseOnSlider()) {
+      rArmX.updateSlider();
+  }
+  else if (rArmY.mouseOnSlider()) {
+      rArmY.updateSlider();
+  }
+  else if (rArmZ.mouseOnSlider()) {
+      rArmZ.updateSlider();
+  }
 }
 
 void mouseDragged(){
-
+  // Comprova els drag sobre la gui (sliders)
+  if (rBodyY.mouseOnSlider()) {
+      rBodyY.updateSlider();
+  }
+  else if (rArmX.mouseOnSlider()) {
+      rArmX.updateSlider();
+  }
+  else if (rArmY.mouseOnSlider()) {
+      rArmY.updateSlider();
+  }
+  else if (rArmZ.mouseOnSlider()) {
+      rArmZ.updateSlider();
+  }
 }
