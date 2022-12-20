@@ -1,9 +1,14 @@
+// Models 3D
 PShape body, head, arm, leg, foot, hand;
+
+// Sliders
 Slider rBodyY, rArmX, rArmY, rArmZ;
 
 void setup(){ 
   size(1400, 900, P3D); 
   smooth(); frameRate(30);
+  
+  // Carrega els models 3D
   body = loadShape("body.obj");
   head = loadShape("head.obj");
   arm = loadShape("arm.obj");
@@ -11,7 +16,7 @@ void setup(){
   foot = loadShape("foot.obj");
   hand = loadShape("hand.obj");
   
-  //String s, float x, float y, float w, float h, float minV, float maxV, float val
+  //Crea els sliders
   rBodyY = new Slider("BODY ROT Y", 100, 100, 300, 50, 0, 360, 0);
   rArmX  = new Slider("ARMR ROT X", 100, 200, 300, 50, 0, 360, 0);
   rArmY  = new Slider("ARMR ROT Y", 100, 300, 300, 50, 0, 360, 0);
@@ -23,15 +28,18 @@ void draw() {
   lights(); 
   background(150);
   
+  // Mostra el maniquí
   pushMatrix();
   translate(width/2, height/2.5, -50);
   sphere(10);
   displayBody();
   popMatrix();
   
+  // Mostra els sliders
   rBodyY.display();
   rArmX.display();
   rArmY.display();
+  rArmZ.display();
 }
 
 void displayBody(){

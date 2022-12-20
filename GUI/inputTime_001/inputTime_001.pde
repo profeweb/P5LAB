@@ -9,7 +9,7 @@ void setup() {
    
    // Creació dels camps de temps
    it1 = new InputTime(80, 200, 300, 500, "100 Esquena", "Paco");
-   it2 = new InputTime(420, 200, 300, 500, "100 Esquena", "Maria");
+   it2 = new InputTime(420, 200, 300, 500, "100 Papallona", "Maria");
    
 }
 
