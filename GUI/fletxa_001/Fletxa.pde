@@ -36,7 +36,8 @@ class Fletxa {
     float a2 = radians(a+10);
     float fx2 = this.q.x - d*cos(a2);
     float fy2 = this.q.y - d*sin(a2);
-    line(this.q.x, this.q.y, fx2, fy2);
+    fill(c);
+    triangle(this.q.x, this.q.y, fx1, fy1, fx2, fy2);
     popStyle();
   }
 }
