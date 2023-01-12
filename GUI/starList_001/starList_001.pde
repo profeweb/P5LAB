@@ -12,7 +12,7 @@ void setup() {
 
   // Construcció del checkboxstarlist
   cbl = new CheckBoxStarList(5, imgs, 100, height/2 - 100, 100, 100);
-  
+  cbl.setCheckBoxStars(3);
 }
 
 void draw() {

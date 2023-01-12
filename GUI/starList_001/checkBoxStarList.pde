@@ -52,6 +52,16 @@ class CheckBoxStarList {
       }
     }
   }
+  
+  // Setter del número de estrelles activades
+  void setCheckBoxStars(int n){
+    for (int i=0; i<n; i++) {
+      cbs[i].checked = true;
+    }
+    for (int i=n; i<cbs.length; i++) {
+      cbs[i].checked = false;
+    }
+  }
 
 
   // Retorna si el checkBox n està seleccionat
