@@ -1,4 +1,4 @@
-class Confirm {
+class Tria {
   
   // Dimensions
   float x, y, w, h;
@@ -8,31 +8,39 @@ class Confirm {
  String title;
  String message;
  
- Button bAceptar, bCancelar;
- float buttonW = 200, buttonH = 80;
+ Button b1, b2, b3;
+ float buttonH = 80;
  
  boolean visible = true;
  
  // Constructor
  
- Confirm(String title, String message, float x, float y, float w, float h){
+ Tria(String title, String message, float x, float y, float w, float h){
    this.title = title;
    this.message = message;
    this.x = x; this.y = y; 
    this.w = w; this.h = h;
-   this.bAceptar = new Button("Acceptar", x + w/4 - buttonW/2, 
+   
+   float m = 50;
+   float wButton = (w - 4*m)/3;
+   this.b1 = new Button("Opcio 1", x + m, 
                                          y + h - buttonH*1.5, 
-                                         buttonW, buttonH);
-   this.bCancelar = new Button("Cancelar", x + 3*w/4 - buttonW/2, 
+                                         wButton, buttonH);
+   this.b2 = new Button("Opcio2", x + 2*m + wButton, 
                                          y + h - buttonH*1.5, 
-                                         buttonW, buttonH);
+                                         wButton, buttonH);
+                                         
+   this.b3 = new Button("Opcio3", x + 3*m +2*wButton, 
+                                         y + h - buttonH*1.5, 
+                                         wButton, buttonH);
  }
  
  //Setters
  
- void setTextButtons(String txt1, String txt2){
-   this.bAceptar.textBoto = txt1;
-   this.bCancelar.textBoto = txt2;
+ void setTextButtons(String txt1, String txt2, String txt3){
+   this.b1.textBoto = txt1;
+   this.b2.textBoto = txt2;
+   this.b3.textBoto = txt3;
  }
  
  void setImage(PImage img){
@@ -47,12 +55,14 @@ class Confirm {
  void setVisible(boolean b){
    this.visible = b;
    if(!this.visible){
-     this.bAceptar.setEnabled(false);
-     this.bCancelar.setEnabled(false);
+     this.b1.setEnabled(false);
+     this.b2.setEnabled(false);
+     this.b3.setEnabled(false);
    }
    else {
-     this.bAceptar.setEnabled(true);
-     this.bCancelar.setEnabled(true);
+     this.b1.setEnabled(true);
+     this.b2.setEnabled(true);
+     this.b3.setEnabled(true);
    }
  }
  
@@ -79,9 +89,10 @@ class Confirm {
      fill(0);textSize(24); textAlign(CENTER);
      text(message, x + w/2, y + 4*b);
      
-     // Botons d'Acceptar i Cancelar
-     bAceptar.display();
-     bCancelar.display();
+     // Botons d'opcions
+     b1.display();
+     b2.display();
+     b3.display();
      popStyle();
    }
  }
