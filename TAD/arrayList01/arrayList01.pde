@@ -23,7 +23,7 @@ void setup(){
     println("Llista buida");
   }
   else {
-    println("Llista amb "+numList.size()+ "elements: ");
+    println("Llista amb "+numList.size()+ " elements: ");
     for(int i=0; i<numList.size(); i++){
       int n = numList.get(i);
       println(n);
