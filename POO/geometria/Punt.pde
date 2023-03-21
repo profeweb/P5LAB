@@ -1,19 +1,27 @@
 public class Punt {
 
   String nom;
-  float x;
-  float y;
+  float x, y, z;
 
   Punt() {
     this.nom ="P";
     this.x = 0;
     this.y = 0;
+    this.z = 0;
   }
 
   Punt(String n, float x, float y) {
     this.nom = n;
     this.x = x;
     this.y = y;
+    this.z = 0;
+  }
+  
+  Punt(String n, float x, float y, float z) {
+    this.nom = n;
+    this.x = x;
+    this.y = y;
+    this.z = z;
   }
 
   void setX(float x) {
@@ -22,6 +30,10 @@ public class Punt {
 
   void setY(float y) {
     this.y = y;
+  }
+  
+  void setZ(float z) {
+    this.z = z;
   }
 
   void setXY(float x, float y) {
@@ -36,6 +48,10 @@ public class Punt {
   float getY() {
     return this.y;
   }
+  
+  float getZ() {
+    return this.z;
+  }
 
   float[] getXY() {
     float[] xy = new float[2];
@@ -47,24 +63,28 @@ public class Punt {
   double distancia(Punt altre) {
     double x =  Math.pow((this.x - altre.x), 2);
     double y = Math.pow((this.y - altre.y), 2);
-    return  Math.sqrt(x+y);
+    double z = Math.pow((this.z - altre.z), 2);
+    return  Math.sqrt(x+y+z);
   }
   
   String getInfo(){
-    return this.nom+"("+this.x+", "+this.y+")";
+    return this.nom+"("+this.x+", "+this.y+", "+this.z+")";
   }
 
   void print() {
-    System.out.printf("Punt:(%f, %f).\n", this.x, this.y);
+    System.out.printf("Punt:(%f, %f, %f).\n", this.x, this.y, this.z);
   }
   
   void display(){
-    pushStyle();
-    fill(0); stroke(0);
-    circle(this.x, this.y, 20);
-    textSize(24);
-    textAlign(CENTER);
-    text(getInfo(), this.x, this.y - 15);
-    popStyle();
+    pushMatrix();
+      translate(this.x, this.y, this.z);
+      pushStyle();
+        fill(0); stroke(0);
+        circle(0,0, 20);
+        textSize(24);
+        textAlign(CENTER);
+        text(getInfo(), 0, - 15);
+      popStyle();
+    popMatrix();
   }
 }

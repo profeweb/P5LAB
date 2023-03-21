@@ -37,7 +37,7 @@ public class Linia {
     pushStyle();
       stroke(c);
       strokeWeight(3);
-      line(this.a.x, this.a.y, this.b.x, this.b.y);
+      line(this.a.x, this.a.y, this.a.z, this.b.x, this.b.y, this.b.z);
     popStyle();
   }
 }
