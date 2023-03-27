@@ -23,3 +23,22 @@ void resetFormulari(){
   c.resetValue();
   n.removeAllText();
 }
+
+
+
+// Quan pitjam tecla
+void keyPressed() {
+   n.keyPressed(key, (int)keyCode);
+}
+
+// Modifica el cursor
+void updateCursor(){
+  
+  if(c.mouseOverButtons() || b1.mouseOverButton() || b2.mouseOverButton()){
+      cursor(HAND);
+  }
+  else {
+     cursor(ARROW);
+  }
+  
+}
