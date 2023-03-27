@@ -29,7 +29,8 @@ void connexioBBDD(){
 // Inserta les dades a la taula Unitat
 
 void insertInfoTaulaUnitat(String num, String nom){
-  String q = "INSERT INTO unitat (numero, nom) VALUES ('"+num+"','"+nom+"')";
+  String sNom = nom.replace("\'", "\\'");
+  String q = "INSERT INTO unitat (numero, nom) VALUES ('"+num+"','"+sNom+"')";
   println(q);
   msql.query(q);
 }
