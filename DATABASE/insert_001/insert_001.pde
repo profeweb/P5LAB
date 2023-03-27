@@ -1,40 +1,12 @@
-// Llibreria de MySQL i Processing
-import de.bezier.data.sql.*;
-
-// Components de la GUI
-TextField n;   // Camp de text
-Counter c;     // Comptador
-Button b1, b2; // Botons
-
-// Icones dels botons
-PImage icona1, icona2;
-
-// Dimensions dels components
-int compW = 200, compH = 80;
-
+// INSEREIX INFO A LA BBDD
 
 void setup(){
   
   size(1200, 800);      // Dimensions de la Pantalla
   
-  connexioBBDD();
+  connexioBBDD();      // Connexió a la BBDD
   
-  // Carregar de les imatges (icones);
-  icona1 = loadImage("mes.png");
-  icona2 = loadImage("menys.png");
-  
-  // Creació dels botons
-  c = new Counter(icona1, icona2, width/4, height/4, compW, compH);
-  c.setValues(0, 100);
-  c.setInitialValue(0);
-  c.setStepValue(1);
-  
-  // Creació dels camps de text
-  n = new TextField(width/4, height/2, 3*compW, compH);
-   
-  // Creació dels Botons
-  b1 = new Button("Inserir", width/4, 3*height/4, compW, compH);
-  b2 = new Button("Reset", 2*width/4, 3*height/4, compW, compH);
+  setGUI();           // Crea els components de la GUI
 
 }
 
@@ -68,31 +40,7 @@ void draw(){
   
 }
 
-// Mira si pitjam sobre els camps de text
-void mousePressed() {
-   n.isPressed();
-   c.update();
-   
-   if(b1.mouseOverButton() && b1.enabled){
-     // Agafar els valors dels camps del formulari
-     String valorNumero = String.valueOf(c.getValue());
-     String valorNom    = n.getValue();
-    // Inserir a la BBDD
-    insertInfoTaulaUnitat(valorNumero, valorNom);
-    // Resetear camps del formulari
-    resetFormulari();
-  }
-  else if(b2.mouseOverButton() && b2.enabled){
-    // Resetear camps del formulari
-    resetFormulari();
-  }
-}
 
-// Reset del Formulari
-void resetFormulari(){
-  c.resetValue();
-  n.removeAllText();
-}
 
 // Quan pitjam tecla
 void keyPressed() {

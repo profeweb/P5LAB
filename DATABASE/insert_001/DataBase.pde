@@ -1,3 +1,5 @@
+// Llibreria de MySQL i Processing
+import de.bezier.data.sql.*;
 
 // Objecte de connexió a la BBDD
 MySQL msql;
