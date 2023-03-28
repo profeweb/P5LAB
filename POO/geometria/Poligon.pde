@@ -1,6 +1,6 @@
 public class Poligon {
 
-  boolean displayPoints = true;
+  boolean displayPoints = false;
 
   Punt[] punts;
 

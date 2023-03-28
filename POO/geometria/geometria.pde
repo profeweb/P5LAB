@@ -1,52 +1,41 @@
-Punt p1, p2, p3, p4;
-Linia l1, l2;
-Poligon pol1, pol2;
-Pentagon pe1;
-
-Star star1, star2;
-Engrenatge e1;
+Poliedre p;
+Punt a, b, c, d, e, f, g, h;
+Poligon p1, p2, p3, p4, p5, p6;
 
 void setup() {
   size(1400, 800, P3D);
+  
+  a = new Punt("A", -100, 100, -100);
+  b = new Punt("B",  100, 100, -100);
+  c = new Punt("C",  100, 100,  100);
+  d = new Punt("D", -100, 100,  100);
+  
+  e = new Punt("E", -100, -100, -100);
+  f = new Punt("F",  100, -100, -100);
+  g = new Punt("G",  100, -100, 100);
+  h = new Punt("H", -100, -100,  100);
+  
+  p1 = new Poligon(a, b, c, d);
+  p2 = new Poligon(e, f, g, h);
+  p3 = new Poligon(a, b, f, e);
+  p4 = new Poligon(b, c, g, f);
+  p5 = new Poligon(d, c, g, h);
+  p6 = new Poligon(a, d, h, e);
 
-  p1 = new Punt();
-  p2 = new Punt("A", 200, 150);
-  p3 = new Punt("B", 300, 450);
-  p4 = new Punt("C", 100, 250);
+  p = new Poliedre(6);
+  p.setPoligon(0,p1);
+  p.setPoligon(1,p2);
+  p.setPoligon(2,p3);
+  p.setPoligon(3,p4);
+  p.setPoligon(4,p5);
+  p.setPoligon(5,p6);
 
-  l1 = new Linia(p1, p2);
-  l2 = new Linia(p2, p4);
-  
-  pol1 = new Poligon(new Punt("C", width/3, height/2), 100, 3);
-  pol2 = new Poligon(new Punt("C", 2*width/3, height/2), 300, 5);
-  
-  //pol1.punts[0].z = -2000;
-  //pol1.punts[1].z = -2000;
-  //pol1.punts[2].z = -2000;
-  
-  pe1 = new Pentagon(new Punt("C", 2*width/3, height/2), 300);
-  
-  star1 = new Star(new Punt("", width/2, height/2), 100, 300, 12, 2);
-  star1.displayPoints = false;
-  star2 = new Star(new Punt("", 2*width/3, height/2), 50, 300, 24, 3);
-  star2.displayPoints = false;
-  
-  e1 = new Engrenatge(new Punt("", 2*width/3, height/2), 150, 300, 24, 4);
-  e1.displayPoints = false;
 }
 
 void draw() {
   background(255);
-  //pol1.display(color(255, 255, 0, 100));
-  //pe1.display(color(255, 0, 255, 100));
-  //star2.display(color(255, 55, 55, 100));
-  //e1.display(color(255, 55, 55, 100));
-  
-  int np = (int)map(mouseX, 0, width, 4, 40);
-  float r1 = map(mouseY, 0, height, 10, 150);
-  
-  star1 = new Star(new Punt("", width/2, height/2), r1, 300, np, 2);
-  star1.displayPoints = false;
-  star1.display(color(55, 55, 255, 100));
-  
+  translate(width/2, height/2, 100);
+  rotateX(map(mouseX, 0, width, 0, TWO_PI));
+  rotateY(map(mouseY, 0, height, 0, TWO_PI));
+  p.display();
 }
