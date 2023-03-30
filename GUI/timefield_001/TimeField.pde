@@ -36,4 +36,8 @@ class TimeField {
       }
    }
    
+   String getValue(){
+     return tf[0].text+"-"+tf[1].text+"-"+tf[2].text;
+   }
+   
 }
