@@ -1,7 +1,8 @@
 // Guarda un fitxer PDF d'alguna cosa dibuixada
 import processing.pdf.*;
 
-// Nom del fitxer PDF
+// Nom i ruta del fitxer PDF
+String rutaPDF = "C:\\Users\\tonim\\Downloads\\";
 String titolPDF ="output.pdf";
 
 // Botons
@@ -40,7 +41,7 @@ void mousePressed(){
 
 // Genera el PDF 
 void savePDF(){
-  PGraphics pdf = createGraphics(300, 300, PDF, titolPDF);
+  PGraphics pdf = createGraphics(300, 300, PDF, rutaPDF+titolPDF);
   pdf.beginDraw();
   pdf.background(128, 0, 0);
   pdf.line(50, 50, 250, 250);
