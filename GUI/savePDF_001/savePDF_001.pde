@@ -1,6 +1,7 @@
+// Guarda un fitxer PDF d'alguna cosa dibuixada
 import processing.pdf.*;
 
-// Guarda un fitxer PDF d'alguna cosa dibuixada
+// Nom del fitxer PDF
 String titolPDF ="output.pdf";
 
 // Botons
@@ -10,7 +11,7 @@ void setup(){
   
   size(800,800);
   
-  // Creació dels Botó
+  // Creació del Botó
   b = new Button("SAVE PDF", width/2 - 125, height/2 -100, 250, 80);
 
 }
@@ -43,6 +44,8 @@ void savePDF(){
   pdf.beginDraw();
   pdf.background(128, 0, 0);
   pdf.line(50, 50, 250, 250);
+  pdf.textAlign(CENTER);
+  pdf.text("Hello PDF", 150, 150);
   pdf.dispose();
   pdf.endDraw();
 }
