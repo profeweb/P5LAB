@@ -13,6 +13,10 @@ class Punt {
     this.z = z;
   }
   
+  String getNom(){
+    return this.nom;
+  }
+  
   String getInfo(){
     return this.nom+":("+x+", "+y+", "+z+")";
   }

@@ -36,7 +36,7 @@ void setup(){
   // Crea l'array d'informació a partir dels punts
   infoSelect = new String[punts.length];
   for(int i=0; i<punts.length; i++){
-    infoSelect[i] = punts[i].getInfo();
+    infoSelect[i] = punts[i].getNom();
   }
   
   // Creació dels selects
