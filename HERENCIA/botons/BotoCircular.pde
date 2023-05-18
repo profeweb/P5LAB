@@ -7,9 +7,11 @@ class BotoCircular extends Boto {
   void display(){
     if(mouseOver()){
       fill(c);
+      cursor(HAND);
     }
     else {
       fill(200);
+      cursor(ARROW);
     }
     ellipseMode(CENTER);
     ellipse(x, y, w, h);
