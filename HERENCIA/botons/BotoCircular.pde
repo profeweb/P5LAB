@@ -5,8 +5,12 @@ class BotoCircular extends Boto {
   }
   
   void display(){
-    fill(this.c);
+    fill(c);
+    ellipseMode(CENTER);
+    ellipse(x, y, w, h);
     
+    fill(0); textAlign(CENTER); textSize(24);
+    text(txt, x, y);
   }
   
 }
