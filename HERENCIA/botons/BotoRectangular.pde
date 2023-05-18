@@ -7,11 +7,9 @@ class BotoRectangular extends Boto {
   void display(){
     if(mouseOver()){
       fill(c);
-      cursor(HAND);
     }
     else {
       fill(200);
-      cursor(ARROW);
     }
     rectMode(CENTER);
     rect(x, y, w, h);

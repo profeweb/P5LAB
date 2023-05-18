@@ -15,6 +15,16 @@ void draw(){
   background(bgColor);
   bc.display();
   br.display();
+  updateCursor();
+}
+
+void updateCursor(){
+   if(bc.mouseOver() || br.mouseOver()){
+     cursor(HAND);
+   }
+   else {
+     cursor(ARROW);
+   }
 }
 
 void mousePressed(){
