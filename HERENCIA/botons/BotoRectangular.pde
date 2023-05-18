@@ -21,10 +21,10 @@ class BotoRectangular extends Boto {
   }
   
   boolean mouseOver(){    
-     return(mouseX>=x - w/2 && 
-            mouseX<= x + w/2 && 
-            mouseY>=y - h/2 && 
-            mouseY<=y+h/2);
+     return(mouseX >= x - w/2 && 
+            mouseX <= x + w/2 && 
+            mouseY >= y - h/2 && 
+            mouseY <= y + h/2);
   }
   
 }
