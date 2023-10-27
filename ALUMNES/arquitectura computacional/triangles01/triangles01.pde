@@ -110,7 +110,6 @@ void draw(){
   
   displayInfo();
   
-  
   if(vista=="FRONT"){
   translate(0, 500, 0);
   }

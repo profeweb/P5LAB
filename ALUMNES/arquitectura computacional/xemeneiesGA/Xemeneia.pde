@@ -16,7 +16,7 @@ class Xemeneia {
   
   void display(float x, float y, float z){
     
-    noFill(); strokeWeight(3);
+    noFill(); strokeWeight(3); //fill(255);
     
     pushMatrix();
       translate(x, y, z);

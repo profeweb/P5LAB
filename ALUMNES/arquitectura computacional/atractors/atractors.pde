@@ -1,8 +1,8 @@
 
 
 // initial parameters
-int xCount = 121;
-int yCount = 121;
+int xCount = 100;
+int yCount = 100;
 float gridSize = 600;
 
 // nodes array 
@@ -55,7 +55,7 @@ void draw() {
     for (int r = 0; r < myNodes[c].length-1; r++) {
       stroke(1);
       line(myNodes[c][r].x, myNodes[c][r].y, myNodes[c+1][r].x, myNodes[c+1][r].y);
-      //line(myNodes[c][r].x, myNodes[c][r].y, myNodes[c][r+1].x, myNodes[c][r+1].y);
+      line(myNodes[c][r].x, myNodes[c][r].y, myNodes[c][r+1].x, myNodes[c][r+1].y);
     }
   }
 }
