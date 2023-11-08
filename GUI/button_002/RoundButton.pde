@@ -33,7 +33,7 @@ class RoundButton {
  
  // Dibuixa el botó
  void display(){
-   
+   pushStyle();
    if(!enabled){
      fill(fillColorDisabled);  // Color desabilitat
    }
@@ -49,6 +49,7 @@ class RoundButton {
    // Icona del botó
    imageMode(CENTER);
    image(icona, this.x, this.y, 2*this.r, 2*this.r);
+   popStyle();
  }
  
  // Indica si el cursor està sobre el botó
