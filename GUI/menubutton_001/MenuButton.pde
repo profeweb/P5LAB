@@ -43,7 +43,7 @@ class MenuButton {
    stroke(strokeColor); strokeWeight(2);        //Color i gruixa del contorn
    rect(this.x, this.y, this.w, this.h, 10);    // Rectangle del botó
    
-   // Linies (color, alineació i mida)
+   // Linies
    fill(0);
    float marge = 10;
    rect(this.x + marge, this.y + this.w/7, this.w - 2*marge, this.w/7, 5);
