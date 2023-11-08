@@ -14,7 +14,6 @@ class TextField {
   
   // Text del camp
   String text = "";
-  int textLength = 0;
   int textSize = 24;
 
   boolean selected = false;
@@ -26,7 +25,7 @@ class TextField {
   
   // Dibuixa el Camp de Text
   void display() {
-
+      pushStyle();
       if (selected) {
          fill(selectedColor);
       } else {
@@ -40,6 +39,7 @@ class TextField {
       fill(fgColor);
       textSize(textSize);
       text(text, x + 5, y + textSize);
+      popStyle();
    }
    
    // Afegeix, lleva el text que es tecleja
@@ -64,28 +64,22 @@ class TextField {
    
    // Afegeix la lletra c al final del text
    void addText(char c) {
-      if (textWidth(this.text + c) < w) {
+      if (this.text.length() + 1 < w) {
          this.text += c;
-         textLength++;
       }
    }
    
    // Lleva la darrera lletra del text
    void removeText() {
-      if (textLength - 1 >= 0) {
-         text = text.substring(0, textLength - 1);
-         textLength--;
+      if (text.length() > 0) {
+         text = text.substring(0, text.length() - 1);
       }
    }
 
    // Indica si el ratolí està sobre el camp de text
    boolean mouseOverTextField() {
-      if (mouseX >= this.x && mouseX <= this.x + this.w) {
-         if (mouseY >= this.y && mouseY <= this.y + this.h) {
-            return true;
-         }
-      }
-      return false;
+      return (mouseX >= this.x && mouseX <= this.x + this.w && 
+              mouseY >= this.y && mouseY <= this.y + this.h);
    }
    
    // Selecciona el camp de text si pitjam a sobre
