@@ -33,7 +33,7 @@ class Table {
   
   // Dibuixa taula
   void display(float x, float y, float w, float h){
-    
+    pushStyle();
     fill(200, 50); stroke(0);strokeWeight(3);
     rect(x, y, w, h);
     
@@ -70,6 +70,7 @@ class Table {
         xCol += w*columnWidths[c]/100.0;
       }
     }
+    popStyle();
   }
   
   
