@@ -167,6 +167,7 @@ class Calendari {
   
   // Dibuixa el Calendari
   void display(){
+    pushStyle();
     fill(0); textSize(36); textAlign(LEFT);
     text(months[mes-1]+"/"+any, x, y - 30);
     for(DayButton b : buttons){
@@ -180,6 +181,7 @@ class Calendari {
       fill(0); textSize(24); textAlign(RIGHT);
       text(dateText, x+w, y - 30);
     }
+    popStyle();
   }
   
   

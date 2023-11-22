@@ -26,7 +26,7 @@ class RadioButton {
   
   // Dibuixa el CheckBox
   void display(){
-    
+    pushStyle();
     stroke(borderColor);
     strokeWeight(2);
     fill(bgColor);
@@ -36,6 +36,7 @@ class RadioButton {
       fill(checkedColor); noStroke();
       ellipse(x, y, 1.5*r, 1.5*r);
     }
+    popStyle();
   }
   
   void setChecked(boolean b){

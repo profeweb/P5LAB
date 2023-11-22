@@ -28,6 +28,6 @@ void setup(){
 
 void draw(){
   background(255);
-  // Dibuix del Diagrama de Barres
+  // Dibuix del Diagrama de Linies
   s.display();
 }

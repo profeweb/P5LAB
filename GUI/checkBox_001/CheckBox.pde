@@ -26,7 +26,7 @@ class CheckBox {
   
   // Dibuixa el CheckBox
   void display(){
-    
+    pushStyle();
     stroke(borderColor);
     strokeWeight(2);
     
@@ -42,6 +42,7 @@ class CheckBox {
       line(x, y, x + w, y + w);
       line(x, y+w, x + w, y);
     }
+    popStyle();
   }
   
   void setChecked(boolean b){
