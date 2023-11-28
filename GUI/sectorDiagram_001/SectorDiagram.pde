@@ -57,12 +57,12 @@ class SectorDiagram {
       arc(this.x, this.y, 2*this.r, 2*this.r, angStart, angEnd);
       
       float textX = this.x + (this.r + 50)*cos((angStart+angEnd)/2f);
-      float textY = this.x + (this.r + 50)*sin((angStart+angEnd)/2f);
+      float textY = this.y + (this.r + 50)*sin((angStart+angEnd)/2f);
       fill(0); textAlign(CENTER); textSize(24);
       text(this.texts[i], textX, textY);
       
       float percX = this.x + (this.r/2)*cos((angStart+angEnd)/2f);
-      float percY = this.x + (this.r/2)*sin((angStart+angEnd)/2f);
+      float percY = this.y + (this.r/2)*sin((angStart+angEnd)/2f);
       String percentage = nf(this.percentages[i], 2, 2);
       fill(255); textAlign(CENTER); textSize(18);
       text(percentage+"%", percX, percY);

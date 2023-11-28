@@ -66,6 +66,8 @@ class Carrousel {
   // Dibuixa el Mosaic
   void display(){
     
+    pushStyle();
+    
     fill(150); stroke(0);
     rect(x-5, y-5, w+10, h+10);
     
@@ -95,6 +97,8 @@ class Carrousel {
     if(bPrev!=null){
       bPrev.display();
     }
+    
+    popStyle();
   }
   
   void checkButtons(){
