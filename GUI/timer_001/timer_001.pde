@@ -19,6 +19,7 @@ void draw(){
   
   fill(255); textSize(64); textAlign(CENTER);
   text(t.numSeconds, width/2, height/2);
+
 }
 
 
