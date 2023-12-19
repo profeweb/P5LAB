@@ -134,10 +134,12 @@ class PagedCard {
   void printSelectedCard(){
     if(selectedCard !=-1){
       Card cSelected = cards[selectedCard];
+      pushStyle();
       fill(0); textSize(18);
       text("Seleccionada: ", 900, 300);
       textSize(24);
       text(cSelected.title, 900, 340);
+      popStyle();
     }
   }
 }

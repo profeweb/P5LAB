@@ -9,8 +9,10 @@ void setup(){
   
   size(800, 800);      // Dimensions de la Pantalla
   
-  // Creació dels botons
+  // Creació del Music Player
   mp = new MusicPlayer(120, height/3);
+  
+  // Assignació del so a reproduir
   mp.setSound(this, "saxo.wav");
 }
 
@@ -19,7 +21,7 @@ void draw(){
   // Fons de la finestra
   background(200);
   
-  // Dibuixa els botons
+  // Dibuixa el MusicPlayer
   mp.display();
   
   // Actualitza cursor (ARROW o HAND).

@@ -1,7 +1,7 @@
 class Tauler {
   
   Casella[][] caselles;
-  float x, y, w;
+  float x, y, w, cw;
   
   PImage[] figures;
   
@@ -11,7 +11,7 @@ class Tauler {
   Tauler(int x, int y, int w){
     
     this.x = x; this.y = y; this.w = w;
-    float cw = w / 8;
+    this.cw = w / 8;
    
     caselles = new Casella[8][8];
     int nc=0;
@@ -26,6 +26,19 @@ class Tauler {
     }
     
     resetSeleccio();
+  }
+  
+  int getFila(int f){
+    return 8 - f;
+  }
+
+  char getColumna(int c){
+     char simbol = 'H';
+     return (char)(simbol - c);
+  }
+  
+  String getFilaColumna(int f, int c){
+    return (getFila(f)+""+getColumna(c));
   }
   
   void resetSeleccio(){
@@ -82,7 +95,7 @@ class Tauler {
   }
   
   void display(){
-    float cw = w / 8;
+    pushStyle();
     for(int f=0; f<8; f++){
       for(int c=0; c<8; c++){
         Casella ct = caselles[f][c];
@@ -94,7 +107,31 @@ class Tauler {
         }
       }
     }
+    dibuixaLletres(this.y - 10);
+    dibuixaLletres(this.y + this.w + 20);
+
+    dibuixaNumeros(this.x - 20);
+    dibuixaNumeros(this.x +  this.w + 20);
+        
+    popStyle();
   }
+  
+  void dibuixaLletres(float y){
+        char c = 'H';
+        for(int i=0; i<8; i++){
+            textAlign(CENTER); textSize(18);
+            text(c, this.x + i*this.cw + this.cw/2 , y);
+            c--;
+        }
+    }
+
+    void dibuixaNumeros(float x){
+        for(int f=0; f<8; f++) {
+            textAlign(CENTER);
+            textSize(18);
+            text(8 - f, x, this.y + f * this.cw + this.cw / 2);
+        }
+    }
   
   void casellaMouse(){
     for(int f=0; f<8; f++){
@@ -130,6 +167,9 @@ class Tauler {
   
   void mouJugada(){
     if(sel1 && sel2){
+      String fcOrigen = getFilaColumna(sel1Fila,sel1Col);
+      String fcDesti = getFilaColumna(sel2Fila,sel2Col);
+      println("MOVIMENT DE " + fcOrigen + " A "+ fcDesti);
       moviment(sel1Fila, sel1Col, sel2Fila, sel2Col);
     }
   }
