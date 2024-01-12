@@ -8,8 +8,8 @@ class MaquinaTermica {
     this.punts = new PressioVolum[8];
   }
   
-  void setPunt(int i, float pressio, float volum){
-    this.punts[i] = new PressioVolum(i+1, pressio, volum);
+  void setPunt(int i, float pressio, float volum, CICLE cicle){
+    this.punts[i] = new PressioVolum(i+1, pressio, volum, cicle);
   }
   
   void display(float sX, float sY){
@@ -21,6 +21,8 @@ class MaquinaTermica {
       displayHelpers(sX, sY);
       displayPunts(sX, sY);
     popMatrix();
+    
+    checkMouseOver(sX,sY);
   }
   
   void displayPunts(float sX, float sY){
@@ -73,10 +75,78 @@ class MaquinaTermica {
     text("Pressió", 0, -20.5*sY);
   }
   
-  void checkMouseDragged(float sX, float sY){
+  void checkMouseOver(float sX, float sY){
     for(PressioVolum pv : punts){
       pv.mouseOver = pv.mouseOver(x0, y0, sX,sY);
     }
+  }
+  
+  void checkMouseDragged(float sX, float sY){
+    for(PressioVolum pv : punts){
+      pv.mouseOver = pv.mouseOver(x0, y0, sX,sY);
+      if(pv.mouseOver){
+        pv.pressio = (y0 - mouseY) / sY;
+        pv.volum = (mouseX - x0) / sX;
+      }
+    }
+  }
+  
+  
+  int numPuntsCicle(CICLE c){
+    int n = 0;
+    for(int i=0; i<punts.length; i++){
+      if(punts[i].cicle == c){
+        n++;
+      }
+    }
+    return n;
+  }
+  
+  
+  float calculaAreaAnada(){
+    float a = 0;
+    int np = numPuntsCicle(CICLE.ANADA);
+    for(int i=0; i<np-1; i++){
+      float y0 = punts[i].pressio;
+      float y1 = punts[(i+1)].pressio;
+      float dx = abs(punts[(i+1)].volum - punts[i].volum);
+      float ai = 0;
+      // Rectangle
+      if(y0 == y1){
+        ai = y0 * dx;
+      }
+      // Trapezi
+      else {
+        float y2 = (y0 + y1)/2;
+        ai = y2 * dx;
+      }
+      println("AREA ANADA "+i+": "+ai);
+      a += ai;
+    }
+    return a;
+  }
+  
+  float calculaAreaTornada(){
+    float a = 0;
+    int np = numPuntsCicle(CICLE.TORNADA);
+    for(int i=punts.length-1; i>punts.length-np; i--){
+      float y0 = punts[i].pressio;
+      float y1 = punts[(i-1)].pressio;
+      float dx = abs(punts[(i-1)].volum - punts[i].volum);
+      float ai = 0;
+      // Rectangle
+      if(y0 == y1){
+        ai = y0 * dx;
+      }
+      // Trapezi
+      else {
+        float y2 = (y0 + y1)/2;
+        ai = y2 * dx;
+      }
+      println("AREA TORNADA "+i+": "+ai);
+      a += ai;
+    }
+    return a;
   }
   
 }
