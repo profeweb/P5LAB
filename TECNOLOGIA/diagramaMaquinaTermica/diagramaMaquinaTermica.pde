@@ -7,15 +7,19 @@ void setup(){
   size(1800, 900);
   mt = new MaquinaTermica(100, height-80);
   
-  mt.setPunt(0, 3, 12, CICLE.ANADA);
-  mt.setPunt(1, 6, 12, CICLE.ANADA);
-  mt.setPunt(2, 7, 9, CICLE.ANADA);
-  mt.setPunt(3, 13, 7, CICLE.ANADA);
-  mt.setPunt(4, 13, 3, CICLE.TORNADA);
-  mt.setPunt(5, 9, 3, CICLE.TORNADA);
-  mt.setPunt(6, 5, 5, CICLE.TORNADA);
-  mt.setPunt(7, 3, 10, CICLE.TORNADA);
+  mt.setPunt(3, 12, CICLE.ANADA);
+  mt.setPunt(6, 12, CICLE.ANADA);
+  mt.setPunt(7, 9, CICLE.ANADA);
+  mt.setPunt(13, 7, CICLE.ANADA);
   
+  mt.setPunt(13, 3, CICLE.TORNADA);
+  mt.setPunt(9, 3, CICLE.TORNADA);
+  mt.setPunt(5, 5, CICLE.TORNADA);
+  mt.setPunt(3, 10, CICLE.TORNADA);
+  
+  mt.updateMaxXY();
+  
+  println(mt.maxX, mt.maxY);
   calculaArees();
   
 }
@@ -42,5 +46,6 @@ void calculaArees(){
 
 void mouseDragged(){
   mt.checkMouseDragged(sX,sY);
+  mt.updateMaxXY();
   calculaArees();
 }
