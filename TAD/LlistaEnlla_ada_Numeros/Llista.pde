@@ -1,94 +1,114 @@
 
 class Llista {
  
-  int[] array;
-  int tail = -1;
+  Node head;
+  Node tail;
+  int num;
   
   Llista(){
-    array = new int [10];
+    head = null;
+    tail = null;
+    num = 0;
   }
   
-  void prepend(int n){
-    for(int i=tail; i>=0; i--){
-      array[i+1] = array[i];
+  void prepend(int v){
+    if(!isEmpty()){
+      Node n = new Node(v, head);
+      head = n;
     }
-    array[0] = n;
-    tail++;
+    else {
+      Node n = new Node(v);
+      head = n;
+      tail = n;
+    }
+    num++;
+    
   }
   
-  void append(int n){
-    tail++;
-    array[tail] = n;
+  void append(int v){
+    if(!isEmpty()){
+      Node n = new Node(v);
+      tail = n;
+    }
+    else {
+      Node n = new Node(v);
+      head = n;
+      tail = n;
+    }
+    num++;
   }
   
   boolean isEmpty(){
-    return tail==-1;
-  }
-  
-  boolean isFull(){
-    return tail==array.length-1;
+    return tail==null;
   }
   
   int numElements(){
-    return tail+1;
+    return num;
   }
   
   int getElementAt(int i){
-    return array[i];
+    if(i<num && !isEmpty()){
+      int k=0;
+      Node n = head;
+      while(k<i){
+        n = n.getSegNode();
+        k++;
+      }
+      return n.getValor();
+    }
+    else {
+      return -1;
+    }
   }
   
   int getFirst(){
-    if(!isEmpty()){
-      return array[0];
-    }
-    else {
-      return -1;
-    }
+    return getElementAt(0);
   }
   
   int getLast(){
-    if(!isEmpty()){
-      return array[tail];
-    }
-    else {
-      return -1;
-    }
+    return getElementAt(num);
   }
   
   int removeAt(int p){
-    int temp = array[p];
-    for(int i=p; i<tail; i++){
-      array[i] = array[i+1];
+    if(p<num && !isEmpty()){
+      int k=0;
+      Node n = head;
+      while(k<p){
+        n = n.getSegNode();
+        k++;
+      }
+      Node ns = n.getSegNode();
+      int v = n.valor;
+      n.seg = ns;
+      return v;
     }
-    tail--;
-    return temp;
+    return -1;
   }
   
   void insertAt(int p, int v){
-    for(int i=tail+1; i>p; i--){
-      array[i] = array[i-1];
+    if(p<num && !isEmpty()){
+      int k=0;
+      Node n = head;
+      while(k<p){
+        n = n.getSegNode();
+        k++;
+      }
+      Node ns = n.getSegNode();
+      Node nn = new Node(v, ns);
+      n.seg = nn;
+      num++;
     }
-    array[p] = v;
-    tail++;
   }
   
-  void display(int x, int y){
-    float r = 70; strokeWeight(3);
-    for(int i=0; i<array.length; i++){
-      fill(0); textSize(24); textAlign(CENTER);
-      text(i, x + i*r + r/2 , y - r/2);
-      fill(255);
-      rect(x + i*r, y , r,r);
-      if(i<=tail){
-        fill(255,0,0);
-        text(array[i],  x + i*r + r/2 , y + r/1.5 );
-      }
+  void display(int x, int y, int wn){
+    
+    strokeWeight(3);
+    
+    Node n = head;
+    while(n.getSegNode()!=null){
+      n.display(x, y, wn);
     }
     
-    fill(0); textSize(32);
-    text("^", x + tail*r + r/2, y  + r*1.5);
-    text("|", x + tail*r + r/2, y  + r*1.75);
-    text("Tail("+tail+")", x + tail*r + r/2, y  + r*2.2);
   }
   
 }
