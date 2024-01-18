@@ -81,6 +81,14 @@ class ProductCard {
     textSize(14);
     text(category, x + w - 10, y + 25);
     
+    // Favorit
+    if(this.favorite){
+      fill(255, 0, 0);
+      circle(x + 30, y+30, 30);
+      fill(255); textAlign(CENTER); textSize(14);
+      text("F",x + 30, y+35);
+    }
+    
     this.cQuantity.display();
     this.bShop.display();
 
