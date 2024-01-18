@@ -4,16 +4,16 @@ int lastOut = -1;
 int lastIn = -1;
                                   
 void setup(){
-  size(800,800);
+  size(1600,800);
   l = new Llista();
 }
 
 void draw(){
-  background(100, 255,100);
-  l.display(50,100, 50); 
+  background(255, 100,100);
+  l.display(50,120,50); 
   
   textSize(54); textAlign(LEFT);
-  text("LLISTA (ARRAY LIST)", 100, 400);
+  text("LLISTA (NODE LIST)", 100, 400);
   
   textSize(34);
   text("Núm. Elements: "+l.numElements(), 100, 500);
