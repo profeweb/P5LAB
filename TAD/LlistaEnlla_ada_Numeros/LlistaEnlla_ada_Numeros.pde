@@ -44,4 +44,7 @@ void keyPressed(){
       lastOut = l.removeAt(nr);
       println ("REMOVED FROM ("+nr+"): "+lastOut);
   }
+  else if(key=='l'){
+    l.printList();
+  }
 }
