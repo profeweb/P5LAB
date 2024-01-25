@@ -5,6 +5,9 @@ class MaquinaTermica {
   float x0, y0;
 
   float maxX = 0, maxY = 0;
+  float areaAnada, areaTornada, areaTotal;
+
+  String[] textAreesSuperiors, textAreesInferiors;
 
   MaquinaTermica(float x0, float y0) {
     this.x0 = x0; 
@@ -115,7 +118,8 @@ class MaquinaTermica {
       textSize(18);
       text(i, -sX, -i*sY);
     }
-    text("Pressió", 0, -20.5*sY);
+    textAlign(RIGHT);
+    text("Pressió", -25, max(-height + 150, -20.5*sY));
   }
 
   void checkMouseOver(float sX, float sY) {
@@ -152,6 +156,7 @@ class MaquinaTermica {
 
   float calculaAreaAnada() {
     float a = 0;
+    textAreesSuperiors = new String[numPuntsCicle(CICLE.ANADA)-1];
     for (int i=0; i<numPunts; i++) {
       if (punts[i]!=null && punts[i+1]!=null && 
         punts[i].cicle==CICLE.ANADA && 
@@ -161,15 +166,21 @@ class MaquinaTermica {
         float dx = abs(punts[(i+1)].volum - punts[i].volum);
         float ai = 0;
         // Rectangle
+        String textTipus = "rectangle";
+        String calcul = "";
         if (y0 == y1) {
           ai = y0 * dx;
+          calcul = y0 + " x " + dx;
         }
         // Trapezi
         else {
+          textTipus = "trapezi";
           float y2 = (y0 + y1)/2;
           ai = y2 * dx;
+          calcul = "(" + y0 +" + "+y1+")/2  x " + dx;
         }
-        println("AREA ANADA "+i+": "+ai);
+        textAreesSuperiors[i] = "Area Sup. "+(i+1)+" ("+textTipus+"): "+calcul + " = " +ai;
+        println(textAreesSuperiors[i]);
         a += ai;
       }
     }
@@ -178,6 +189,8 @@ class MaquinaTermica {
 
   float calculaAreaTornada() {
     float a = 0;
+    textAreesInferiors = new String[numPuntsCicle(CICLE.TORNADA)-1];
+    int k = 0;
     for (int i=0; i<numPunts; i++) {
       if (punts[i]!=null && punts[i+1]!=null && 
         punts[i].cicle==CICLE.TORNADA && 
@@ -186,19 +199,76 @@ class MaquinaTermica {
         float y1 = punts[(i+1)].pressio;
         float dx = abs(punts[(i+1)].volum - punts[i].volum);
         float ai = 0;
+        String textTipus = "rectangle";
+        String calcul = "";
         // Rectangle
         if (y0 == y1) {
           ai = y0 * dx;
+          calcul = y0 + " x " + dx;
         }
         // Trapezi
         else {
           float y2 = (y0 + y1)/2;
           ai = y2 * dx;
+          textTipus = "trapezi";
+          calcul = "(" + y0 +" + "+y1+")/2  x " + dx;
         }
-        println("AREA TORNADA "+i+": "+ai);
+        textAreesInferiors[k] = "Area Inf. "+(k+1)+" ("+textTipus+"): "+calcul + " = " +ai;
+        println(textAreesInferiors[k]);
+        k++;
         a += ai;
       }
     }
     return a;
+  }
+
+  void calculaArees() {
+    areaAnada = mt.calculaAreaAnada();
+    areaTornada = mt.calculaAreaTornada();
+    areaTotal = areaAnada - areaTornada;
+  }
+
+  void displayCalculsSuperior(float x, float y) {
+    pushStyle();
+    fill(0); textAlign(LEFT); textSize(24);
+    text("AREA SUPERIOR:", x, y);
+    stroke(0);
+    line(x, y+5, x+ 200, y+5);
+    textSize(18);
+    for (int i=0; i<textAreesSuperiors.length; i++) {
+      text(textAreesSuperiors[i], x, y + (i+1)*30);
+    }
+    textSize(20);
+    text("TOTAL AREA SUPERIOR: "+ areaAnada, x, y + (textAreesSuperiors.length + 1.5)*30);
+    popStyle();
+  }
+  
+  void displayCalculsInferior(float x, float y) {
+    pushStyle();
+    fill(0); textAlign(LEFT); textSize(24);
+    text("AREA INFERIOR:", x, y);
+    stroke(0);
+    line(x, y+5, x+ 200, y+5);
+    textSize(18);
+    for (int i=0; i<textAreesInferiors.length; i++) {
+      text(textAreesInferiors[i], x, y + (i+1)*30);
+    }
+    textSize(20);
+    text("TOTAL AREA INFERIOR: "+ areaTornada, x, y + (textAreesInferiors.length + 1.5)*30);
+    popStyle();
+  }
+
+  void displayArees(float x, float y) {
+    pushStyle();
+    displayCalculsSuperior(x, y);
+    displayCalculsInferior(x, y+300);
+    textAlign(LEFT); fill(255, 0, 0);
+    textSize(24);
+    text("DIFERÈNCIA D'ÀREES: "+ areaTotal, x, y+600);
+    stroke(255, 0, 0);
+    line(x, y + 600 + 5, x + 200, y + 600 + 5);
+    textSize(18);
+    text("Area Superior - Area Inferior = " + areaAnada +" - " + areaTornada + " = "+ areaTotal,x, y + 600 + 30);
+    popStyle();
   }
 }
