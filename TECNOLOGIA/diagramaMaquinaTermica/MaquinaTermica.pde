@@ -93,8 +93,8 @@ class MaquinaTermica {
   void displayEixX(float sX, float sY) {
     stroke(0); 
     strokeWeight(2);
-    line(0, 0, 20*sX, 0);
-    for (int i=1; i<=maxX; i++) {
+    line(0, 0, width-200, 0);
+    for (int i=0; i<=maxX; i+=stepX) {
       strokeWeight(1);
       line (i*sX, -sY/3, i*sX, sY/3); 
       fill(0); 
@@ -103,23 +103,23 @@ class MaquinaTermica {
       text(i, i*sX, sY);
     }
 
-    text("Volum", 21*sX, 0);
+    text("Volum", width-200, 50);
   }
 
   void displayEixY(float sX, float sY) {
     stroke(0); 
     strokeWeight(2);
-    line(0, 0, 0, -20*sY);
-    for (int i=1; i<=maxY; i++) {
+    line(0, 0, 0, -height + 120);
+    for (int i=0; i<=maxY; i+=stepY) {
       strokeWeight(1);
-      line (-sX/3, -i*sY, sX/3, -i*sY); 
+      line (-10, -i*sY, 10, -i*sY); 
       fill(0); 
-      textAlign(CENTER); 
+      textAlign(RIGHT); 
       textSize(18);
-      text(i, -sX, -i*sY);
+      text(i, -20, -i*sY);
     }
     textAlign(RIGHT);
-    text("Pressió", -25, max(-height + 150, -20.5*sY));
+    text("Pressió", -25, -height + 150);
   }
 
   void checkMouseOver(float sX, float sY) {
@@ -261,14 +261,15 @@ class MaquinaTermica {
   void displayArees(float x, float y) {
     pushStyle();
     displayCalculsSuperior(x, y);
-    displayCalculsInferior(x, y+300);
+    displayCalculsInferior(x, y+200);
     textAlign(LEFT); fill(255, 0, 0);
     textSize(24);
-    text("DIFERÈNCIA D'ÀREES: "+ areaTotal, x, y+600);
+    float yr = 400;
+    text("DIFERÈNCIA D'ÀREES: "+ areaTotal, x, y+yr);
     stroke(255, 0, 0);
-    line(x, y + 600 + 5, x + 200, y + 600 + 5);
+    line(x, y + yr + 5, x + 200, y + yr + 5);
     textSize(18);
-    text("Area Superior - Area Inferior = " + areaAnada +" - " + areaTornada + " = "+ areaTotal,x, y + 600 + 30);
+    text("Area Superior - Area Inferior = " + areaAnada +" - " + areaTornada + " = "+ areaTotal,x, y + yr + 30);
     popStyle();
   }
 }
