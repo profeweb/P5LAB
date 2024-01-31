@@ -16,6 +16,9 @@ void setup(){
   println("\nPOSTORDRE: ");
   a.arrel.postordre();
   println();
+  println("\nRERVERS: ");
+  a.arrel.revers();
+  println();
 }
 
 void draw(){
@@ -42,6 +45,10 @@ void keyPressed(){
   else if(key=='o' || key=='O'){
     println("\nPROSTORDRE: ");
     a.arrel.postordre();
+  }
+  else if(key=='r' || key=='r'){
+    println("\nREVERS: ");
+    a.arrel.revers();
   }
   else if(key=='f' || key=='F'){
     int nf = (int)random(0, 100);

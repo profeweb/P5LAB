@@ -35,6 +35,16 @@ class Node {
     print(this.num, ", ");
   }
   
+  void revers(){
+    if(this.dret!=null){
+      this.dret.revers();
+    }
+    print(this.num, ", ");
+    if(this.esq!=null){
+      this.esq.revers();
+    }
+  }
+  
   
   void display(float x, float y, float r, int level){
     

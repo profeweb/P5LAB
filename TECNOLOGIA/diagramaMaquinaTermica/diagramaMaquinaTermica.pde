@@ -5,21 +5,22 @@ boolean showSliders = true;
 float stepX = 50;
 float stepY = 2;
 
-String nomActivitat = "Problema 2- Opció A. Juny 2016.";
+String nomActivitat = "Problema 2- Opció B. Juny 2011.";
 
 void setup() {
   size(1800, 900);
   mt = new MaquinaTermica(100, height-80);
 
   mt.setPunt(200, 30, CICLE.ANADA);
-  mt.setPunt(750, 20, CICLE.ANADA);
-  mt.setPunt(950, 10, CICLE.ANADA);
+  mt.setPunt(600, 20, CICLE.ANADA);
+  mt.setPunt(900, 8, CICLE.ANADA);
   //mt.setPunt(400, 4, CICLE.ANADA);
 
-  mt.setPunt(950, 2, CICLE.TORNADA);
-  mt.setPunt(600, 2, CICLE.TORNADA);
-  mt.setPunt(400, 14, CICLE.TORNADA);
-  mt.setPunt(200, 14, CICLE.TORNADA);
+  mt.setPunt(900, 2, CICLE.TORNADA);
+  mt.setPunt(350, 8, CICLE.TORNADA);
+  mt.setPunt(200, 16, CICLE.TORNADA);
+  //mt.setPunt(175, 6, CICLE.TORNADA);
+  //mt.setPunt(100, 8, CICLE.TORNADA);
 
   mt.updateMaxXY();
   mt.calculaArees();
