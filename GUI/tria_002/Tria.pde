@@ -4,7 +4,6 @@ class Tria4 {
   float x, y, w, h;
   
  // Propietats
- PImage img;
  String title;
  String message;
  
@@ -48,9 +47,6 @@ class Tria4 {
    this.b4.textBoto = txt4;
  }
  
- void setImage(PImage img){
-   this.img = img;
- }
  
  void setTexts(String title, String message){
    this.title = title;

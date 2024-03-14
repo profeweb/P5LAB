@@ -18,7 +18,7 @@ void setup(){
   
   size(1400, 800);      // Dimensions de la Pantalla
   
-  // Creació del Confirm
+  // Creació del Tria
   c = new Tria(title, message, 100, 100, compW, compH);
   c.setTextButtons("Vermell","Verd","Blau");
 }

@@ -4,7 +4,6 @@ class Confirm {
   float x, y, w, h;
   
  // Propietats
- PImage img;
  String title;
  String message;
  
@@ -34,10 +33,7 @@ class Confirm {
    this.bAceptar.textBoto = txt1;
    this.bCancelar.textBoto = txt2;
  }
- 
- void setImage(PImage img){
-   this.img = img;
- }
+
  
  void setTexts(String title, String message){
    this.title = title;

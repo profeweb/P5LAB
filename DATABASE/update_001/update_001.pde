@@ -37,10 +37,10 @@ void setup(){
   c.setInitialValue(0);
   c.setStepValue(1);
   
-  // Creació del Select
+  // Dades del Select
   String[][] selectValues = getInfoTaulaUnitat();
   
-  // Creació de la taula
+  // Creació del Select
   s = new Select(selectValues, width/8, height/12, 3*compW, compH);
   
   // Creació dels camps de text

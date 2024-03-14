@@ -20,6 +20,9 @@ int cercaLineal(int[] A, int v){
     if(A[i]== v){
       return i;
     }
+    else if(A[i]>v){
+      return -1;
+    }
   }
   return -1;
 }
