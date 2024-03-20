@@ -30,6 +30,13 @@ void mousePressed(){
   lv.buttonPressed();
 }
 
+void keyPressed(){
+  if(key=='a' || key=='A'){
+    int num = lv.items.size() + 1;
+    lv.addItemToList(num + " NOU ELEMENT");
+  }
+}
+
 // Modifica el cursor
 void updateCursor(){
   
