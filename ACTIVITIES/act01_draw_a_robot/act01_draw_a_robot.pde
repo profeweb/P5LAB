@@ -1,13 +1,13 @@
-int  x = 60; // x coordinate
+int  x = 160; // x coordinate
 int  y = 420; // y coordinate
 int  bodyHeight = 110; // Body height
 int  neckHeight = 40; // Neck height
-int  radius = 45;
+int  radius = 45;   // Radius head
 int  ny = y - bodyHeight - neckHeight - radius; // Neck Y
 
 
 void setup() {
- size(170, 480);
+ size(300, 480);
  strokeWeight(2);
  ellipseMode(RADIUS);
 }
@@ -62,4 +62,7 @@ void drawRobot(){
 void draw() {
  background(204);
  drawRobot();
+ 
+ fill(255, 0, 0);
+ circle(x, y, 10);
 }

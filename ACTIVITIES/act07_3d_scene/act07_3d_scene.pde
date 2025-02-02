@@ -1,10 +1,10 @@
-var r=180, g=55, b=25;
+int r=180, g=55, b=25;
 
-function setup() { 
-  createCanvas(800, 500, WEBGL);
+void setup() { 
+  size(800, 500, P3D);
 } 
 
-function draw() { 
+void draw() { 
   background(0);
   
   setView();
@@ -29,8 +29,8 @@ function draw() {
   showSphere();
 }
 
-function setLight(){
-  if(keyIsPressed){
+void setLight(){
+  if(keyPressed){
     if(key=='r'){
       r = 255; g=0; b=0;
     }
@@ -45,8 +45,8 @@ function setLight(){
   pointLight(200, 200, 200, 0, 0, 0);
 }
 
-function setView(){
-  if(keyIsPressed){
+void setView(){
+  if(keyPressed){
     if(key=='c'){
       camera(100, 50, 300);
     }
@@ -59,7 +59,7 @@ function setView(){
   }
 }
 
-function showPlane(){
+void showPlane(){
   push();
     rotateZ(frameCount * 0.01);
     rotateX(frameCount * 0.01);
@@ -77,7 +77,7 @@ function showBox(){
   pop();
 }
 
-function showCylinder(){
+void showCylinder(){
   push();
   rotateZ(frameCount * 0.01);
   rotateX(-frameCount * 0.01);
@@ -86,7 +86,7 @@ function showCylinder(){
   pop();
 }
 
-function showCone(){
+void showCone(){
   push();
   rotateZ(frameCount * 0.01);
   rotateX(frameCount * 0.01);
@@ -95,7 +95,7 @@ function showCone(){
   pop();
 }
 
-function showTorus(){
+void showTorus(){
   push();
   rotateZ(frameCount * 0.01);
   rotateX(frameCount * 0.01);
@@ -104,7 +104,7 @@ function showTorus(){
   pop();
 }
 
-function showSphere(){
+void showSphere(){
   push();
   rotateZ(frameCount * 0.01);
   rotateX(frameCount * 0.01);

@@ -6,7 +6,13 @@ void setup(){
 void draw(){
   for(float i=0; i<width; i++){
     for(float j=0; j<height; j++){
-      stroke(i/width*255, j/width*255,0);
+      float d = dist(i, j, width/2, height/2);
+      if(d< 300){
+      stroke((1 - d/width)*255,(1-d/width)*255,0);
+      }
+      else {
+        stroke(255);
+      }
       point(i, j); 
     }
   }
